@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+
+Auth::routes(['register' => false]);
+
+//Crypto
+Route::get('/crypto/{id}/edit', [\App\Http\Controllers\CryptoController::class, 'edit'])->name('crypto_edit');
+Route::get('/crypto', [App\Http\Controllers\CryptoController::class, 'index'])->name('crypto');
+Route::get('/crypto/create', [App\Http\Controllers\CryptoController::class, 'create'])->name('create_crypto');
+Route::delete('crypto/{id}', [\App\Http\Controllers\CryptoController::class, 'destroy'])->name('delete_crypto');
+Route::post('/crypto', [\App\Http\Controllers\CryptoController::class, 'store']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
