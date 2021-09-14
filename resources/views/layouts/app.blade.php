@@ -36,10 +36,14 @@
                         @auth
                             @if (Route::has('crypto'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('crypto') }}">{{ __('Crypto') }}</a>
+                                    <a class="nav-link {{Route::is('crypto') ? 'active' : ''}}" href="{{ route('crypto') }}">{{ __('Crypto') }}</a>
                                 </li>
                             @endif
-
+                            @if (Route::has('soil'))
+                                <li class="nav-item">
+                                    <a class="nav-link {{Route::is('soil') ? 'active' : ''}}" href="{{ route('soil') }}">{{ __('Soil') }}</a>
+                                </li>
+                            @endif
                         @endauth
                     </ul>
 

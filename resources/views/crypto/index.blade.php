@@ -12,9 +12,17 @@
                     <div class="card">
                         <img src="{{"/storage/".$currentCrypto->soil_image}}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h3 class="card-title">{{$currentCrypto->name}}</h3>
-                            <p class="card-text">Weight: {{$currentCrypto->weight}}</p>
-                            <p class="card-text text-truncate">Wallet address: {{$currentCrypto->wallet_address}}</p>
+                            <div class="row pb-3">
+                                <div class="col-8">
+                                    <h3 class="card-title">{{$currentCrypto->name}}</h3>
+                                    <p class="card-text">Weight: {{$currentCrypto->weight}}</p>
+                                    <p class="card-text text-truncate">Wallet address: {{$currentCrypto->wallet_address}}</p>
+                                </div>
+                                <div class="col-4">
+                                    <img src="{{"/storage/".$currentCrypto->wallet_image}}" class="mx-auto d-block" style="width: 100%" alt="...">
+                                </div>
+                            </div>
+
 
                                 <div class="row">
 
