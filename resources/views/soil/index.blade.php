@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="float-right">
-                                        <form method="POST" action="{{ route('delete_crypto', [$currentSoil->id]) }}">
+                                        <form method="POST" action="{{ route('delete_soil', [$currentSoil->id]) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 

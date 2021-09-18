@@ -27,7 +27,7 @@
                                 <div class="row">
 
                                 <div class="col">
-                                    <a href="{{route('crypto_edit', $currentCrypto->id)}}" class="btn btn-primary">Edit</a>
+                                    <a href="{{route('edit_crypto', $currentCrypto->id)}}" class="btn btn-primary">Edit</a>
                                 </div>
                                 <div class="col">
                                     <div class="float-right">

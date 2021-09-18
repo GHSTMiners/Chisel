@@ -47,6 +47,19 @@ class CryptoController extends Controller
         return view('crypto.edit', compact('crypto'));
     }
 
+    public function update($id) {
+        $crypto = Crypto::findOrFail($id);
+        $data = request()->validate([
+            'name' => '',
+            'wallet_address' => ['regex:/0x[\da-f]/i'],
+            'weight' => ['numeric', 'between:0,99999.99'],
+            'soil_image' => ['image'],
+            'wallet_image' => ['image'],
+        ]);
+        $crypto->update($data);
+        return redirect()->route('crypto');
+    }
+
     public function store() {
         $data = request()->validate([
             'name' => 'required',

@@ -5,9 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Edit crypto') }}</div>
+                    <div class="card-header">{{ __('Edit soil') }}</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('update_crypto', [$crypto->id]) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('update_soil', [$soil->id]) }}" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
 
@@ -15,7 +15,7 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $crypto->name }}" required autocomplete="name" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $soil->name }}" required autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -26,12 +26,12 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Wallet address') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Dig multiplier') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="wallet_address" type="text" class="form-control @error('wallet_address') is-invalid @enderror" name="wallet_address" value="{{ old('wallet_address') ?? $crypto->wallet_address }}" required autocomplete="name" autofocus>
+                                    <input id="dig_multiplier" step="any" type="number" class="form-control @error('dig_multiplier') is-invalid @enderror" name="dig_multiplier" value="{{ old('dig_multiplier') ?? $soil->dig_multiplier }}" required autocomplete="name" autofocus>
 
-                                    @error('wallet_address')
+                                    @error('dig_multiplier')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -40,12 +40,12 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Weight') }}</label>
+                                <label for="file" class="col-md-4 col-form-label text-md-right">{{ __('Top soil image') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="weight" step="any" type="number" class="form-control @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') ?? $crypto->weight }}" required autocomplete="name" autofocus>
+                                    <input id="top_image" type="file" class="form-control-file @error('top_image') is-invalid @enderror" name="top_image" value="{{ old('top_image') }}" autocomplete="top_image">
 
-                                    @error('weight')
+                                    @error('top_image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -54,12 +54,12 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="file" class="col-md-4 col-form-label text-md-right">{{ __('Soil image') }}</label>
+                                <label for="file" class="col-md-4 col-form-label text-md-right">{{ __('Middle soil image') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="soil_image" type="file" class="form-control-file @error('soil_image') is-invalid @enderror" name="soil_image" value="{{ old('soil_image') }}" autocomplete="soil_image">
+                                    <input id="middle_image" type="file" class="form-control-file @error('middle_image') is-invalid @enderror" name="middle_image" value="{{ old('middle_image') }}" autocomplete="middle_image">
 
-                                    @error('soil_image')
+                                    @error('middle_image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -68,12 +68,12 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="file" class="col-md-4 col-form-label text-md-right">{{ __('Wallet image') }}</label>
+                                <label for="file" class="col-md-4 col-form-label text-md-right">{{ __('Bottom soil image') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="wallet_image" type="file" class="form-control-file @error('wallet_image') is-invalid @enderror" name="wallet_image" value="{{ old('wallet_image') }}" autocomplete="wallet_image">
+                                    <input id="bottom_image" type="file" class="form-control-file @error('bottom_image') is-invalid @enderror" name="bottom_image" value="{{ old('bottom_image') }}" autocomplete="bottom_image">
 
-                                    @error('wallet_image')
+                                    @error('bottom_image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

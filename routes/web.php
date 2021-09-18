@@ -19,18 +19,19 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Auth::routes(['register' => false]);
 
 //Crypto
-Route::get('/crypto/{id}/edit', [\App\Http\Controllers\CryptoController::class, 'edit'])->name('crypto_edit');
+Route::get('/crypto/{id}/edit', [\App\Http\Controllers\CryptoController::class, 'edit'])->name('edit_crypto');
 Route::get('/crypto', [App\Http\Controllers\CryptoController::class, 'index'])->name('crypto');
 Route::get('/crypto/create', [App\Http\Controllers\CryptoController::class, 'create'])->name('create_crypto');
 Route::delete('crypto/{id}', [\App\Http\Controllers\CryptoController::class, 'destroy'])->name('delete_crypto');
 Route::post('/crypto', [\App\Http\Controllers\CryptoController::class, 'store']);
-
+Route::patch('/crypto/{id}', [\App\Http\Controllers\CryptoController::class, 'update'])->name('update_crypto');
 //Soil
-Route::get('/soil/{id}/edit', [\App\Http\Controllers\CryptoController::class, 'edit'])->name('soil_edit');
-
+Route::get('/soil/{id}/edit', [\App\Http\Controllers\SoilController::class, 'edit'])->name('soil_edit');
 Route::get('/soil', [\App\Http\Controllers\SoilController::class, 'index'])->name('soil');
 Route::get('/soil/create', [\App\Http\Controllers\SoilController::class, 'create'])->name('create_soil');
 Route::post('/soil', [\App\Http\Controllers\SoilController::class, 'store']);
+Route::delete('soil/{id}', [\App\Http\Controllers\SoilController::class, 'destroy'])->name('delete_soil');
+Route::patch('/soil/{id}', [\App\Http\Controllers\SoilController::class, 'update'])->name('update_soil');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
