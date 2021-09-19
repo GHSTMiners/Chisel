@@ -3,26 +3,35 @@
 
     <div class="container">
             <div class="d-flex justify-content-between pb-3">
-                <h1>Soil</h1>
-                <a type="button" href="{{ route('create_soil') }}" class="btn btn-primary btn-lg">Add soil 🌱</a>
+                <h1>Puzzles</h1>
+                <a type="button" href="{{ route('create_puzzle') }}" class="btn btn-primary btn-lg">Add puzzle 🧩</a>
             </div>
         <div class="row">
-        @foreach ($soil as $currentSoil)
+        @foreach ($puzzles as $currentCrypto)
                 <div class="col-sm-4 pb-4">
                     <div class="card">
-                        <img src="{{"/storage/".$currentSoil->top_image}}" class="card-img-top" alt="...">
+                        <img src="{{"/storage/".$currentCrypto->soil_image}}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h3 class="card-title">{{$currentSoil->name}}</h3>
-                            <p class="card-text">Dig multiplier: {{$currentSoil->dig_multiplier}}</p>
+                            <div class="row pb-3">
+                                <div class="col-8">
+                                    <h3 class="card-title">{{$currentCrypto->name}}</h3>
+                                    <p class="card-text">Weight: {{$currentCrypto->weight}}</p>
+                                    <p class="card-text text-truncate">Wallet address: {{$currentCrypto->wallet_address}}</p>
+                                </div>
+                                <div class="col-4">
+                                    <img src="{{"/storage/".$currentCrypto->wallet_image}}" class="mx-auto d-block" style="width: 100%" alt="...">
+                                </div>
+                            </div>
+
 
                                 <div class="row">
 
                                 <div class="col">
-                                    <a href="{{route('soil_edit', $currentSoil->id)}}" class="btn btn-primary">Edit</a>
+                                    <a href="{{route('edit_crypto', $currentCrypto->id)}}" class="btn btn-primary">Edit</a>
                                 </div>
                                 <div class="col">
                                     <div class="float-right">
-                                        <form method="POST" action="{{ route('delete_soil', [$currentSoil->id]) }}">
+                                        <form method="POST" action="{{ route('delete_crypto', [$currentCrypto->id]) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 

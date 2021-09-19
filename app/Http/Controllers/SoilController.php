@@ -42,6 +42,10 @@ class SoilController extends Controller
             'bottom_image' => ['image']
         ]);
 
+        if(array_key_exists('top_image', $data)) $data['top_image'] = $data['top_image']->store('/soil', 'public');
+        if(array_key_exists('middle_image', $data)) $data['middle_image'] = $data['middle_image']->store('/soil', 'public');
+        if(array_key_exists('bottom_image', $data)) $data['bottom_image'] = $data['bottom_image']->store('/soil', 'public');
+
         $soil = Soil::findOrFail($id);
         $soil->update($data);
         return redirect()->route('soil');
@@ -56,9 +60,9 @@ class SoilController extends Controller
             'bottom_image' => ['required', 'image']
         ]);
         
-        $topImagePath = request('top_image')->store('/soil', 'public');
-        $middleImagePath = request('middle_image')->store('/soil', 'public');
-        $bottomImagePath = request('bottom_image')->store('/soil', 'public');
+        $topImagePath = $data['top_image']->store('/soil', 'public');
+        $middleImagePath = $data['middle_image']->store('/soil', 'public');
+        $bottomImagePath = $data['bottom_image']->store('/soil', 'public');
         
         \App\Models\Soil::create([
             'name' => $data['name'],

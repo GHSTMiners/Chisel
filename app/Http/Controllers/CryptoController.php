@@ -56,6 +56,10 @@ class CryptoController extends Controller
             'soil_image' => ['image'],
             'wallet_image' => ['image'],
         ]);
+
+        if(array_key_exists('soil_image', $data)) $data['soil_image'] = $data['soil_image']->store('/soil', 'public');
+        if(array_key_exists('wallet_image', $data)) $data['wallet_image'] = $data['wallet_image']->store('/soil', 'public');
+
         $crypto->update($data);
         return redirect()->route('crypto');
     }

@@ -35,7 +35,7 @@
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 
-                                            <div class="form-group">
+                                            <div class="d-flex form-group justify-content-end">
                                                 <input type="submit" class="btn btn-danger delete-crypto" value="Delete">
                                             </div>
                                         </form>
