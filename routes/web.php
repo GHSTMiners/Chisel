@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
 
 //Crypto
 Route::get('/crypto/{id}/edit', [\App\Http\Controllers\CryptoController::class, 'edit'])->name('edit_crypto');

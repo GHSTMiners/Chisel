@@ -17,6 +17,10 @@
     function create ()
     {
 
+        this.add.grid(0,0, $("#width").val()*32, $("#height").val()*32, 32, 32, 0xff0000);
+        const g1 = this.add.grid(100, 100, 128, 96, 32, 32, 0x057605);
+        g1.setOrigin(0,0);
+
     }
 
     function reloadScene() {
@@ -78,9 +82,9 @@
                     <label for="name" class="form-label">{{ __('Size') }}</label>
                     <div class=" input-group mb-3">
                         <span class="input-group-text">Width</span>
-                        <input id="height" step="any" type="number" class="form-control" placeholder="Amount of blocks" aria-label="Width">
+                        <input id="width" step="any" type="number" class="form-control" placeholder="Amount of blocks" aria-label="Width">
                         <span class="input-group-text">Height</span>
-                        <input step="any" type="number" class="form-control" placeholder="Amount of blocks" aria-label="Height">
+                        <input id="height" step="any" type="number" class="form-control" placeholder="Amount of blocks" aria-label="Height">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -133,7 +137,7 @@
                             <div id="phaser" class="col-9" style="min-height: 600"></div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg">{{ __('Add') }}</button>  
+                    <button type="submit" class="btn btn-primary btn-lg">{{ __('Add') }}</button>
                 </form>
             </div>
         </div>
