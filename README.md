@@ -9,16 +9,16 @@ To start working on Chisel, you will need to have some software installed on you
 
 ## Software to install:
 
-* PHP - Firstly you will need to install [PHP](https://www.php.net/). PHP is a popular general-purpose scripting language that is especially suited to web development. It is needed to run Chisel, as well as to some development tools.
+* [PHP](https://www.php.net/) - PHP is a popular general-purpose scripting language that is especially suited to web development. It is needed to run Chisel, as well as to some development tools.
 
-* Node.js - You will also need to install [Node.js](https://nodejs.org/en/). Part of Node.js is [NPM](https://www.npmjs.com/) which we need to install some of Chisel's javascript dependencies. 
+* [Node.js](https://nodejs.org/en/) - Part of Node.js is [NPM](https://www.npmjs.com/) which is needed to install some of Chisel's javascript dependencies. 
 
-* Composer - Finally we need [Composer](https://getcomposer.org/). Composer is a package manager for PHP. We need it to install Chisel's PHP dependencies.
+* [Composer](https://getcomposer.org/) - Composer is a package manager for PHP. It is necessary to install Chisel's PHP dependencies.
 
 ## Bootstrapping the project
-Now that all our tools are installed we can get started. First, clone the Chisel repository. Open a terminal window, and navigate to the root of the repository.
+Clone the Chisel repository. Open a terminal window, and navigate to the root of the repository.
 
-We need to run a few commands to download some external dependencies, and generate some code. These are the commands:
+Next, you will need to download some external dependencies, and generate some code. These are the commands:
 ```
 composer install
 npm install
@@ -26,6 +26,26 @@ npm run dev
 ```
 
 ## Configuring the project
-Most settings are stored a .env file that is placed in the root of the project. There is an template .env file called .env.example. You can make a copy of it. Then we can change it.
+Most settings are stored a .env file that is placed in the root of the project. There is an template .env file called [.env.example](.env.example). You can make a copy of it. Then we can change it.
 
+### Setting up the database
+Laravel supports different kinds of databases. For development purposed it easiest to use SQLite. Open the .env file, and change these settings:
+```
+DB_CONNECTION=sqlite
+DB_DATABASE=/absolute/path/to/database.sqlite
+DB_FOREIGN_KEYS=true
+```
 
+### Generating application key and configuring storage
+You can use artisan for this, run the following commands:
+```
+php artisan key:generate
+php artisan storage:link
+```
+
+## Running the project
+That's it! It's done. You can now use [artisan](https://laravel.com/docs/8.x/artisan) to start a local web server. You can use this command to run it:
+```
+php artisan serve
+```
+Navigate to http://localhost:8000 using your favorite browser, and you have chisel in front of you. 
