@@ -4,7 +4,7 @@
     <div class="container">
             <div class="d-flex justify-content-between pb-3">
                 <h1>Rock</h1>
-                <a type="button" href="{{ route('create_rock') }}" class="btn btn-primary btn-lg">Add rock 🪨</a>
+                <a type="button" href="{{ route('rock.create') }}" class="btn btn-primary btn-lg">Add rock 🪨</a>
             </div>
         <div class="row">
         @foreach ($rocks as $currentRock)
@@ -41,10 +41,10 @@
                                 <div class="row">
 
                                 <div class="col">
-                                    <a href="{{route('edit_rock', $currentRock->id)}}" class="btn btn-primary">Edit</a>
+                                    <a href="{{route('rock.edit', $currentRock->id)}}" class="btn btn-primary">Edit</a>
                                 </div>
                                 <div class="col">
-                                    <form method="POST" action="{{ route('delete_rock', [$currentRock->id]) }}">
+                                    <form method="POST" action="{{ route('rock.destroy', [$currentRock->id]) }}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}                                    
                                         <div class="d-flex form-group justify-content-end">

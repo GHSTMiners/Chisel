@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('update_soil', [$soil->id]) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('soil.update', [$soil->id]) }}" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
 

@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('update_rock', [$rock->id]) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('rock.update', [$rock->id]) }}" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <h4 class="card-title">{{ __('Edit rock') }}</h4>

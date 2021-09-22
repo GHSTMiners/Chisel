@@ -22,6 +22,7 @@ class PuzzleController extends Controller
     }
 
     public function create() {
+        
         return view('puzzle.create');
     }
 }

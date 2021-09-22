@@ -26,20 +26,16 @@ class RockController extends Controller
         return view('rock.create');
     }
 
-    public function destroy($id) {
-        $rock = Rock::findOrFail($id);
+    public function destroy(Rock $rock) {
         $rock->delete();
         return redirect()->route('rock');
     } 
 
-    public function edit($id) {
-        $rock = Rock::findOrFail($id);
+    public function edit(Rock $rock) {
         return view('rock.edit', compact('rock'));
     }
 
-    public function update($id) {
-        $rock = Rock::findOrFail($id);
-
+    public function update(Rock $rock) {
         $data = request()->validate([
             'name' => '',
             'image' => ['image'],
@@ -54,7 +50,7 @@ class RockController extends Controller
         if(!array_key_exists('lava', $data)) $data['lava'] = $lava['lava'] = FALSE;
 
         $rock->update($data);
-        return redirect()->route('rock');
+        return redirect()->route('rock.index');
     }
 
     public function store() {
@@ -76,7 +72,7 @@ class RockController extends Controller
             'lava' => (array_key_exists('lava', $data) ? 1 : 0)
         ]);
 
-        return redirect()->route('rock');
+        return redirect()->route('rock.index');
 
     }
 }

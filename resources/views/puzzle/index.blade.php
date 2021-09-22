@@ -4,7 +4,7 @@
     <div class="container">
             <div class="d-flex justify-content-between pb-3">
                 <h1>Puzzles</h1>
-                <a type="button" href="{{ route('create_puzzle') }}" class="btn btn-primary btn-lg">Add puzzle 🧩</a>
+                <a type="button" href="{{ route('puzzle.create') }}" class="btn btn-primary btn-lg">Add puzzle 🧩</a>
             </div>
         <div class="row">
         @foreach ($puzzles as $currentCrypto)

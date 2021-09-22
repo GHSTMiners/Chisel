@@ -1,8 +1,20 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+.puzzle-designer{
+  min-width: 1000;
+  min-height: 1000;  
+}
 
-// Variables
-@import 'variables';
+.puzzle-designer-row {
+  width: 1000;
+  height: 100;
+}
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+.puzzle-designer-square{
+  width: 100;
+  height: 100;
+  float: left;
+  background-color: #F5F5F5;
+}
+
+.puzzle-designer-square-odd {
+  background-color: #BDBDBD;
+}

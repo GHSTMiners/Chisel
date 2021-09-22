@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('update_crypto', [$crypto->id]) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('crypto.update', [$crypto->id]) }}" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
 

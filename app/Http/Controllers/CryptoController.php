@@ -35,20 +35,18 @@ class CryptoController extends Controller
         return view('crypto.create');
     }
 
-    public function destroy($id) {
+    public function destroy(Crypto $crypto) {
         $crypto = Crypto::findOrFail($id);
         Storage::delete($crypto->soil_image);
         $crypto->delete();
-        return redirect()->route('crypto');
+        return redirect()->route('crypto.index');
     }
 
-    public function edit($id) {
-        $crypto = Crypto::findOrFail($id);
+    public function edit(Crypto $crypto) {
         return view('crypto.edit', compact('crypto'));
     }
 
-    public function update($id) {
-        $crypto = Crypto::findOrFail($id);
+    public function update(Crypto $crypto) {
         $data = request()->validate([
             'name' => '',
             'wallet_address' => ['regex:/0x[\da-f]/i'],
@@ -61,7 +59,7 @@ class CryptoController extends Controller
         if(array_key_exists('wallet_image', $data)) $data['wallet_image'] = $data['wallet_image']->store('/soil', 'public');
 
         $crypto->update($data);
-        return redirect()->route('crypto');
+        return redirect()->route('crypto.index');
     }
 
     public function store() {
@@ -83,6 +81,6 @@ class CryptoController extends Controller
             'soil_image' => $soilImagePath,
             'wallet_image' => $walletImagePath
         ]);
-        return redirect()->route('crypto');
+        return redirect()->route('crypto.index');
     }
 }

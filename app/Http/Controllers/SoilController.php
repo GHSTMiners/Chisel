@@ -18,8 +18,7 @@ class SoilController extends Controller
         return view('soil.index', compact('soil'));
     }
 
-    public function edit($id) {
-        $soil = Soil::findOrFail($id);
+    public function edit(Soil $soil ) {
         return view('soil.edit', compact('soil'));
     }
     
@@ -27,13 +26,12 @@ class SoilController extends Controller
         return view('soil.create');
     }
     
-    public function destroy($id) {
-        $soil = Soil::findOrFail($id);
+    public function destroy(Soil $soil) {
         $soil->delete();
         return redirect()->route('soil');
     }    
     
-    public function update($id) {
+    public function update(Soil $soil) {
         $data = request()->validate([
             'name' => '',
             'dig_multiplier' => ['numeric', 'between:0,99999.99'],
@@ -46,9 +44,8 @@ class SoilController extends Controller
         if(array_key_exists('middle_image', $data)) $data['middle_image'] = $data['middle_image']->store('/soil', 'public');
         if(array_key_exists('bottom_image', $data)) $data['bottom_image'] = $data['bottom_image']->store('/soil', 'public');
 
-        $soil = Soil::findOrFail($id);
         $soil->update($data);
-        return redirect()->route('soil');
+        return redirect()->route('soil.index');
     }
 
     public function store() {
@@ -71,6 +68,6 @@ class SoilController extends Controller
             'middle_image' => $middleImagePath,
             'bottom_image' => $bottomImagePath
         ]);
-        return redirect()->route('soil');
+        return redirect()->route('soil.index');
     }
 }

@@ -3,67 +3,6 @@
 
 
 @section('content')
-    <script>
-    var game;
-    function preload ()
-    {
-        this.load.setBaseURL('http://labs.phaser.io');
-
-        this.load.image('sky', 'assets/skies/space3.png');
-        this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-        this.load.image('red', 'assets/particles/red.png');
-    }
-
-    function create ()
-    {
-
-        this.add.grid(0,0, $("#width").val()*32, $("#height").val()*32, 32, 32, 0xff0000);
-        const g1 = this.add.grid(100, 100, 128, 96, 32, 32, 0x057605);
-        g1.setOrigin(0,0);
-
-    }
-
-    function reloadScene() {
-        //Destory old phaser instance
-        if(game) game.destroy(true);
-
-           var config = {
-        type: Phaser.AUTO,
-        width: $("#phaser").width(),
-        height: $("#phaser").height(),
-        physics: {
-            default: 'arcade',
-            arcade: {
-                gravity: { y: 200 }
-            }
-        },
-        parent: 'phaser',
-
-        scale: {
-            _mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
-            parent: 'phaser',
-            width: $("#phaser").width(),
-            height: $("#phaser").height(),
-        },
-
-        scene: {
-            preload: preload,
-            create: create
-        }
-    };
-
-        game = new Phaser.Game(config);
-        console.log($("#phaser").height())
-    }
-    $(document).ready(function(){
-        reloadScene();
-        $("#reloadButton").on('click', function() {
-            reloadScene();
-        });
-    });
-    </script>
-
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -94,7 +33,7 @@
                     </div>
                     <label for="name" class="form-label">{{ __('Puzzle design') }}</label>
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-2">
                             <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
@@ -134,7 +73,15 @@
                             </div>
                             </div>
                             </div>
-                            <div id="phaser" class="col-9" style="min-height: 600"></div>
+                            <div class="puzzle-designer col-10">
+                                @for ($row = 0; $row < 10; $row++)
+                                    <div class="puzzle-designer-row">
+                                    @for ($column = 0; $column < 10; $column++)
+                                        <div id="puzzle-designer-square-{{$row}}-{{$column}}" class="puzzle-designer-square @if(($row+$column) % 2 == 0) puzzle-designer-square-odd @endif""></div>
+                                    @endfor
+                                    </div>
+                                @endfor
+                            </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg">{{ __('Add') }}</button>

@@ -4,7 +4,7 @@
     <div class="container">
             <div class="d-flex justify-content-between pb-3">
                 <h1>Crypto</h1>
-                <a type="button" href="{{ route('create_crypto') }}" class="btn btn-primary btn-lg">Add crypto 🪙</a>
+                <a type="button" href="{{ route('crypto.create') }}" class="btn btn-primary btn-lg">Add crypto 🪙</a>
             </div>
         <div class="row">
         @foreach ($crypto as $currentCrypto)
@@ -27,11 +27,11 @@
                                 <div class="row">
 
                                 <div class="col">
-                                    <a href="{{route('edit_crypto', $currentCrypto->id)}}" class="btn btn-primary">Edit</a>
+                                    <a href="{{route('crypto.edit', $currentCrypto->id)}}" class="btn btn-primary">Edit</a>
                                 </div>
                                 <div class="col">
                                     <div class="float-right">
-                                        <form method="POST" action="{{ route('delete_crypto', [$currentCrypto->id]) }}">
+                                        <form method="POST" action="{{ route('crypto.destroy', [$currentCrypto->id]) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 
