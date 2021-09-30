@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Item extends Model
+class ExplosionCoordinate extends Model
 {
     use HasFactory;
 
+    public function explosive() {
+        return $this->hasOne(Explosive::class);
+    }
+
     protected $fillable = [
-        'name',
-        'soilImage',
-        'inventoryImage',
-        'dropImage',
-        'blastPattern'
+        'x',
+        'y'
     ];
 }

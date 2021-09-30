@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Explosive extends Model
 {
     use HasFactory;
+
+    public function explosionCoordinates() {
+        return $this->hasMany(ExplosionCoordinate::class);
+    }
+
+    protected $fillable = [
+        'name',
+        'inventory_image',
+        'soil_image',
+        'drop_image',
+    ];
 }

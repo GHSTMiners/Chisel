@@ -52,6 +52,12 @@
                                     <a class="nav-link {{Route::is('rock*') ? 'active' : ''}}" href="{{ route('rock.index') }}">{{ __('Rock') }}</a>
                                 </li>
                             @endif
+
+                            @if (Route::has('explosive.index'))
+                                <li class="nav-item">
+                                    <a class="nav-link {{Route::is('explosive*') ? 'active' : ''}}" href="{{ route('explosive.index') }}">{{ __('Explosive') }}</a>
+                                </li>
+                            @endif
                             @if (Route::has('puzzle.index'))
                                 <li class="nav-item">
                                     <a class="nav-link {{Route::is('puzzle*') ? 'active' : ''}}" href="{{ route('puzzle.index') }}">{{ __('Puzzle') }}</a>

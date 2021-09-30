@@ -28,7 +28,7 @@ class RockController extends Controller
 
     public function destroy(Rock $rock) {
         $rock->delete();
-        return redirect()->route('rock');
+        return redirect()->route('rock.index');
     } 
 
     public function edit(Rock $rock) {
