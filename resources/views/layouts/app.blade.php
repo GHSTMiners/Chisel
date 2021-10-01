@@ -37,21 +37,33 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @auth
-                            @if (Route::has('crypto.index'))
-                                <li class="nav-item">
-                                    <a class="nav-link {{Route::is('crypto*') ? 'active' : ''}}" href="{{ route('crypto.index') }}">{{ __('Crypto') }}</a>
-                                </li>
-                            @endif
-                            @if (Route::has('soil.index'))
-                                <li class="nav-item">
-                                    <a class="nav-link {{Route::is('soil*') ? 'active' : ''}}" href="{{ route('soil.index') }}">{{ __('Soil') }}</a>
-                                </li>
-                            @endif
-                            @if (Route::has('rock.index'))
-                                <li class="nav-item">
-                                    <a class="nav-link {{Route::is('rock*') ? 'active' : ''}}" href="{{ route('rock.index') }}">{{ __('Rock') }}</a>
-                                </li>
-                            @endif
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {{str_contains(url()->current(), 'matter') ? 'active' : ''}}" href="#" id="matterDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ __('Matter')}}   
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="matterDropdown">
+
+                                @if (Route::has('crypto.index'))
+                                    <a class="dropdown-item  {{Route::is('crypto*') ? 'active' : ''}}" href="{{ route('crypto.index') }}">{{ __('Crypto') }}</a>
+                                @endif
+                                @if (Route::has('soil.index'))
+                                    <a class="dropdown-item  {{Route::is('soil*') ? 'active' : ''}}" href="{{ route('soil.index') }}">{{ __('Soil') }}</a>
+                                @endif
+                                @if (Route::has('rock.index'))
+                                    <a class="dropdown-item  {{Route::is('rock*') ? 'active' : ''}}" href="{{ route('rock.index') }}">{{ __('Rock') }}</a>
+                                @endif
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {{str_contains(url()->current(), 'gameplay') ? 'active' : ''}}" href="#" id="gameplayDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ __('Gameplay')}}   
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="gameplayDropdown">
+                                @if (Route::has('vital.index'))
+                                    <a class="dropdown-item  {{Route::is('vital*') ? 'active' : ''}}" href="{{ route('vital.index') }}">{{ __('Vitals') }}</a>
+                                @endif
+                            </ul>
+                        </li>
 
                             @if (Route::has('explosive.index'))
                                 <li class="nav-item">

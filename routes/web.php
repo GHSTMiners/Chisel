@@ -20,11 +20,13 @@ Auth::routes(['register' => true]);
 
 //Crypto
 Route::resources([
-    'crypto' => \App\Http\Controllers\CryptoController::class,
-    'soil' => \App\Http\Controllers\SoilController::class,
-    'rock' => \App\Http\Controllers\RockController::class,
-    'explosive' => \App\Http\Controllers\ExplosiveController::class,
-    'item' => \App\Http\Controllers\ItemController::class,
+    'matter/crypto' => \App\Http\Controllers\CryptoController::class,
+    'matter/soil' => \App\Http\Controllers\SoilController::class,
+    'matter/rock' => \App\Http\Controllers\RockController::class,
+    'items/explosive' => \App\Http\Controllers\ExplosiveController::class,
+    'items/item' => \App\Http\Controllers\ItemController::class,
+    'gameplay/vital' => \App\Http\Controllers\VitalController::class,
+    
     'puzzle' => \App\Http\Controllers\PuzzleController::class
 ]);
 

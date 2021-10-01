@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <form method="POST" action="/crypto" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('puzzle.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">{{ __('Name') }}</label>

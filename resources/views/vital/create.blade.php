@@ -6,9 +6,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('soil.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('vital.store') }}" enctype="multipart/form-data">
                             @csrf
-                            <h4 class="card-title">{{ __('Add soil') }}</h4>
+                            <h4 class="card-title">{{ __('Add Vital') }}</h4>
                             <div class="mb-3">
                                 <label for="name" class="form-label">{{ __('Name') }}</label>
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -20,9 +20,9 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="dig_multiplier" class="form-label">{{ __('Dig multiplier') }}</label>
-                                <input id="dig_multiplier" step="any" type="number" class="form-control @error('dig_multiplier') is-invalid @enderror" name="dig_multiplier" value="{{ old('dig_multiplier') }}" required autocomplete="name" autofocus>
-                                @error('dig_multiplier')
+                                <label for="minimum" class="form-label">{{ __('Minimum') }}</label>
+                                <input id="minimum" step="any" type="number" class="form-control @error('minimum') is-invalid @enderror" name="minimum" value="{{ old('minimum') ?? 0 }}" required autocomplete="name" autofocus>
+                                @error('minimum')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -30,37 +30,24 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="top_image" class="form-label">{{ __('Top soil image') }}</label>
-                                <input id="top_image" type="file" class="form-control @error('top_image') is-invalid @enderror" name="top_image" value="{{ old('top_image') }}" required autocomplete="top_image">
-                                @error('top_image')
+                                <label for="maximum" class="form-label">{{ __('Maximum') }}</label>
+                                <input id="maximum" step="any" type="number" class="form-control @error('maximum') is-invalid @enderror" name="maximum" value="{{ old('maximum') ?? 100 }}" required autocomplete="name" autofocus>
+                                @error('maximum')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-
 
                             <div class="mb-3">
-                                <label for="middle_image" class="form-label">{{ __('Middle soil image') }}</label>
-                                <input id="middle_image" type="file" class="form-control @error('middle_image') is-invalid @enderror" name="middle_image" value="{{ old('middle_image') }}" required autocomplete="middle_image">
-                                @error('middle_image')
+                                <label for="initial" class="form-label">{{ __('Initial') }}</label>
+                                <input id="initial" step="any" type="number" class="form-control @error('initial') is-invalid @enderror" name="initial" value="{{ old('initial') ?? 100 }}" required autocomplete="name" autofocus>
+                                @error('initial')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-
-
-                            <div class="mb-3">
-                                <label for="bottom_image" class="form-label">{{ __('Top soil image') }}</label>
-                                <input id="bottom_image" type="file" class="form-control @error('bottom_image') is-invalid @enderror" name="bottom_image" value="{{ old('bottom_image') }}" required autocomplete="bottom_image">
-                                @error('bottom_image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
                             <button type="submit" class="btn btn-primary btn-lg">{{ __('Add') }}</button>  
                         </form>
                     </div>

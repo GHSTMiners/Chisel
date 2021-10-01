@@ -28,7 +28,7 @@ class SoilController extends Controller
     
     public function destroy(Soil $soil) {
         $soil->delete();
-        return redirect()->route('soil');
+        return redirect()->route('soil.index');
     }    
     
     public function update(Soil $soil) {

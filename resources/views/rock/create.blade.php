@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="/rock" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('rock.store') }}" enctype="multipart/form-data">
                             @csrf
                             <h4 class="card-title">{{ __('Add rock') }}</h4>
                             <div class="mb-3">
