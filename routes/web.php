@@ -29,5 +29,3 @@ Route::resources([
     
     'puzzle' => \App\Http\Controllers\PuzzleController::class
 ]);
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
