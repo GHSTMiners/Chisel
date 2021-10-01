@@ -62,24 +62,41 @@
                                 @if (Route::has('vital.index'))
                                     <a class="dropdown-item  {{Route::is('vital*') ? 'active' : ''}}" href="{{ route('vital.index') }}">{{ __('Vitals') }}</a>
                                 @endif
+                                @if (Route::has('skill.index'))
+                                    <a class="dropdown-item  {{Route::is('skill*') ? 'active' : ''}}" href="{{ route('skill.index') }}">{{ __('Skills') }}</a>
+                                @endif
                             </ul>
                         </li>
 
-                            @if (Route::has('explosive.index'))
-                                <li class="nav-item">
-                                    <a class="nav-link {{Route::is('explosive*') ? 'active' : ''}}" href="{{ route('explosive.index') }}">{{ __('Explosive') }}</a>
-                                </li>
-                            @endif
-                            @if (Route::has('puzzle.index'))
-                                <li class="nav-item">
-                                    <a class="nav-link {{Route::is('puzzle*') ? 'active' : ''}}" href="{{ route('puzzle.index') }}">{{ __('Puzzle') }}</a>
-                                </li>
-                            @endif
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {{str_contains(url()->current(), 'item') ? 'active' : ''}}" href="#" id="gameplayDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ __('Items')}}   
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="gameplayDropdown">
+                                @if (Route::has('explosive.index'))
+                                    <a class="dropdown-item  {{Route::is('explosive*') ? 'active' : ''}}" href="{{ route('explosive.index') }}">{{ __('Explosives') }}</a>
+                                @endif
+                                @if (Route::has('consumable.index'))
+                                    <a class="dropdown-item  {{Route::is('consumable*') ? 'active' : ''}}" href="{{ route('consumable.index') }}">{{ __('Consumables') }}</a>
+                                @endif
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {{str_contains(url()->current(), 'world') ? 'active' : ''}}" href="#" id="gameplayDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ __('World')}}   
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="gameplayDropdown">
+                                @if (Route::has('puzzle.index'))
+                                    <a class="dropdown-item  {{Route::is('puzzle*') ? 'active' : ''}}" href="{{ route('puzzle.index') }}">{{ __('Puzzles') }}</a>
+                                @endif
+                            </ul>
+                        </li>
                         @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto navbar-right">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

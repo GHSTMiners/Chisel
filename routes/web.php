@@ -24,8 +24,9 @@ Route::resources([
     'matter/soil' => \App\Http\Controllers\SoilController::class,
     'matter/rock' => \App\Http\Controllers\RockController::class,
     'items/explosive' => \App\Http\Controllers\ExplosiveController::class,
-    'items/item' => \App\Http\Controllers\ItemController::class,
+    'items/consumable' => \App\Http\Controllers\ConsumableController::class,
     'gameplay/vital' => \App\Http\Controllers\VitalController::class,
-    
-    'puzzle' => \App\Http\Controllers\PuzzleController::class
+    'gameplay/skill' => \App\Http\Controllers\SkillsController::class,
+
+    'world/puzzle' => \App\Http\Controllers\PuzzleController::class
 ]);
