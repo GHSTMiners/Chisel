@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Skill extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'description',
+        'minimum',
+        'maximum',
+        'initial',
+        'default'
+    ];
 }

@@ -26,7 +26,7 @@ Route::resources([
     'items/explosive' => \App\Http\Controllers\ExplosiveController::class,
     'items/consumable' => \App\Http\Controllers\ConsumableController::class,
     'gameplay/vital' => \App\Http\Controllers\VitalController::class,
-    'gameplay/skill' => \App\Http\Controllers\SkillsController::class,
+    'gameplay/skill' => \App\Http\Controllers\SkillController::class,
 
     'world/puzzle' => \App\Http\Controllers\PuzzleController::class
 ]);
