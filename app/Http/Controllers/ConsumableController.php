@@ -1,10 +1,59 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Consumable;
+use App\Models\Crypto;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ConsumableController extends Controller
 {
-    //
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index() {
+        $consumables = Consumable::all();
+        return view('consumable.index', compact('consumables'));
+    }
+
+    public function edit(Consumable $consumable ) {
+        $crypto = Crypto::all();
+        return view('consumable.edit', compact('consumable', 'crypto'));
+    }
+
+    public function destroy(Consumable $consumable) {
+        Storage::delete($consumable->image);
+        $consumable->delete();
+        return redirect()->route('consumable.index');
+    }
+
+    public function create() {
+        $crypto = Crypto::all();
+        return view('consumable.create', compact('crypto'));
+    }
+
+    public function store() {
+        $data = request()->validate([
+            'name' => ['required', 'string'],
+            'price' => ['required', 'numeric', 'between:0,99999.99'],
+            'crypto' => ['required', 'numeric', 'exists:cryptos,id'],
+            'description' => ['required', 'string'],
+            'image' => ['required', 'image'],
+        ]);
+
+        $image = request('image')->store('consumable', 'public');
+
+        $newConsumable = \App\Models\Consumable::create([
+            'name' => $data['name'],
+            'price' => $data['price'],
+            'crypto' => $data['crypto'],
+            'description' => $data['description'],
+            'image' => $image
+        ]);
+        return redirect()->route('consumable.edit', $newConsumable->id);
+    }
 }

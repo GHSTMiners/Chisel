@@ -27,6 +27,6 @@ Route::resources([
     'items/consumable' => \App\Http\Controllers\ConsumableController::class,
     'gameplay/vital' => \App\Http\Controllers\VitalController::class,
     'gameplay/skill' => \App\Http\Controllers\SkillController::class,
-
+    'gameplay/trait' => \App\Http\Controllers\AavegotchiTraitController::class,
     'world/puzzle' => \App\Http\Controllers\PuzzleController::class
 ]);

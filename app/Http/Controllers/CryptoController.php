@@ -36,7 +36,6 @@ class CryptoController extends Controller
     }
 
     public function destroy(Crypto $crypto) {
-        $crypto = Crypto::findOrFail($id);
         Storage::delete($crypto->soil_image);
         $crypto->delete();
         return redirect()->route('crypto.index');

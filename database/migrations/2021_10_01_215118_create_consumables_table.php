@@ -16,6 +16,12 @@ class CreateConsumablesTable extends Migration
         Schema::create('consumables', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name');
+            $table->string('description');
+            $table->string('image');
+            $table->bigInteger('crypto')->references('id')->on('crypto')->onDelete('cascade');
+            $table->float('price', 8, 2);
+            
         });
     }
 

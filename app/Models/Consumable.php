@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Consumable extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'price',
+        'crypto',
+        'description',
+        'image'
+    ];
 }

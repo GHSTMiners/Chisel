@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class AavegotchiTrait extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'short_name',
+        'name',
+        'blockchain_index'
+    ];
 }
