@@ -5,57 +5,29 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-
-                    
-                        <form method="POST" action="{{ route('consumable.update', [$consumable->id]) }}" enctype="multipart/form-data">
-                            @csrf
-                            @method('patch')
-                            <h4 class="card-title">{{ __('Edit Consumable') }}</h4>
-                            <div class="mb-3">
-                                <label for="name" class="form-label">{{ __('Name') }}</label>
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $consumable->name}}" required autocomplete="name" autofocus>
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <label for="price" class="form-label">{{ __('Price') }}</label>
-                            <div class="input-group mb-3">
-                                <input id="price" type="text" class="form-control" placeholder="0.00" aria-label="price" value="{{ old('price') ?? $consumable->price }}" name="price" required>
-                                <select class="form-select" aria-label="crypto" name="crypto">
-                                @foreach ($crypto as $currentCrypto)
-                                    <option value="{{$currentCrypto->id}}"  @if($consumable->crypto == $currentCrypto->id) selected @endif>{{$currentCrypto->name}}</option>
-                                    
-                                @endforeach
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="description" class="form-label">{{ __('Description') }}</label>
-                                <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required autofocus>{{old('description') ?? $consumable->description}}</textarea>
-                                @error('description')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="image" class="form-label">{{ __('Image') }}</label>
-                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" required autocomplete="image">
-                                @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg">{{ __('Update') }}</button>  
-                        </form>
+                        <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-consumable-tab" data-bs-toggle="tab" data-bs-target="#nav-consumable" type="button" role="tab" aria-controls="nav-consumable" aria-selected="true">Consumable</button>
+                            <button class="nav-link" id="nav-vitals-tab" data-bs-toggle="tab" data-bs-target="#nav-vitals" type="button" role="tab" aria-controls="nav-vitals" aria-selected="false">Vital effects</button>
+                            <button class="nav-link" id="nav-skills-tab" data-bs-toggle="tab" data-bs-target="#nav-skills" type="button" role="tab" aria-controls="nav-skills" aria-selected="false">Skill effects</button>
+                        </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-consumable" role="tabpanel" aria-labelledby="nav-consumable-tab">
+                            @include('consumable.editTabs.edit')
+                        </div>
+                        <div class="tab-pane fade" id="nav-vitals" role="tabpanel" aria-labelledby="nav-vitals-tab">
+                            @include('consumable.editTabs.vitalEffect.index')
+                        </div>
+                        <div class="tab-pane fade" id="nav-skills" role="tabpanel" aria-labelledby="nav-skills-tab">
+                            @include('consumable.editTabs.skillEffect.index')
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+
