@@ -68,6 +68,10 @@
                                 @if (Route::has('trait.index'))
                                     <a class="dropdown-item  {{Route::is('trait*') ? 'active' : ''}}" href="{{ route('trait.index') }}">{{ __('Traits') }}</a>
                                 @endif
+
+                                @if (Route::has('traitEffect.index'))
+                                    <a class="dropdown-item  {{Route::is('traitEffect*') ? 'active' : ''}}" href="{{ route('traitEffect.index') }}">{{ __('Traits Effects') }}</a>
+                                @endif
                             </ul>
                         </li>
 
