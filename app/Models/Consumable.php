@@ -9,6 +9,14 @@ class Consumable extends Model
 {
     use HasFactory;
 
+    public function consumableVitalEffects() {
+        return $this->hasMany(ConsumableVitalEffect::class);
+    }
+
+    public function consumableSkillEffects() {
+        return $this->hasMany(ConsumableSkillEffect::class);
+    }
+
     protected $fillable = [
         'name',
         'price',

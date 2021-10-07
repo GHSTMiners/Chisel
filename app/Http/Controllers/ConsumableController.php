@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Consumable;
 use App\Models\Crypto;
-
+use App\Models\Vital;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,7 +22,8 @@ class ConsumableController extends Controller
 
     public function edit(Consumable $consumable ) {
         $crypto = Crypto::all();
-        return view('consumable.edit', compact('consumable', 'crypto'));
+        $vitals = Vital::all();
+        return view('consumable.edit', compact('consumable', 'crypto', 'vitals'));
     }
 
     public function destroy(Consumable $consumable) {

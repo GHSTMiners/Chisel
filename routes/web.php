@@ -25,6 +25,8 @@ Route::resources([
     'matter/rock' => \App\Http\Controllers\RockController::class,
     'items/explosive' => \App\Http\Controllers\ExplosiveController::class,
     'items/consumable' => \App\Http\Controllers\ConsumableController::class,
+    'items/consumable/consumableVitalEffect' => \App\Http\Controllers\ConsumableVitalEffectController::class,
+    'items/consumable/consumableSkillEffect' => \App\Http\Controllers\ConsumableSkillEffectController::class,
     'gameplay/vital' => \App\Http\Controllers\VitalController::class,
     'gameplay/skill' => \App\Http\Controllers\SkillController::class,
     'gameplay/trait' => \App\Http\Controllers\AavegotchiTraitController::class,
