@@ -22,14 +22,14 @@ class CreateAavegotchiTraitsTable extends Migration
         });
 
         \App\Models\AavegotchiTrait::create([
-            'short_name' => 'AGG',
-            'name' => 'Aggressiveness',
+            'short_name' => 'NRG',
+            'name' => 'Energy',
             'blockchain_index' => 0
         ]);
 
         \App\Models\AavegotchiTrait::create([
-            'short_name' => 'NRG',
-            'name' => 'Energy',
+            'short_name' => 'AGG',
+            'name' => 'Aggressiveness',
             'blockchain_index' => 1
         ]);
 
