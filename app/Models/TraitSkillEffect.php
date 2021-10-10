@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TraitSkillEffect extends Model
 {
     use HasFactory;
-
-    public function traitEffect() {
+    /*
+    public function traitSkillEffect() {
         return $this->hasOne(TraitEffect::class);
     }
 
@@ -20,5 +20,5 @@ class TraitSkillEffect extends Model
     protected $fillable = [
         'trait_effect_id',
         'skill_id'
-    ];
+    ]; */
 }

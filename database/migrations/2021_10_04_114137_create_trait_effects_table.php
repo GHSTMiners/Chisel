@@ -16,7 +16,7 @@ class CreateTraitEffectsTable extends Migration
         Schema::create('trait_effects', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('trait_id')->references('id')->on('trait')->onDelete('cascade');
+            $table->bigInteger('trait_id')->references('id')->on('aavegotchi_traits')->onDelete('cascade');
             
         });
     }

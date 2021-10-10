@@ -3,8 +3,8 @@
 
     <div class="container">
             <div class="d-flex justify-content-between pb-3">
-                <h1>Skills</h1>
-                <a type="button" href="{{ route('skill.create') }}" class="btn btn-primary btn-lg">Add skill 🤹</a>
+                <h1>Trait Effects</h1>
+                <a type="button" href="{{ route('skill.create') }}" class="btn btn-primary btn-lg">Add trait effect 🤹</a>
             </div>
         <table class="table table-striped table-bordered table-hover">
 
@@ -20,8 +20,8 @@
             </tr>
         </thead>
         <tbody>
-        @foreach ($skills as $currentSkill)
-            <tr class="clickable-row" data-href="{{route('skill.edit', $currentSkill->id)}}">
+        @foreach ($traitEffects as $currentTraitEffect)
+            <tr class="clickable-row" data-href="{{route('traitEffect.edit', $currentSkill->id)}}">
                 <th scope="row">{{$currentSkill->id}}</th>
                 <td>{{$currentSkill->name}}</td>
                 <td>{{$currentSkill->description}}</td>
