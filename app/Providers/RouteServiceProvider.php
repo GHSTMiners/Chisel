@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\World;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -38,9 +39,11 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
         
-        //Inject some stuff
-        $worlds = World::all();
-        view()->share(compact('worlds'));
+        // //Inject some stuff
+        if(Schema::hasTable('worlds')) {
+            $worlds = World::all();
+            view()->share(compact('worlds'));
+        }
 
         $this->routes(function () {
             Route::prefix('api')
