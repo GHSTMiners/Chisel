@@ -63,16 +63,26 @@
         <th scope="col">Effect</th>
         <th scope="col">Modifier</th>
         <th scope="col">Amount</th>
+        <th scope="col">Action</th>
     </tr>
 </thead>
 <tbody>
 @foreach ($consumable->consumableVitalEffects as $currentEffect)
-    <tr class="clickable-row" data-href="{{route('consumableVitalEffect.edit', $currentEffect->id)}}">
+    <tr>
         <th scope="row">{{$currentEffect->id}}</th>
         <td>{{$currentEffect->vital->name}}</td>
         <td>{{$currentEffect->effect}}</td>
         <td>{{$currentEffect->modifier}}</td>
         <td>{{$currentEffect->amount}}</td>
+        <td>
+        <form method="POST" action="{{ route('consumableVitalEffect.destroy', $currentEffect->id) }}">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+
+            <div class="d-flex form-group justify-content-end">
+                <input type="submit" class="btn btn-danger" value="Delete">
+            </div>
+        </form>
     </tr>
 @endforeach
 </tbody>
