@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Vital;
 use App\Models\Consumable;
-
+use App\Models\ConsumableVitalEffect;
 use Illuminate\Http\Request;
 
 class ConsumableVitalEffectController extends Controller
@@ -26,5 +26,12 @@ class ConsumableVitalEffectController extends Controller
 
         $newEffect = \App\Models\ConsumableVitalEffect::create($data);
         return redirect()->route('consumable.edit', $newEffect->consumable_id);
+    }
+
+    public function destroy($effect) {
+        dd(ConsumableVitalEffect::find($effect));
+        $id = $effect->consumable->id;
+        // $effect->delete();
+        return redirect()->route('consumable.edit', $id);
     }
 }
