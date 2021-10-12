@@ -18,6 +18,10 @@ class CreateWorldsTable extends Migration
             $table->timestamps();
             $table->string('name');
         });
+
+        \App\Models\World::create([
+            'name' => 'Default',
+        ]);
     }
 
     /**
