@@ -38,14 +38,8 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
-        
-        // //Inject some stuff
-        if(Schema::hasTable('worlds')) {
-            $worlds = World::all();
-            view()->share(compact('worlds'));
-        }
-
         $this->routes(function () {
+
             Route::prefix('api')
                 ->middleware('api')
                 ->namespace($this->namespace)

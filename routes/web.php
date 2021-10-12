@@ -31,5 +31,6 @@ Route::resources([
     'gameplay/skill' => \App\Http\Controllers\SkillController::class,
     'gameplay/trait' => \App\Http\Controllers\AavegotchiTraitController::class,
     'gameplay/traitEffect' => \App\Http\Controllers\TraitEffectController::class,
-    'world/puzzle' => \App\Http\Controllers\PuzzleController::class
+    'world/puzzle' => \App\Http\Controllers\PuzzleController::class,
+    'world' => \App\Http\Controllers\WorldController::class
 ]);
