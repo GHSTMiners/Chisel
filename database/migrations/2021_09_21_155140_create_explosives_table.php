@@ -16,6 +16,7 @@ class CreateExplosivesTable extends Migration
         Schema::create('explosives', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('world_id')->references('id')->on('worlds')->onDelete('cascade');
             $table->string('name');
             $table->string('soil_image');
             $table->string('inventory_image');

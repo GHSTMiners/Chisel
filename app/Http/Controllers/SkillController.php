@@ -13,7 +13,7 @@ class SkillController extends Controller
     }
 
     public function index() {
-        $skills = Skill::all();
+        $skills = request()->selectedWorld->skills;
         return view('skill.index', compact('skills'));
     }
 
@@ -51,6 +51,8 @@ class SkillController extends Controller
             'maximum' => ['required', 'numeric'],
             'initial' => ['required', 'numeric']
         ]);
+
+        $data['world_id'] = $model->id;
         \App\Models\Skill::create($data);
         return redirect()->route('skill.index');
 

@@ -17,6 +17,7 @@ class CryptoController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('worldInjector');
     }
 
     /**
@@ -26,8 +27,7 @@ class CryptoController extends Controller
      */
     public function index()
     {
-        $crypto = Crypto::all();
-
+        $crypto = request()->selectedWorld->crypto;
         return view('crypto.index', compact('crypto'));
     }
 
@@ -75,6 +75,7 @@ class CryptoController extends Controller
 
         \App\Models\Crypto::create([
             'name' => $data['name'],
+            'world_id' => request()->selectedWorld->id,
             'wallet_address' => $data['wallet_address'],
             'weight' => $data['weight'],
             'soil_image' => $soilImagePath,

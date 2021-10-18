@@ -15,6 +15,7 @@ class Explosive extends Model
 
     protected $fillable = [
         'name',
+        'world_id',
         'inventory_image',
         'soil_image',
         'drop_image',

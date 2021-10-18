@@ -13,7 +13,7 @@ class VitalController extends Controller
     }
 
     public function index() {
-        $vitals = Vital::all();
+        $vitals = request()->selectedWorld->vitals;
         return view('vital.index', compact('vitals'));
     }
 
@@ -45,6 +45,7 @@ class VitalController extends Controller
     public function store() {
         $data = request()->validate([
             'name' => ['string', 'required'],
+            'world_id' => request()->selectedWorld->id,
             'minimum' => ['required', 'numeric'],
             'maximum' => ['required', 'numeric'],
             'initial' => ['required', 'numeric']

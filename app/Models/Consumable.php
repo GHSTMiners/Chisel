@@ -19,6 +19,7 @@ class Consumable extends Model
 
     protected $fillable = [
         'name',
+        'world_id',
         'price',
         'crypto',
         'description',

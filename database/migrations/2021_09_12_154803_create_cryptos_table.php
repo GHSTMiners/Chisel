@@ -16,6 +16,7 @@ class CreateCryptosTable extends Migration
         Schema::create('cryptos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('world_id')->references('id')->on('worlds')->onDelete('cascade');
             $table->string('name');
             $table->string('wallet_address')->nullable();
             $table->double('weight');

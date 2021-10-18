@@ -25,7 +25,12 @@ class WorldInjector
             $selectedWorld = World::first();
         } else {
             $selectedWorld = World::find($selectedWorldID);
+            if($selectedWorld == null) {
+                $selectedWorld = World::first();
+            }
         }
+        //Inject variables into request and into view
+        $request->request->add(compact('worlds', 'selectedWorld'));
         \View::share(compact('worlds', 'selectedWorld'));
         return $next($request);
     }

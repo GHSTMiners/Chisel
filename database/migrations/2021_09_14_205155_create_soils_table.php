@@ -16,6 +16,7 @@ class CreateSoilsTable extends Migration
         Schema::create('soils', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('world_id')->references('id')->on('worlds')->onDelete('cascade');
             $table->string('name');
             $table->double('dig_multiplier')->default(1);
             $table->string('top_image');

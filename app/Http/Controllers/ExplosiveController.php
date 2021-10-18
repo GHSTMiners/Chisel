@@ -12,7 +12,7 @@ class ExplosiveController extends Controller
     }
 
     public function index() {
-        $explosives = Explosive::all();
+        $explosives = request()->selectedWorld->explosives;
         return view('explosive.index', compact('explosives'));
     }
 
@@ -74,6 +74,7 @@ class ExplosiveController extends Controller
 
         $explosive = \App\Models\Explosive::create([
             'name' => $data['name'],
+            'world_id' => request()->selectedWorld->id,
             'soil_image' => $soil_image,
             'inventory_image' => $inventory_image,
             'drop_image' => $drop_image,

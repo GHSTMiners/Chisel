@@ -14,7 +14,7 @@ class SoilController extends Controller
     }
     
     public function index() {
-        $soil = Soil::all();
+        $soil = request()->selectedWorld->soil;
         return view('soil.index', compact('soil'));
     }
 
@@ -63,6 +63,7 @@ class SoilController extends Controller
         
         \App\Models\Soil::create([
             'name' => $data['name'],
+            'world_id' => request()->selectedWorld->id,
             'dig_multiplier' => $data['dig_multiplier'],
             'top_image' => $topImagePath,
             'middle_image' => $middleImagePath,

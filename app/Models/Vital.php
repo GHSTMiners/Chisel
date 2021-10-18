@@ -11,6 +11,7 @@ class Vital extends Model
 
     protected $fillable = [
         'name',
+        'world_id',
         'minimum',
         'maximum',
         'initial',

@@ -16,6 +16,7 @@ class CreatePuzzlesTable extends Migration
         Schema::create('puzzles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('world_id')->references('id')->on('worlds')->onDelete('cascade');
             $table->string('name');
             $table->string('image');
             $table->string('structure');

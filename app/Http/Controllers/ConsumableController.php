@@ -16,7 +16,7 @@ class ConsumableController extends Controller
     }
 
     public function index() {
-        $consumables = Consumable::all();
+        $consumables = request()->selectedWorld->consumables;
         return view('consumable.index', compact('consumables'));
     }
 
@@ -50,6 +50,7 @@ class ConsumableController extends Controller
 
         $newConsumable = \App\Models\Consumable::create([
             'name' => $data['name'],
+            'world_id' => request()->selectedWorld->id,
             'price' => $data['price'],
             'crypto' => $data['crypto'],
             'description' => $data['description'],

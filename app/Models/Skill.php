@@ -11,6 +11,7 @@ class Skill extends Model
 
     protected $fillable = [
         'name',
+        'world_id',
         'description',
         'minimum',
         'maximum',

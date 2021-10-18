@@ -18,7 +18,7 @@ class RockController extends Controller
     }
 
     public function index() {
-        $rocks = Rock::all();
+        $rocks = request()->selectedWorld->rocks;
         return view('rock.index', compact('rocks'));
     }
 
@@ -66,6 +66,7 @@ class RockController extends Controller
 
         \App\Models\Rock::create([
             'name' => $data['name'],
+            'world_id' => $model->id,
             'image' => $image,
             'digable' => (array_key_exists('digable', $data) ? 1 : 0),
             'explodeable' => (array_key_exists('explodeable', $data) ? 1 : 0),

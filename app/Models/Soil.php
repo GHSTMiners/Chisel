@@ -16,6 +16,7 @@ class Soil extends Model
      */
     protected $fillable = [
         'name',
+        'world_id',
         'dig_multiplier',
         'top_image',
         'middle_image',

@@ -16,6 +16,7 @@ class CreateRocksTable extends Migration
         Schema::create('rocks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('world_id')->references('id')->on('worlds')->onDelete('cascade');
             $table->string('name');
             $table->string('image');
             $table->boolean('digable')->default(FALSE);

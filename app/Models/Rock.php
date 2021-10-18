@@ -16,6 +16,7 @@ class Rock extends Model
      */
     protected $fillable = [
         'name',
+        'world_id',
         'image',
         'digable',
         'explodeable',
