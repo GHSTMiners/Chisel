@@ -16,8 +16,8 @@ class CreateTraitVitalEffectsTable extends Migration
         Schema::create('trait_vital_effects', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('trait_effect_id')->references('id')->on('trait_effect')->onDelete('cascade');
-            $table->bigInteger('vital_id')->references('id')->on('vital')->onDelete('cascade');
+            $table->foreignId('trait_effect_id')->references('id')->on('trait_effects')->onDelete('cascade');
+            $table->foreignId('vital_id')->references('id')->on('vitals')->onDelete('cascade');
             $table->float('multiplier');
             $table->float('offset');
         });

@@ -16,8 +16,8 @@ class CreateConsumableSkillEffectsTable extends Migration
         Schema::create('consumable_skill_effects', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('consumable_id')->references('id')->on('consumable')->onDelete('cascade');
-            $table->bigInteger('skill_id')->references('id')->on('skill')->onDelete('cascade');
+            $table->foreignId('consumable_id')->references('id')->on('consumables')->onDelete('cascade');
+            $table->foreignId('skill_id')->references('id')->on('skills')->onDelete('cascade');
             $table->enum('effect', ['Increase', 'Decrease']);
             $table->enum('modifier', ['Fixed', 'Percentage']);
             $table->smallInteger('duration');

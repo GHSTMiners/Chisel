@@ -16,8 +16,8 @@ class CreateConsumableVitalEffectsTable extends Migration
         Schema::create('consumable_vital_effects', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('consumable_id')->references('id')->on('consumable')->onDelete('cascade');
-            $table->bigInteger('vital_id')->references('id')->on('vital')->onDelete('cascade');
+            $table->foreignId('consumable_id')->references('id')->on('consumables')->onDelete('cascade');
+            $table->foreignId('vital_id')->references('id')->on('vitals')->onDelete('cascade');
             $table->enum('effect', ['Increase', 'Decrease']);
             $table->enum('modifier', ['Fixed', 'Percentage']);
             $table->smallInteger('amount');
