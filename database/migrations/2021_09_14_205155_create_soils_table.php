@@ -18,6 +18,7 @@ class CreateSoilsTable extends Migration
             $table->timestamps();
             $table->foreignId('world_id')->references('id')->on('worlds')->onDelete('cascade');
             $table->string('name');
+            $table->unsignedInteger('layers');
             $table->double('dig_multiplier')->default(1);
             $table->string('top_image');
             $table->string('middle_image');

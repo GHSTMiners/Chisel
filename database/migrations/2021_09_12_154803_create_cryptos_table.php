@@ -22,6 +22,7 @@ class CreateCryptosTable extends Migration
             $table->double('weight');
             $table->string('soil_image');
             $table->string('wallet_image');
+            $table->string('mining_sound');
         });
     }
 

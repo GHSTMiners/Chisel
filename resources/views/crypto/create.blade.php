@@ -58,6 +58,17 @@
                                     </span>
                                 @enderror
                             </div>
+
+                            <div class="mb-3">
+                                <label for="mining_sound" class="form-label">{{ __('Mining sound') }}</label>
+                                <input id="mining_sound" type="file" class="form-control @error('mining_sound') is-invalid @enderror" name="mining_sound" value="{{ old('mining_sound') }}" required autocomplete="mining_sound">
+                                @error('mining_sound')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
                             <button type="submit" class="btn btn-primary btn-lg">{{ __('Add') }}</button>  
                         </form>
                     </div>

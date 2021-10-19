@@ -30,6 +30,16 @@
                             </div>
 
                             <div class="mb-3">
+                                <label for="layers" class="form-label">{{ __('Layers') }}</label>
+                                <input id="layers" step="any" type="number" class="form-control @error('layers') is-invalid @enderror" name="layers" value="{{ old('layers') }}" required autocomplete="name" autofocus>
+                                @error('layers')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="top_image" class="form-label">{{ __('Top soil image') }}</label>
                                 <input id="top_image" type="file" class="form-control @error('top_image') is-invalid @enderror" name="top_image" value="{{ old('top_image') }}" required autocomplete="top_image">
                                 @error('top_image')

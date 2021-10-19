@@ -17,6 +17,9 @@ class CreateWorldsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
+            $table->boolean('development_mode')->default(false);
+            $table->boolean('published')->default(false);
+            
         });
     }
 

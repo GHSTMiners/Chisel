@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::resources([
+    'world' => \App\Http\Controllers\API\WorldController::class,
+    'crypto' => \App\Http\Controllers\API\CryptoController::class,
+]);

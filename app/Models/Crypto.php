@@ -20,7 +20,8 @@ class Crypto extends Model
         'wallet_address',
         'weight',
         'soil_image',
-        'wallet_image'
+        'wallet_image',
+        'mining_sound'
     ];
 
 }

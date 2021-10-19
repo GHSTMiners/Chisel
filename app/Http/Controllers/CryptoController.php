@@ -52,10 +52,12 @@ class CryptoController extends Controller
             'weight' => ['numeric', 'between:0,99999.99'],
             'soil_image' => ['image'],
             'wallet_image' => ['image'],
+            'mining_sound' => ['mimes:mp3,wav']
         ]);
 
-        if(array_key_exists('soil_image', $data)) $data['soil_image'] = $data['soil_image']->store('/soil', 'public');
-        if(array_key_exists('wallet_image', $data)) $data['wallet_image'] = $data['wallet_image']->store('/soil', 'public');
+        if(array_key_exists('soil_image', $data)) $data['soil_image'] = $data['soil_image']->store('crypto/soil', 'public');
+        if(array_key_exists('wallet_image', $data)) $data['wallet_image'] = $data['wallet_image']->store('crypto/wallet', 'public');
+        if(array_key_exists('mining_sound', $data)) $data['mining_sound'] = $data['mining_sound']->store('crypto/sound', 'public');
 
         $crypto->update($data);
         return redirect()->route('crypto.index');
@@ -68,10 +70,12 @@ class CryptoController extends Controller
             'weight' => ['required', 'numeric', 'between:0,99999.99'],
             'soil_image' => ['required', 'image'],
             'wallet_image' => ['required', 'image'],
+            'mining_sound' => ['required', 'mimes:mp3,wav'],
         ]);
 
         $soilImagePath = request('soil_image')->store('crypto/soil', 'public');
         $walletImagePath = request('wallet_image')->store('crypto/wallet', 'public');
+        $miningSoundPath = request('mining_sound')->store('crypto/sound', 'public');
 
         \App\Models\Crypto::create([
             'name' => $data['name'],
@@ -79,7 +83,8 @@ class CryptoController extends Controller
             'wallet_address' => $data['wallet_address'],
             'weight' => $data['weight'],
             'soil_image' => $soilImagePath,
-            'wallet_image' => $walletImagePath
+            'wallet_image' => $walletImagePath,
+            'mining_sound' => $miningSoundPath
         ]);
         return redirect()->route('crypto.index');
     }

@@ -21,6 +21,9 @@ class CreateExplosivesTable extends Migration
             $table->string('soil_image');
             $table->string('inventory_image');
             $table->string('drop_image');
+            $table->foreignId('crypto_id')->references('id')->on('cryptos')->onDelete('cascade');
+            $table->float('price', 8, 2);
+            $table->string('explosion_sound');
         });
     }
 

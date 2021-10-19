@@ -34,6 +34,7 @@ class SoilController extends Controller
     public function update(Soil $soil) {
         $data = request()->validate([
             'name' => '',
+            'layers' => ['numeric', 'between:0,99999.99'],
             'dig_multiplier' => ['numeric', 'between:0,99999.99'],
             'top_image' => ['image'],
             'middle_image' => ['image'],
@@ -51,6 +52,7 @@ class SoilController extends Controller
     public function store() {
         $data = request()->validate([
             'name' => 'required',
+            'layers' => ['numeric', 'between:0,99999.99'],
             'dig_multiplier' => ['required', 'numeric', 'between:0,99999.99'],
             'top_image' => ['required', 'image'],
             'middle_image' => ['required', 'image'],
@@ -63,6 +65,7 @@ class SoilController extends Controller
         
         \App\Models\Soil::create([
             'name' => $data['name'],
+            'layers' => $data['layers'],
             'world_id' => request()->selectedWorld->id,
             'dig_multiplier' => $data['dig_multiplier'],
             'top_image' => $topImagePath,

@@ -58,6 +58,18 @@
             <label for="worldNameInput" class="form-label">World name</label>
             <input type="text" class="form-control" id="worldNameInput" aria-describedby="name" name="name">
           </div>
+          <div class="mb-3">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" name="development_mode" id="development_mode" value=1>
+                  <label class="form-check-label" for="development_mode">{{ __('Development mode') }}</label>
+              </div>
+          </div>
+          <div class="mb-3">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" name="published" id="published" value=1>
+                  <label class="form-check-label" for="published">{{ __('Published') }}</label>
+              </div>
+          </div>           
         </form>
       </div>
       <div class="modal-footer">
@@ -82,6 +94,18 @@
           <div class="mb-3">
             <label for="worldNameInput" class="form-label">World name</label>
             <input type="text" class="form-control" id="worldNameInput" aria-describedby="name" name="name" value="{{ $selectedWorld->name }}">
+          </div>
+          <div class="mb-3">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" name="development_mode" id="development_mode" value=1>
+                  <label class="form-check-label" for="development_mode">{{ __('Development mode') }}</label>
+              </div>
+          </div>
+          <div class="mb-3">
+              <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" name="published" id="published" value=1>
+                  <label class="form-check-label" for="published">{{ __('Published') }}</label>
+              </div>
           </div>
         </form>
       </div>

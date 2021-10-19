@@ -4,7 +4,7 @@
     <div class="container">
             <div class="d-flex justify-content-between pb-3">
                 <h1>Soil</h1>
-                <a type="button" href="{{ route('soil.index') }}" class="btn btn-primary btn-lg">Add soil 🌱</a>
+                <a type="button" href="{{ route('soil.create') }}" class="btn btn-primary btn-lg">Add soil 🌱</a>
             </div>
         <div class="row">
         @foreach ($soil as $currentSoil)

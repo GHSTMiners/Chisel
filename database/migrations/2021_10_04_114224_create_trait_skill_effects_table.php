@@ -16,8 +16,8 @@ class CreateTraitSkillEffectsTable extends Migration
         Schema::create('trait_skill_effects', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('trait_effect_id')->references('id')->on('trait_effect')->onDelete('cascade');
-            $table->foreignId('skill_id')->references('id')->on('skill')->onDelete('cascade');
+            $table->foreignId('trait_effect_id')->references('id')->on('trait_effects')->onDelete('cascade');
+            $table->foreignId('skill_id')->references('id')->on('skills')->onDelete('cascade');
             $table->float('multiplier');
             $table->float('offset');
         });

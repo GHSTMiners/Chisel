@@ -14,7 +14,9 @@ class WorldController extends Controller
     }
     public function store() {
         $data = request()->validate([
-            'name' => ['string', 'required']
+            'name' => ['string', 'required'],
+            'development_mode' => ['boolean', 'required'],
+            'published' => ['boolean', 'required']
         ]);
         
         $newWorld = \App\Models\World::create($data);
@@ -32,7 +34,9 @@ class WorldController extends Controller
 
     public function update(World $world) {
         $data = request()->validate([
-            'name' => ['string', 'required']
+            'name' => ['string'],
+            'development_mode' => ['boolean'],
+            'published' => ['boolean']
         ]);
 
         $world->update($data);
