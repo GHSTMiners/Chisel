@@ -193,6 +193,8 @@ class World extends Model
     }
 
     protected $fillable = [
-        'name'
+        'name',
+        'development_mode',
+        'published'
     ];
 }

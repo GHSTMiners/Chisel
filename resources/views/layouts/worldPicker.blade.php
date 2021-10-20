@@ -97,13 +97,13 @@
           </div>
           <div class="mb-3">
               <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" name="development_mode" id="development_mode" value=1>
+                  <input class="form-check-input" type="checkbox" name="development_mode" id="development_mode" value=1 @if($selectedWorld->development_mode) checked @endif()>
                   <label class="form-check-label" for="development_mode">{{ __('Development mode') }}</label>
               </div>
           </div>
           <div class="mb-3">
               <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" name="published" id="published" value=1>
+                  <input class="form-check-input" type="checkbox" name="published" id="published" value=1 @if($selectedWorld->published) checked @endif()>
                   <label class="form-check-label" for="published">{{ __('Published') }}</label>
               </div>
           </div>

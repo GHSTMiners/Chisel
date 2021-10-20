@@ -15,8 +15,8 @@ class WorldController extends Controller
     public function store() {
         $data = request()->validate([
             'name' => ['string', 'required'],
-            'development_mode' => ['boolean', 'required'],
-            'published' => ['boolean', 'required']
+            'development_mode' => ['boolean'],
+            'published' => ['boolean']
         ]);
         
         $newWorld = \App\Models\World::create($data);
@@ -38,6 +38,9 @@ class WorldController extends Controller
             'development_mode' => ['boolean'],
             'published' => ['boolean']
         ]);
+        if(!array_key_exists('development_mode', $data)) $data['development_mode'] = FALSE;
+        if(!array_key_exists('published', $data)) $data['published'] = FALSE;
+
 
         $world->update($data);
         return back()->with('success','Succesfully edited world: '.$world->name);

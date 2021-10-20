@@ -27,7 +27,8 @@ class WorldController extends Controller
      */
     public function show(World $world)
     {
-        if(!Cache::has('world_'.$world->id)) {
+        if(!$world->published) abort(404);
+        if(!Cache::has('world_'.$world->id) || $world->development_mode) {
             Cache::put('world_'.$world->id, 
             $world->with('crypto', 'soil', 'explosives', 'rocks', 'skills', 'vitals', 'consumables')->find($world->id),
             now()->addMinutes(10));
