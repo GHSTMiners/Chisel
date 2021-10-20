@@ -16,7 +16,7 @@ class WorldController extends Controller
      */
     public function index()
     {
-        return World::all();
+        return World::where('published', true)->get();
     }
 
     /**
