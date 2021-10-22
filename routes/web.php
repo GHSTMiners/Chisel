@@ -13,24 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('home');
 
 
 Auth::routes(['register' => true]);
 
 //Crypto
 Route::resources([
-    'matter/crypto' => \App\Http\Controllers\CryptoController::class,
-    'matter/soil' => \App\Http\Controllers\SoilController::class,
-    'matter/rock' => \App\Http\Controllers\RockController::class,
-    'items/explosive' => \App\Http\Controllers\ExplosiveController::class,
-    'items/consumable' => \App\Http\Controllers\ConsumableController::class,
-    'items/consumable/consumableVitalEffect' => \App\Http\Controllers\ConsumableVitalEffectController::class,
-    'items/consumable/consumableSkillEffect' => \App\Http\Controllers\ConsumableSkillEffectController::class,
-    'gameplay/vital' => \App\Http\Controllers\VitalController::class,
-    'gameplay/skill' => \App\Http\Controllers\SkillController::class,
-    'gameplay/trait' => \App\Http\Controllers\AavegotchiTraitController::class,
-    'gameplay/traitEffect' => \App\Http\Controllers\TraitEffectController::class,
-    'world/puzzle' => \App\Http\Controllers\PuzzleController::class,
-    'world' => \App\Http\Controllers\WorldController::class
+    'matter/crypto' => \App\Http\Controllers\Backend\CryptoController::class,
+    'matter/soil' => \App\Http\Controllers\Backend\SoilController::class,
+    'matter/rock' => \App\Http\Controllers\Backend\RockController::class,
+    'items/explosive' => \App\Http\Controllers\Backend\ExplosiveController::class,
+    'items/consumable' => \App\Http\Controllers\Backend\ConsumableController::class,
+    'items/consumable/consumableVitalEffect' => \App\Http\Controllers\Backend\ConsumableVitalEffectController::class,
+    'items/consumable/consumableSkillEffect' => \App\Http\Controllers\Backend\ConsumableSkillEffectController::class,
+    'gameplay/vital' => \App\Http\Controllers\Backend\VitalController::class,
+    'gameplay/skill' => \App\Http\Controllers\Backend\SkillController::class,
+    'gameplay/trait' => \App\Http\Controllers\Backend\AavegotchiTraitController::class,
+    'gameplay/traitEffect' => \App\Http\Controllers\Backend\TraitEffectController::class,
+    'world/puzzle' => \App\Http\Controllers\Backend\PuzzleController::class,
+    'world' => \App\Http\Controllers\Backend\WorldController::class
 ]);

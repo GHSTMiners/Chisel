@@ -16,7 +16,10 @@ class WorldController extends Controller
      */
     public function index()
     {
-        return World::where('published', true)->get();
+        return response()->json(
+            World::where('published', true)->get(),
+            200, [], JSON_UNESCAPED_SLASHES
+        );
     }
 
     /**
@@ -33,6 +36,9 @@ class WorldController extends Controller
             $world->with('crypto', 'soil', 'explosives', 'rocks', 'skills', 'vitals', 'consumables')->find($world->id),
             now()->addMinutes(10));
         } 
-        return Cache::get('world_'.$world->id);
+        return response()->json(
+            Cache::get('world_'.$world->id),
+            200, [], JSON_UNESCAPED_SLASHES
+        );
     }
 }
