@@ -17,17 +17,26 @@
         "jquery": "^3.6",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
+        "node-polyfill-webpack-plugin": "^1.1.4",
         "phaser": "^3.55.2",
         "popper.js": "^1.16.1",
         "postcss": "^8.1.14",
         "resolve-url-loader": "^3.1.2",
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1",
+        "stream-http": "^3.2.0",
         "ts-loader": "^9.2.6",
         "typescript": "^4.4.4"
     },
     "dependencies": {
-        "moralis": "^0.0.110",
-        "stream-http": "^3.2.0"
+        "@maticnetwork/walletconnect-provider": "^0.0.1-beta.1",
+        "@metamask/detect-provider": "^1.2.0",
+        "@metamask/onboarding": "^1.0.1",
+        "@portis/web3": "^4.0.6",
+        "@walletconnect/web3-provider": "^1.6.6",
+        "http-browserify": "^1.7.0",
+        "https-browserify": "^1.0.0",
+        "web3": "^1.6.0",
+        "web3modal": "^1.9.4"
     }
 }

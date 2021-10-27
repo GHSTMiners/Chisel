@@ -23,10 +23,9 @@
 
 </head>
 <body>
-<div id="phaser-wrapper">
-    <img src="assets/images/logo.png" id="logo" />
-    <button id="start-btn" hidden>Sign in</button>
-</div>
-
+    <div id="root">
+        <img src="assets/images/logo.png" id="logo" />
+        <button id="start-btn" hidden>Sign in</button>
+    </div>
 </body>
 </html>
