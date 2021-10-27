@@ -16,6 +16,6 @@ class AavegotchiTraitController extends Controller
     {
         $aavegotchiTraits = AavegotchiTrait::all();
 
-        return view('aavegotchiTraits.index', compact('aavegotchiTraits'));
+        return view('backend.aavegotchiTraits.index', compact('aavegotchiTraits'));
     }
 }

@@ -15,12 +15,12 @@ class ExplosiveController extends Controller
 
     public function index() {
         $explosives = request()->selectedWorld->explosives;
-        return view('explosive.index', compact('explosives'));
+        return view('backend.explosive.index', compact('explosives'));
     }
 
     public function create() {
         $crypto = Crypto::all();
-        return view('explosive.create', compact('crypto'));
+        return view('backend.explosive.create', compact('crypto'));
     }
 
     public function destroy(Explosive $explosive) {
@@ -29,7 +29,7 @@ class ExplosiveController extends Controller
     }
 
     public function edit(Explosive $explosive) {
-        return view('explosive.edit', compact('explosive'));
+        return view('backend.explosive.edit', compact('explosive'));
     }
 
     public function update(Explosive $explosive) {

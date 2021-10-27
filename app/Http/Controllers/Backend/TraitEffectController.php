@@ -16,9 +16,9 @@ class TraitEffectController extends Controller
 
     public function index() {
         //$explosives = Explosive::all();
-        //return view('explosive.index', compact('explosives'));
+        //return view('backend.explosive.index', compact('explosives'));
         $traitEffects = TraitEffect::all();
-        return view('traitEffect.index', compact('traitEffects'));
+        return view('backend.traitEffect.index', compact('traitEffects'));
     }
 
 

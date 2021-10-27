@@ -19,13 +19,13 @@ class ConsumableController extends Controller
 
     public function index() {
         $consumables = request()->selectedWorld->consumables;
-        return view('consumable.index', compact('consumables'));
+        return view('backend.consumable.index', compact('consumables'));
     }
 
     public function edit(Consumable $consumable ) {
         $crypto = Crypto::all();
         $vitals = Vital::all();
-        return view('consumable.edit', compact('consumable', 'crypto', 'vitals'));
+        return view('backend.consumable.edit', compact('consumable', 'crypto', 'vitals'));
     }
 
     public function destroy(Consumable $consumable) {
@@ -36,7 +36,7 @@ class ConsumableController extends Controller
 
     public function create() {
         $crypto = Crypto::all();
-        return view('consumable.create', compact('crypto'));
+        return view('backend.consumable.create', compact('crypto'));
     }
 
     public function store() {

@@ -15,11 +15,11 @@ class SkillController extends Controller
 
     public function index() {
         $skills = request()->selectedWorld->skills;
-        return view('skill.index', compact('skills'));
+        return view('backend.skill.index', compact('skills'));
     }
 
     public function create() {
-        return view('skill.create');
+        return view('backend.skill.create');
     }
 
     public function destroy(Skill $skill) {
@@ -28,7 +28,7 @@ class SkillController extends Controller
     } 
 
     public function edit(Skill $skill) {
-        return view('skill.edit', compact('skill'));
+        return view('backend.skill.edit', compact('skill'));
     }
 
     public function update(Skill $skill) {

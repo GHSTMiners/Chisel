@@ -29,11 +29,11 @@ class CryptoController extends Controller
     public function index()
     {
         $crypto = request()->selectedWorld->crypto;
-        return view('crypto.index', compact('crypto'));
+        return view('backend.crypto.index', compact('crypto'));
     }
 
     public function create() {
-        return view('crypto.create');
+        return view('backend.crypto.create');
     }
 
     public function destroy(Crypto $crypto) {
@@ -43,7 +43,7 @@ class CryptoController extends Controller
     }
 
     public function edit(Crypto $crypto) {
-        return view('crypto.edit', compact('crypto'));
+        return view('backend.crypto.edit', compact('crypto'));
     }
 
     public function update(Crypto $crypto) {

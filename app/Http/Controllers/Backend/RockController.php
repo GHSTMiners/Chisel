@@ -20,11 +20,11 @@ class RockController extends Controller
 
     public function index() {
         $rocks = request()->selectedWorld->rocks;
-        return view('rock.index', compact('rocks'));
+        return view('backend.rock.index', compact('rocks'));
     }
 
     public function create() {
-        return view('rock.create');
+        return view('backend.rock.create');
     }
 
     public function destroy(Rock $rock) {
@@ -33,7 +33,7 @@ class RockController extends Controller
     } 
 
     public function edit(Rock $rock) {
-        return view('rock.edit', compact('rock'));
+        return view('backend.rock.edit', compact('rock'));
     }
 
     public function update(Rock $rock) {

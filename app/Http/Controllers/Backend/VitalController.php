@@ -15,15 +15,15 @@ class VitalController extends Controller
 
     public function index() {
         $vitals = request()->selectedWorld->vitals;
-        return view('vital.index', compact('vitals'));
+        return view('backend.vital.index', compact('vitals'));
     }
 
     public function edit(Vital $vital) {
-        return view('vital.edit', compact('vital'));
+        return view('backend.vital.edit', compact('vital'));
     }
     
     public function create() {
-        return view('vital.create');
+        return view('backend.vital.create');
     }
 
     public function destroy(Vital $vital) {

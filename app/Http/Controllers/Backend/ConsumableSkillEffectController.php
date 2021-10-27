@@ -14,6 +14,6 @@ class ConsumableSkillEffectController extends Controller
 
     public function create() {
         $crypto = Crypto::all();
-        return view('consumable.create', compact('crypto'));
+        return view('backend.consumable.create', compact('crypto'));
     }
 }

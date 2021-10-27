@@ -20,11 +20,11 @@ class PuzzleController extends Controller
 
     public function index() {
         $puzzles = Puzzle::all();
-        return view('puzzle.index', compact('puzzles'));
+        return view('backend.puzzle.index', compact('puzzles'));
     }
 
     public function create() {
         
-        return view('puzzle.create');
+        return view('backend.puzzle.create');
     }
 }

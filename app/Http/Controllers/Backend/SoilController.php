@@ -16,15 +16,15 @@ class SoilController extends Controller
     
     public function index() {
         $soil = request()->selectedWorld->soil;
-        return view('soil.index', compact('soil'));
+        return view('backend.soil.index', compact('soil'));
     }
 
     public function edit(Soil $soil ) {
-        return view('soil.edit', compact('soil'));
+        return view('backend.soil.edit', compact('soil'));
     }
     
     public function create() {
-        return view('soil.create');
+        return view('backend.soil.create');
     }
     
     public function destroy(Soil $soil) {
