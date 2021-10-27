@@ -120,7 +120,7 @@
 
 <script>
 $( "#change-world-button" ).click(function() {
-    window.location.href = '/world/'+$('#select-world-form').serializeArray()[0].value; //relative to domain
+    window.location.href = '/administrator/world/'+$('#select-world-form').serializeArray()[0].value; //relative to domain
 });
 
 $( "#add-world-button" ).click(function() {
