@@ -65,7 +65,7 @@ $("#start-btn").on('click', async function() {
         } else {
           //Send signature back to server for validation
           var jqxhr = $.post( "api/wallet/validate", { wallet_address: accounts[0], chain_id: chainId, challenge: data.challenge, signature: signature } , async function(data ) {
-            new Audio('assets/sounds/success.mp3').play()
+            new Audio('assets/sounds/success.mp3').play() 
             alert("You have been succesfully validated!")
           })
           .fail(function() {
