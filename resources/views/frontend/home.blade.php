@@ -1,27 +1,23 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preload" href="assets/fonts/Pixelar Regular.woff2" as="font" crossorigin="">
+@extends('frontend.layouts.app')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-    <title>Welcome to gotchiminer ⛏️</title>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{{ asset('js/home.js') }}" defer></script>
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}" deref/>
-
-</head>
-<body>
-    <div id="root">
-        <img src="assets/images/logo.png" id="logo" />
-        <button id="start-btn" hidden>Sign in</button>
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</div>
+@endsection

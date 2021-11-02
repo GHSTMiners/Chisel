@@ -20,3 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('world', \App\Http\Controllers\API\WorldController::class, array("as" => "api"));
 Route::apiResource('crypto', \App\Http\Controllers\API\CryptoController::class, array("as" => "api"));
+Route::post('wallet/challenge', '\App\Http\Controllers\API\WalletChallengeController@challenge', array("as" => "api"));
+Route::post('wallet/validate', '\App\Http\Controllers\API\WalletChallengeController@validate_challenge', array("as" => "api"));
+Route::post('wallet/auth', '\App\Http\Controllers\API\WalletChallengeController@authenticate', array("as" => "api"));
+

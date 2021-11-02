@@ -16,7 +16,7 @@ class CreateWallets extends Migration
         Schema::create('wallets', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('address');
+            $table->string('address')->unique();
             $table->integer('chain_id');
             
         });
