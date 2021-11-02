@@ -19,7 +19,7 @@ class WalletChallengeController extends Controller
     */
     public function challenge()
     {
-        //Validate request data
+        // Validate request data
         $data = request()->validate([
             'wallet_address' => ['required', 'regex:/^0x[a-fA-F0-9]{40}$/'],
             'chain_id' => ['required', 'numeric']
@@ -33,12 +33,14 @@ class WalletChallengeController extends Controller
                 'chain_id' => $data['chain_id']
             ]);
         }
-        
+        // Generate a challenge
         $challenge = WalletChallenge::create([
             'challenge' =>  Str::random(env('APP_CHALLENGE_SIZE', 40)),
             'wallet_id' => $wallet->id,
             'id_address' => request()->ip()    
         ]);
+        
+        // Return challenge as JSON
         return response()->json(
             $challenge,
             200, [], JSON_UNESCAPED_SLASHES
@@ -46,7 +48,7 @@ class WalletChallengeController extends Controller
     }
     
     public function validate_challenge() {
-        //Validate request data
+        // Validate request data
         $data = request()->validate([
             'wallet_address' => ['required', 'regex:/^0x[a-fA-F0-9]{40}$/'],
             'chain_id' => ['required', 'numeric'],

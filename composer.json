@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
+        "monicahq/laravel-cloudflare": "^2.0",
         "panxianhai/php-ecrecover": "dev-master"
     },
     "require-dev": {
