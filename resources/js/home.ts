@@ -1,6 +1,7 @@
 import Web3 from "web3";
 import Web3Modal from "web3modal";
 import Portis from "@portis/web3";
+import $ from "jquery";
 
 import WalletConnectProvider from "@walletconnect/web3-provider";
 

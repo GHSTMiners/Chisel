@@ -16,7 +16,7 @@ const mix = require('laravel-mix');
 mix.ts('resources/js/app.ts', 'public/js')
     .ts('resources/js/home.ts', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .sass('resources/sass/home.scss', 'public/css')
+    .sass('resources/sass/frontend.scss', 'public/css')
     .sourceMaps()
     .webpackConfig({
         resolve: {
