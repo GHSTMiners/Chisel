@@ -10,7 +10,7 @@ class Wallet {
     /**
      * hasCookie Checks if there is already an wallet authetication token set
      */
-    public authenticated(wallet_address :) : boolean {
+    public authenticated(wallet_address : string) : boolean {
         return Cookies.get('wallet_auth_token') !== undefined;
     }
 }
