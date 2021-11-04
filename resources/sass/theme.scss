@@ -8,10 +8,17 @@ body {
   background-repeat: repeat;
   font-family: Rocks !important;
 }
+
+video {
+  object-fit: cover;
+}
   
 .navbar {
   padding-top: 1rem;
   padding-bottom: 1rem;
+  position: fixed;
+  top: 0px;
+  width: 100%;
 }
 
 .nav-link {
