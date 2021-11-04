@@ -2,12 +2,13 @@ import Web3 from "web3";
 import Web3Modal from "web3modal";
 import Portis from "@portis/web3";
 import $ from "jquery";
-
+import FrontPageSlider from "./FrontpageSlider";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
 
 $(async function() {
   $("#start-btn").show();
+  let slider : FrontPageSlider = new FrontPageSlider();
 });
 
 $("#start-btn").on('click', async function() {

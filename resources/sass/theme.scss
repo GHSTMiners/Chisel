@@ -1,14 +1,23 @@
+html, body {
+  height: 100%;
+  position: relative;
+}
+
 body {
-    background-image: url("../../public/assets/images/background.jpg");
-    background-repeat: repeat;
-  }
+  background-image: url("../images/background.jpg");
+  background-repeat: repeat;
+  font-family: Rocks !important;
+}
   
 .navbar {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-image: url("../../public/assets/images/navbar.jpg");
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .nav-link {
   font-size: 1.25em;
+}
+
+.container-fluid {
+  padding: 0px;
 }
