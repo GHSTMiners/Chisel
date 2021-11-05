@@ -49,9 +49,15 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <!-- Authentication Links -->
-                        <li class="nav-item">
-                            <a class="btn btn-dark btn-lg" id="start-btn" href="#" >{{ __('Connect wallet') }}</a>
-                        </li>
+                        <div class="btn-wallet">
+                            <img class="btn-wallet-bottom"/>
+                            <img class="btn-wallet-top"/>
+                            @if(isset($connected_wallet))
+                            <h1 class="btn-wallet-text">My Account</h1>
+                            @else
+                            <h1 class="btn-wallet-text">Connect wallet</h1>
+                            @endif
+                        </div>
                     </ul>
                 </div>
             </div>

@@ -14,9 +14,10 @@ video {
 }
   
 .navbar {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   position: fixed;
+  min-height: 60px;
   top: 0px;
   width: 100%;
 }
@@ -27,4 +28,48 @@ video {
 
 .container-fluid {
   padding: 0px;
+}
+
+.btn-wallet {
+  position:relative;
+  width: 200px;
+  height: 60px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-wallet-text {
+  padding-top: 23px;
+  position:relative;
+  font-size: 13px;
+  left:0;
+  color: white;
+  pointer-events: none;
+  text-shadow: 2px 2px #080808;
+}
+
+.btn-wallet img{
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 0.3s ease-in;
+  -moz-transition: opacity 0.3s linear;
+  -o-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+}
+
+.btn-wallet-top {
+  opacity: 0;
+  content: url("../images/wallet_connect_hover.svg");
+  width: 200px;
+  height: 60px;
+}
+
+.btn-wallet-top:hover {
+  opacity:1;
+}
+
+.btn-wallet-bottom {
+  content: url("../images/wallet_connect.svg");
+  width: 200px;
+  height: 60px;
 }

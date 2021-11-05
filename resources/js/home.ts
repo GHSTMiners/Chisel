@@ -4,6 +4,7 @@ import Portis from "@portis/web3";
 import $ from "jquery";
 import FrontPageSlider from "./FrontpageSlider";
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import Cookies from "js-cookie";
 
 
 $(async function() {
@@ -11,10 +12,12 @@ $(async function() {
   let slider : FrontPageSlider = new FrontPageSlider();
 });
 
-$("#start-btn").on('click', async function() {
-  //Disable sign in button
-  $("#start-btn").prop('disabled', true);
-  
+$(".btn-wallet-top").on('click', async function() {
+  new Audio('assets/sounds/click.mp3').play() 
+  if("My Account" === $(".btn-wallet-text").text()) {
+    window.location.href = "/my-account";
+    return;
+  }  
   //Connect to wallet
   const providerOptions = {
     // Example with WalletConnect provider
@@ -51,7 +54,6 @@ $("#start-btn").on('click', async function() {
   const chainId = await web3.eth.getChainId();
   if(chainId !== 137) {
     alert('This game only works with Aavegotchis on the Matic network.' )
-    $("#start-btn").prop('disabled', false);
     return;
   }
   
@@ -68,7 +70,9 @@ $("#start-btn").on('click', async function() {
           //Send signature back to server for validation
           var jqxhr = $.post( "api/wallet/validate", { wallet_address: accounts[0], chain_id: chainId, challenge: data.challenge, signature: signature } , async function(data ) {
             new Audio('assets/sounds/success.mp3').play() 
-            alert("You have been succesfully validated!")
+            $(".btn-wallet-text").text("My Account");
+            Cookies.set('current_wallet', accounts[0]);
+
           })
           .fail(function() {
             alert( "Server failed to verify your personal signature, please check your wallet configuration." );

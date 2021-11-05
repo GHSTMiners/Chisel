@@ -12,6 +12,8 @@ class EncryptCookies extends Middleware
      * @var array
      */
     protected $except = [
-        'selected-world'
+        'selected-world',
+        'current_wallet',
+        'wallet_auth_token'
     ];
 }

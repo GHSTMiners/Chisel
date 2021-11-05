@@ -78,11 +78,16 @@ class WalletChallengeController extends Controller
             'token' => Str::random(255)
         ]);
 
+        //Create cookie
+        $minutes = 365 * 24 * 60;
+        $cookie = cookie('wallet_auth_token', $token->token, $minutes, '/');
+
+
         return response()->json(
             $token,
             200, [], JSON_UNESCAPED_SLASHES
         )
-        ->withCookie(cookie()->forever('wallet_auth_token_'.$challenge->wallet->address, $token->token));
+        ->withCookie($cookie);
     }
 
     public function authenticate() {
