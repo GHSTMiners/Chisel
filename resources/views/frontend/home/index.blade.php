@@ -1,4 +1,7 @@
 @extends('frontend.layouts.app')
+@section('head')
+<link rel="stylesheet" href="{{ asset('css/home.css') }}" deref/>
+@endsection
 
 @section('content')
 <div class="container-fluid">
@@ -8,7 +11,7 @@
           <video width="100%" height="100%" autoplay muted loop>
             <source src="assets/videos/slide1.mp4" type="video/mp4">
           Your browser does not support the video tag.
-          </video>        
+          </video>
         </div>
         <div class="swiper-slide">Slide 2</div>
         <div class="swiper-slide">Slide 3</div>

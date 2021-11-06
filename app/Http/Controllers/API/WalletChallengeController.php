@@ -9,6 +9,7 @@ use App\Models\WalletChallenge;
 use App\Models\WalletAuthToken;
 use App\Models\Wallet;
 use Carbon\Carbon;
+use Cookie;
 
 class WalletChallengeController extends Controller
 {
@@ -24,7 +25,7 @@ class WalletChallengeController extends Controller
             'wallet_address' => ['required', 'regex:/^0x[a-fA-F0-9]{40}$/'],
             'chain_id' => ['required', 'numeric']
         ]);
-        
+
         // Fetch/create wallet
         $wallet = Wallet::where('address', $data['wallet_address'])->first();
         if($wallet === null) {
@@ -37,16 +38,16 @@ class WalletChallengeController extends Controller
         $challenge = WalletChallenge::create([
             'challenge' =>  Str::random(env('APP_CHALLENGE_SIZE', 40)),
             'wallet_id' => $wallet->id,
-            'id_address' => request()->ip()    
+            'id_address' => request()->ip()
         ]);
-        
+
         // Return challenge as JSON
         return response()->json(
             $challenge,
             200, [], JSON_UNESCAPED_SLASHES
         );
     }
-    
+
     public function validate_challenge() {
         // Validate request data
         $data = request()->validate([
@@ -55,24 +56,25 @@ class WalletChallengeController extends Controller
             'challenge' => ['required', 'string', 'size:'.env('APP_CHALLENGE_SIZE', 40)],
             'signature' => ['required', 'string']
         ]);
-        
+
         // Fetch challenge and check if it is valid
         $challenge = WalletChallenge::where('challenge', $data['challenge'])->first();
         if($challenge === null or $challenge->created_at->addMinutes(env('APP_CHALLENGE_DURATION', 15)) < Carbon::now()  ) {
             abort(403);
-        } 
-        
+        }
+
         //Fetch the wallet that this challenge is from and check agains request data
         if( $challenge->wallet->address !== $data['wallet_address'] or $challenge->wallet->chain_id !== (int)$data['chain_id']) {
             abort(403);
         }
-         
+
         // Verify signature
         if(personal_ecRecover($data['challenge'], $data['signature']) !== strtolower($challenge->wallet->address)) {
             abort(403);
         }
 
-        //If we reach this point, we can create a wallet auth token
+        //If we reach this point, we can create a wallet auth token and delte the challenge
+        $challenge->delete();
         $token = WalletAuthToken::create([
             'wallet_id' => $challenge->wallet->id,
             'token' => Str::random(255)
@@ -89,29 +91,15 @@ class WalletChallengeController extends Controller
         )
         ->withCookie($cookie);
     }
-
-    public function authenticate() {
-        // Validate request data
-        $data = request()->validate([
-            'wallet_address' => ['required', 'regex:/^0x[a-fA-F0-9]{40}$/'],
-            'chain_id' => ['required', 'numeric']
-        ]);
+    public function sign_out() {
 
         // Check if cookie exists
-        $auth_token = $request->cookie('wallet_auth_token_'.$data['wallet_address']);
-        if($auth_token) {
-            // Validate auth token agains database
-            $wallet_auth_token = WalletAuthToken::where('token', $auth_token)->first();
-            if($wallet_auth_token) {
-                if($wallet_auth_token->wallet->address === $data['wallet_address']) {
-                    return response()->json(
-                        true,
-                        200, [], JSON_UNESCAPED_SLASHES
-                    );
-                } else abort(403);
-            } else abort(403);
-        } else {
-            abort(403);
+        $token = WalletAuthToken::where('token', request()->cookie("wallet_auth_token"))->first();
+        if($token) {
+            // Delete token if exists
+            WalletAuthToken::where('token', $token)->delete();
         }
+        // Forget cookie and redirect
+        return redirect()->route('home')->withCookie(Cookie::forget('wallet_auth_token'));
     }
 }

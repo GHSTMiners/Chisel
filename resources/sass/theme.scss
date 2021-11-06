@@ -1,6 +1,7 @@
 html, body {
   height: 100%;
   position: relative;
+  color: white;
 }
 
 body {
@@ -11,15 +12,6 @@ body {
 
 video {
   object-fit: cover;
-}
-  
-.navbar {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  position: fixed;
-  min-height: 60px;
-  top: 0px;
-  width: 100%;
 }
 
 .nav-link {

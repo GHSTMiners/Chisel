@@ -17,6 +17,7 @@ mix.ts('resources/js/app.ts', 'public/js')
     .ts('resources/js/home.ts', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/frontend.scss', 'public/css')
+    .sass('resources/sass/home.scss', 'public/css')
     .browserSync('http://localhost:8000/')
     .sourceMaps()
     .webpackConfig({
@@ -30,4 +31,4 @@ mix.ts('resources/js/app.ts', 'public/js')
         ],
       }
     );
-      
+

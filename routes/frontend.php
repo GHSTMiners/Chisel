@@ -15,4 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('home');
 Route::get('/leaderboard', [App\Http\Controllers\Frontend\LeaderBoardController::class, 'index'])->name('leaderboard');
+Route::get('/leaderboard', [App\Http\Controllers\Frontend\LeaderBoardController::class, 'index'])->name('leaderboard');
+//Crypto
+//Crypto
+Route::resources([
+    'my-account' => \App\Http\Controllers\Frontend\AccountController::class,
+]);
 
