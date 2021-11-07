@@ -19,22 +19,30 @@ video {
   font-size: 2em;
 }
 
+.navbar {
+    position: fixed;
+    min-height: 10px;
+    top: 0px;
+    width: 100%;
+}
+
 .container-fluid {
   padding: 0px;
 }
 
 .btn-wallet {
   position:relative;
-  width: 200px;
-  height: 60px;
+  width: 275px;
+  height: 100px;
   cursor: pointer;
   text-align: center;
+  margin-right: -40px;
 }
 
 .btn-wallet-text {
-  padding-top: 23px;
+  padding-top: 36px;
   position:relative;
-  font-size: 13px;
+  font-size: 21px;
   left:0;
   color: white;
   pointer-events: none;
@@ -53,8 +61,8 @@ video {
 .btn-wallet-top {
   opacity: 0;
   content: url("../images/wallet_connect_hover.svg");
-  width: 200px;
-  height: 60px;
+  width: 275px;
+  height: 100px;
 }
 
 .btn-wallet-top:hover {
@@ -63,6 +71,6 @@ video {
 
 .btn-wallet-bottom {
   content: url("../images/wallet_connect.svg");
-  width: 200px;
-  height: 60px;
+  width: 275px;
+  height: 100px;
 }

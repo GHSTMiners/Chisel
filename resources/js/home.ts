@@ -7,12 +7,34 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import Cookies from "js-cookie";
 
 
+
+$(".btn-play").hover(function(){
+    // Hide reverse video and show forward video
+    $('.btn-play-forward').show();
+    $('.btn-play-reverse').hide();
+
+    // Sync current frame
+    $('.btn-play-reverse').trigger('pause');
+    $(".btn-play-forward").prop('currentTime', $(".btn-play-reverse").prop('currentTime'));
+    $('.btn-play-forward').trigger('play');
+}, function () {
+    $('.btn-play-reverse').show();
+    $('.btn-play-forward').hide();
+
+    $('.btn-play-forward').trigger('pause');
+    $(".btn-play-reverse").prop('currentTime', $(".btn-play-forward").prop('currentTime'));
+    $('.btn-play-reverse').trigger('play');
+});
+
 $(".btn-play").click(function () {
     window.open( $(this).data("href"), "Gotchiminer", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, copyhistory=no, width=w, height=h, top=top, left=left');
 });
 
 $(async function() {
   $("#start-btn").show();
+  $(".btn-play-forward").prop('playbackRate', 2);
+  $(".btn-play-reverse").prop('playbackRate', 2);
+
   let slider : FrontPageSlider = new FrontPageSlider();
 });
 

@@ -1,11 +1,13 @@
 .navbar {
     position: fixed;
-    min-height: 60px;
+    min-height: 100px;
     top: 0px;
     width: 100%;
   }
-
+.btn-play-forward,
+.btn-play-reverse,
 .btn-play {
+  cursor: pointer;
   position: fixed;
   width: 7.5em;
   height: 3em;
@@ -13,3 +15,8 @@
   right: 1em;
   font-size: 2em;
 }
+
+.btn-play-reverse {
+    display: none;
+}
+
