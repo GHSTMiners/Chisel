@@ -2,8 +2,6 @@ import Swiper from "swiper";
 
 export default class FrontpageSlider {
   constructor() {
-    console.log('hallo');
-    
     let swiper : Swiper = new Swiper(".frontpage-swiper", {
       spaceBetween: 30,
       centeredSlides: true,

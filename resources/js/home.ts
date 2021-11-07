@@ -7,6 +7,10 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import Cookies from "js-cookie";
 
 
+$(".btn-play").click(function () {
+    window.open( $(this).data("href"), "Gotchiminer", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, copyhistory=no, width=w, height=h, top=top, left=left');
+});
+
 $(async function() {
   $("#start-btn").show();
   let slider : FrontPageSlider = new FrontPageSlider();
@@ -71,7 +75,7 @@ $(".btn-wallet").on('click', async function() {
           var jqxhr = $.post( "api/wallet/validate", { wallet_address: accounts[0], chain_id: chainId, challenge: data.challenge, signature: signature } , async function(data ) {
             new Audio('assets/sounds/success.mp3').play()
             $(".btn-wallet-text").text("My Account");
-            Cookies.set('current_wallet', accounts[0]);
+            Cookies.set('current_wallet', accounts[0], { expires: 365 });
 
           })
           .fail(function() {

@@ -6,30 +6,28 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Ethereum\Ethereum;
 use Ethereum\SmartContract;
-use Illuminate\Support\Facades\Http;
+
 
 class AavegotchiController extends Controller
 {
-    public function view($nftId) {
-        $moralisAPIUrl = env('MORALIS_API_URL');
-        $moralisAPIKey = env('MORALIS_API_KEY');
+    public function view($id) {
+        $svgFacetAbi = [ '{"inputs":[{"internalType":"bytes32","name":"_svgType","type":"bytes32"},{"internalType":"uint256","name":"_numLayers","type":"uint256"}],"name":"deleteLastSvgLayers","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"getAavegotchiSvg","outputs":[{"internalType":"string","name":"ag_","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_itemId","type":"uint256"}],"name":"getItemSvg","outputs":[{"internalType":"string","name":"ag_","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_svgType","type":"bytes32"},{"internalType":"uint256","name":"_itemId","type":"uint256"}],"name":"getSvg","outputs":[{"internalType":"string","name":"svg_","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"_svgType","type":"bytes32"},{"internalType":"uint256[]","name":"_itemIds","type":"uint256[]"}],"name":"getSvgs","outputs":[{"internalType":"string[]","name":"svgs_","type":"string[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenId","type":"uint256"}],"name":"portalAavegotchisSvg","outputs":[{"internalType":"string[10]","name":"svg_","type":"string[10]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_hauntId","type":"uint256"},{"internalType":"address","name":"_collateralType","type":"address"},{"internalType":"int16[6]","name":"_numericTraits","type":"int16[6]"},{"internalType":"uint16[16]","name":"equippedWearables","type":"uint16[16]"}],"name":"previewAavegotchi","outputs":[{"internalType":"string","name":"ag_","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256[]","name":"_itemIds","type":"uint256[]"},{"components":[{"internalType":"uint8","name":"x","type":"uint8"},{"internalType":"uint8","name":"y","type":"uint8"},{"internalType":"uint8","name":"width","type":"uint8"},{"internalType":"uint8","name":"height","type":"uint8"}],"internalType":"struct Dimensions[]","name":"_dimensions","type":"tuple[]"}],"name":"setItemsDimensions","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"components":[{"internalType":"uint256","name":"sleeveId","type":"uint256"},{"internalType":"uint256","name":"wearableId","type":"uint256"}],"internalType":"struct SvgFacet.Sleeve[]","name":"_sleeves","type":"tuple[]"}],"name":"setSleeves","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"_svg","type":"string"},{"components":[{"internalType":"bytes32","name":"svgType","type":"bytes32"},{"internalType":"uint256[]","name":"sizes","type":"uint256[]"}],"internalType":"struct LibSvg.SvgTypeAndSizes[]","name":"_typesAndSizes","type":"tuple[]"}],"name":"storeSvg","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"_svg","type":"string"},{"components":[{"internalType":"bytes32","name":"svgType","type":"bytes32"},{"internalType":"uint256[]","name":"ids","type":"uint256[]"},{"internalType":"uint256[]","name":"sizes","type":"uint256[]"}],"internalType":"struct LibSvg.SvgTypeAndIdsAndSizes[]","name":"_typesAndIdsAndSizes","type":"tuple[]"}],"name":"updateSvg","outputs":[],"stateMutability":"nonpayable","type":"function"}'];
+        $svgFacetAddress = '0x8d4C8559E07cF784B8912a306a2b9f3B3f34E92E';
+        try {
+            // Connect to Ganache
+            $eth = new Ethereum(env('WEB3_HTTP_HOST', 'https://rpc-mainnet.matic.network'));
 
-        $aavegotchiNFTAddress = '0x86935f11c86623dec8a25696e1c19a8659cbf95d';
-        $response = Http::withHeaders( [
-            'accept' => 'application/json',
-            'X-API-Key' => $moralisAPIKey,
-        ])->get(url("{$moralisAPIUrl}/nft/{$aavegotchiNFTAddress}/{$nftId}"), [
-            'chain' => 'polygon',
-            'format' => 'decimal'
-        ]);
+            $contract = new SmartContract(
+                $svgFacetAbi,
+                $svgFacetAddress,
+                $eth
+              );
+              dd($contract);
+              $contract->myContractMethod();
+        }
+        catch (\Exception $exception) {
+            die ($exception);
+        }
 
-        dd(json_decode($response->object()->metadata)->image_data);
-
-        // Return info as JSON
-        return response()->json(
-            $response->json(),
-            200, [], JSON_UNESCAPED_SLASHES
-        );
-        return $response->json();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
-
+use App\Models\World;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.home.index');
+        $worlds = World::all();
+        return view('frontend.home.index', compact('worlds'));
     }
 }

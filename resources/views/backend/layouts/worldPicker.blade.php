@@ -59,6 +59,24 @@
             <input type="text" class="form-control" id="worldNameInput" aria-describedby="name" name="name">
           </div>
           <div class="mb-3">
+            <label for="video" class="form-label">{{ __('Video') }}</label>
+            <input id="video" type="file" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ old('video') }}" required autocomplete="video">
+            @error('video')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">{{ __('Description') }}</label>
+            <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required autofocus>{{old('description')}}</textarea>
+            @error('description')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+          <div class="mb-3">
               <div class="form-check form-switch">
                   <input class="form-check-input" type="checkbox" name="development_mode" id="development_mode" value=1>
                   <label class="form-check-label" for="development_mode">{{ __('Development mode') }}</label>
@@ -69,7 +87,7 @@
                   <input class="form-check-input" type="checkbox" name="published" id="published" value=1>
                   <label class="form-check-label" for="published">{{ __('Published') }}</label>
               </div>
-          </div>           
+          </div>
         </form>
       </div>
       <div class="modal-footer">
@@ -95,6 +113,24 @@
             <label for="worldNameInput" class="form-label">World name</label>
             <input type="text" class="form-control" id="worldNameInput" aria-describedby="name" name="name" value="{{ $selectedWorld->name }}">
           </div>
+          <div class="mb-3">
+            <label for="video" class="form-label">{{ __('Video') }}</label>
+            <input id="video" type="file" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ old('video') }}" required autocomplete="video">
+            @error('video')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">{{ __('Description') }}</label>
+            <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required autofocus>{{$selectedWorld->description}}</textarea>
+            @error('description')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
           <div class="mb-3">
               <div class="form-check form-switch">
                   <input class="form-check-input" type="checkbox" name="development_mode" id="development_mode" value=1 @if($selectedWorld->development_mode) checked @endif()>

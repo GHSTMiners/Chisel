@@ -14,7 +14,9 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "monicahq/laravel-cloudflare": "^2.0",
-        "panxianhai/php-ecrecover": "dev-master"
+        "panxianhai/php-ecrecover": "dev-master",
+        "renoki-co/laravel-web3": "^1.2",
+        "sc0vu/web3.php": "dev-master"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

@@ -24,7 +24,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
-            <div class="container">
+            <div class="container-fluid px-4">
                 <a class="navbar-brand" href="{{ url('/') }}">Gotchiminer</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

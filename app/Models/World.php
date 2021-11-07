@@ -195,6 +195,8 @@ class World extends Model
     protected $fillable = [
         'name',
         'development_mode',
-        'published'
+        'published',
+        'video',
+        'description'
     ];
 }
