@@ -9,6 +9,7 @@ A demo version of this game was developed for the first Aavegotchi Gaame Jaam by
 The team is composed of the following members:
 <br>
 <p>
+  <div class="container">
 <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
@@ -60,7 +61,7 @@ The team is composed of the following members:
     </div>
   </div>
 </div> 
-
+</div>
 </div>
 
 @endsection
