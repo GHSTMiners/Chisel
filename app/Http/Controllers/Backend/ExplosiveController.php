@@ -37,7 +37,7 @@ class ExplosiveController extends Controller
         $data = request()->validate([
             'name' => ['required', 'string'],
             'price' => ['required', 'numeric', 'between:0,99999.99'],
-            'crypto' => ['required', 'numeric', 'exists:cryptos,id'],
+            'crypto_id' => ['required', 'numeric', 'exists:cryptos,id'],
             'soil_image' => ['image'],
             'inventory_image' => ['image'],
             'drop_image' => ['image'],
