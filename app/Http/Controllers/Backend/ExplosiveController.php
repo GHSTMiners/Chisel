@@ -42,7 +42,7 @@ class ExplosiveController extends Controller
             'inventory_image' => ['image'],
             'drop_image' => ['image'],
             'explosive_coordinates' => ['required', 'array'],
-            'explosion_sound' => ['mining_sound' => ['mimes:mp3,wav']
+            'explosion_sound' => ['mining_sound', ['mimes:mp3,wav']
 
         ]);
 
@@ -76,7 +76,7 @@ class ExplosiveController extends Controller
             'inventory_image' => ['required', 'image'],
             'drop_image' => ['required', 'image'],
             'explosive_coordinates' => ['required', 'array'],
-            'explosion_sound' => ['required', 'mining_sound' => ['mimes:mp3,wav']
+            'explosion_sound' => ['required', 'mining_sound', ['mimes:mp3,wav']
         ]);
 
 
