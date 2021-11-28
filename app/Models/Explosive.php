@@ -21,5 +21,6 @@ class Explosive extends Model
         'inventory_image',
         'soil_image',
         'drop_image',
+        'explosion_sound'
     ];
 }

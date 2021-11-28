@@ -41,12 +41,15 @@ class ExplosiveController extends Controller
             'soil_image' => ['image'],
             'inventory_image' => ['image'],
             'drop_image' => ['image'],
-            'explosive_coordinates' => ['required', 'array']
+            'explosive_coordinates' => ['required', 'array'],
+            'explosion_sound' => ['mining_sound' => ['mimes:mp3,wav']
+
         ]);
 
         if(array_key_exists('soil_image', $data)) $data['soil_image'] = $data['soil_image']->store('/explosive', 'public');
         if(array_key_exists('inventory_image', $data)) $data['inventory_image'] = $data['inventory_image']->store('/explosive', 'public');
         if(array_key_exists('drop_image', $data)) $data['drop_image'] = $data['drop_image']->store('/explosive', 'public');
+        if(array_key_exists('mining_sound', $data)) $data['mining_sound'] = $data['mining_sound']->store('/explosive', 'public');
 
         $explosive->explosionCoordinates()->delete();
         foreach($data['explosive_coordinates'] as $columns) {
@@ -72,13 +75,15 @@ class ExplosiveController extends Controller
             'soil_image' => ['required', 'image'],
             'inventory_image' => ['required', 'image'],
             'drop_image' => ['required', 'image'],
-            'explosive_coordinates' => ['required', 'array']
+            'explosive_coordinates' => ['required', 'array'],
+            'explosion_sound' => ['required', 'mining_sound' => ['mimes:mp3,wav']
         ]);
 
 
         $soil_image = $data['soil_image']->store('/explosive', 'public');
         $inventory_image = $data['inventory_image']->store('/explosive', 'public');
         $drop_image = $data['drop_image']->store('/explosive', 'public');
+        $explosion_sound = $data['explosion_sound']->store('/explosive', 'public');
 
         $explosive = \App\Models\Explosive::create([
             'name' => $data['name'],
@@ -88,6 +93,7 @@ class ExplosiveController extends Controller
             'soil_image' => $soil_image,
             'inventory_image' => $inventory_image,
             'drop_image' => $drop_image,
+            'explosion_sound' => $explosion_sound
         ]);
 
         foreach($data['explosive_coordinates'] as $columns) {
