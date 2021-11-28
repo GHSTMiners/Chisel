@@ -16,6 +16,7 @@ class Explosive extends Model
     protected $fillable = [
         'name',
         'crypto_id',
+        'price',
         'world_id',
         'inventory_image',
         'soil_image',
