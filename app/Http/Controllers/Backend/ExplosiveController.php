@@ -29,7 +29,8 @@ class ExplosiveController extends Controller
     }
 
     public function edit(Explosive $explosive) {
-        return view('backend.explosive.edit', compact('explosive'));
+        $crypto = Crypto::all();
+        return view('backend.explosive.edit', compact('explosive'), compact('crypto'));
     }
 
     public function update(Explosive $explosive) {
@@ -67,7 +68,7 @@ class ExplosiveController extends Controller
         $data = request()->validate([
             'name' => ['required', 'string'],
             'price' => ['required', 'numeric', 'between:0,99999.99'],
-            'crypto' => ['required', 'numeric', 'exists:cryptos,id'],
+            'crypto_id' => ['required', 'numeric', 'exists:cryptos,id'],
             'soil_image' => ['required', 'image'],
             'inventory_image' => ['required', 'image'],
             'drop_image' => ['required', 'image'],
@@ -82,7 +83,7 @@ class ExplosiveController extends Controller
         $explosive = \App\Models\Explosive::create([
             'name' => $data['name'],
             'price' => $data['price'],
-            'crypto' => $data['crypto'],
+            'crypto_id' => $data['crypto_id'],
             'world_id' => request()->selectedWorld->id,
             'soil_image' => $soil_image,
             'inventory_image' => $inventory_image,

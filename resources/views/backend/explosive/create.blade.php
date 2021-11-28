@@ -22,7 +22,7 @@
                             <label for="price" class="form-label">{{ __('Price') }}</label>
                             <div class="input-group mb-3">
                                 <input id="price" type="text" class="form-control" placeholder="0.00" aria-label="price" name="price" required>
-                                <select class="form-select" aria-label="crypto" name="crypto">
+                                <select class="form-select" aria-label="crypto_id" name="crypto_id">
                                 @foreach ($crypto as $currentCrypto)
                                     <option value="{{$currentCrypto->id}}">{{$currentCrypto->name}}</option>
                                     

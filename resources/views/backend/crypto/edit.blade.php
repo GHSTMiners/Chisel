@@ -23,7 +23,7 @@
 
                             <div class="mb-3">
                                 <label for="wallet_address" class="form-label">{{ __('Wallet address') }}</label>
-                                <input id="wallet_address" type="text" class="form-control @error('name') is-invalid @enderror" name="wallet_address" value="{{ old('wallet_address') ?? $crypto->wallet_address }}" required autocomplete="wallet_address" autofocus>
+                                <input id="wallet_address" type="text" class="form-control @error('name') is-invalid @enderror" name="wallet_address" value="{{ old('wallet_address') ?? $crypto->wallet_address }}" autocomplete="wallet_address" autofocus>
                                 @error('wallet_address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
 
                             <div class="mb-3">
                                 <label for="weight" class="form-label">{{ __('Weight') }}</label>
-                                <input id="weight" step="any" type="number" class="form-control @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') ?? $crypto->weight }}" required autocomplete="name" autofocus>
+                                <input id="weight" step="any" type="number" class="form-control @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') ?? $crypto->weight }}"  autocomplete="name" autofocus>
                                 @error('weight')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
