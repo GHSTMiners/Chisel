@@ -20,7 +20,7 @@ class CreateRockSpawnsTable extends Migration
             $table->foreignId('rock_id')->references('id')->on('rocks')->onDelete('cascade');
             $table->unsignedInteger('starting_layer');
             $table->unsignedInteger('ending_layer');
-            $table->float('spawn_rate', 1, 4);
+            $table->float('spawn_rate', 5, 4);
         });
     }
 

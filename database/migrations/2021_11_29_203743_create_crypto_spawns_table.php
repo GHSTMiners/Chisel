@@ -20,7 +20,7 @@ class CreateCryptoSpawnsTable extends Migration
             $table->foreignId('crypto_id')->references('id')->on('cryptos')->onDelete('cascade');
             $table->unsignedInteger('starting_layer');
             $table->unsignedInteger('ending_layer');
-            $table->float('spawn_rate', 1, 4);
+            $table->float('spawn_rate', 5, 4);
         });
     }
 
