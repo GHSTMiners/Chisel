@@ -21,8 +21,11 @@ Auth::routes(['register' => true]);
 //Crypto
 Route::resources([
     'matter/crypto' => \App\Http\Controllers\Backend\CryptoController::class,
+    'matter/crypto-spawns' => \App\Http\Controllers\Backend\CryptoSpawnController::class,
     'matter/soil' => \App\Http\Controllers\Backend\SoilController::class,
     'matter/rock' => \App\Http\Controllers\Backend\RockController::class,
+    'matter/rock-spawns' => \App\Http\Controllers\Backend\RockSpawnController::class,
+
     'items/explosive' => \App\Http\Controllers\Backend\ExplosiveController::class,
     'items/consumable' => \App\Http\Controllers\Backend\ConsumableController::class,
     'items/consumable/consumableVitalEffect' => \App\Http\Controllers\Backend\ConsumableVitalEffectController::class,

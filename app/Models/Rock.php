@@ -9,6 +9,10 @@ class Rock extends Model
 {
     use HasFactory;
 
+
+    public function spawns() {
+        return $this->hasMany(RockSpawn::class);
+    }
         /**
      * The attributes that are mass assignable.
      *

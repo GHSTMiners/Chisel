@@ -13,6 +13,10 @@ class World extends Model
         return $this->hasMany(Crypto::class);
     }
 
+    public function cryptoSpawns() {
+        return $this->hasMany(CryptoSpawn::class);
+    }
+
     public function soil() {
         return $this->hasMany(Soil::class);
     }
@@ -23,6 +27,10 @@ class World extends Model
 
     public function rocks() {
         return $this->hasMany(Rock::class);
+    }
+
+    public function rockSpawns() {
+        return $this->hasMany(RockSpawn::class);
     }
 
     public function skills() {

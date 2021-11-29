@@ -9,6 +9,10 @@ class Crypto extends Model
 {
     use HasFactory;
 
+    public function spawns() {
+        return $this->hasMany(CryptoSpawn::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
