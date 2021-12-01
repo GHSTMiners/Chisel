@@ -28,8 +28,18 @@ class CryptoSpawnController extends Controller
 
     public function edit(CryptoSpawn $cryptoSpawn) {
         $crypto = request()->selectedWorld->crypto;
-
         return view('backend.cryptoSpawns.edit', compact('cryptoSpawn', 'crypto'));
+    }
+
+    public function update(CryptoSpawn $cryptoSpawn) {
+        $data = request()->validate([
+            'crypto_id' => ['numeric', 'exists:cryptos,id'],
+            'starting_layer' => ['numeric', 'gt:0'],
+            'ending_layer' => ['numeric', 'gt:0'],
+            'spawn_rate' => ['numeric', 'gt:0', 'lte:100'],            
+        ]);
+        $cryptoSpawn->update($data);
+        return redirect()->route('crypto-spawns.index');
     }
 
     public function store() {

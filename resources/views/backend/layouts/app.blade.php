@@ -69,7 +69,7 @@
                                 <ul class="submenu dropdown-menu">
                                     <li>
                                     @if (Route::has('rock.index'))
-                                        <a class="dropdown-item  {{Route::is('rock*') ? 'active' : ''}}" href="{{ route('rock.index') }}">{{ __('Edit Rock') }}</a>
+                                        <a class="dropdown-item  {{(!Route::is('rock-spawns*') && Route::is('rock*') ) ? 'active' : ''}}" href="{{ route('rock.index') }}">{{ __('Edit Rock') }}</a>
                                     @endif
                                     </li>
                                     <li>
