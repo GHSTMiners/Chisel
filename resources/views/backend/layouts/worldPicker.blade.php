@@ -62,9 +62,9 @@
         <label for="width" class="form-label">Size</label>
         <div class="input-group mb-3">
           <span class="input-group-text">Width</span>
-          <input type="number" class="form-control" placeholder="eg. 40" aria-label="width">
+          <input type="number" class="form-control" placeholder="eg. 40" name="width" aria-label="width">
           <span class="input-group-text">Height</span>
-          <input type="number" class="form-control" placeholder="eg. 1000" aria-label="height">
+          <input type="number" class="form-control" placeholder="eg. 1000" name="height" aria-label="height">
         </div>
 
         <div class="mb-3">
@@ -128,9 +128,9 @@
           <label for="width" class="form-label">Size</label>
           <div class="input-group mb-3">
             <span class="input-group-text">Width</span>
-            <input type="number" class="form-control" placeholder="eg. 40" aria-label="width" value="{{$selectedWorld->width}}">
+            <input type="number" class="form-control" placeholder="eg. 40" name="width" aria-label="width" value="{{$selectedWorld->width}}">
             <span class="input-group-text">Height</span>
-            <input type="number" class="form-control" placeholder="eg. 1000" aria-label="height" value="{{$selectedWorld->height}}">
+            <input type="number" class="form-control" placeholder="eg. 1000" name="height" aria-label="height" value="{{$selectedWorld->height}}">
           </div>
         <div class="mb-3">
             <label for="description" class="form-label">{{ __('Description') }}</label>
