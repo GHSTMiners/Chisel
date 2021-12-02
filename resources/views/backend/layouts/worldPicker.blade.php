@@ -58,15 +58,15 @@
             <label for="worldNameInput" class="form-label">World name</label>
             <input type="text" class="form-control" id="worldNameInput" aria-describedby="name" name="name">
           </div>
-          <div class="mb-3">
-            <label for="video" class="form-label">{{ __('Video') }}</label>
-            <input id="video" type="file" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ old('video') }}" required autocomplete="video">
-            @error('video')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+
+        <label for="width" class="form-label">Size</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Width</span>
+          <input type="number" class="form-control" placeholder="eg. 40" aria-label="width">
+          <span class="input-group-text">Height</span>
+          <input type="number" class="form-control" placeholder="eg. 1000" aria-label="height">
         </div>
+
         <div class="mb-3">
             <label for="description" class="form-label">{{ __('Description') }}</label>
             <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required autofocus>{{old('description')}}</textarea>
@@ -76,6 +76,17 @@
                 </span>
             @enderror
         </div>
+
+        <div class="mb-3">
+            <label for="video" class="form-label">{{ __('Video') }}</label>
+            <input id="video" type="file" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ old('video') }}" required autocomplete="video">
+            @error('video')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
           <div class="mb-3">
               <div class="form-check form-switch">
                   <input class="form-check-input" type="checkbox" name="development_mode" id="development_mode" value=1>
@@ -113,19 +124,28 @@
             <label for="worldNameInput" class="form-label">World name</label>
             <input type="text" class="form-control" id="worldNameInput" aria-describedby="name" name="name" value="{{ $selectedWorld->name }}">
           </div>
-          <div class="mb-3">
-            <label for="video" class="form-label">{{ __('Video') }}</label>
-            <input id="video" type="file" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ old('video') }}" required autocomplete="video">
-            @error('video')
+
+          <label for="width" class="form-label">Size</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text">Width</span>
+            <input type="number" class="form-control" placeholder="eg. 40" aria-label="width" value="{{$selectedWorld->width}}">
+            <span class="input-group-text">Height</span>
+            <input type="number" class="form-control" placeholder="eg. 1000" aria-label="height" value="{{$selectedWorld->height}}">
+          </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">{{ __('Description') }}</label>
+            <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required autofocus>{{$selectedWorld->description}}</textarea>
+            @error('description')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
+
         <div class="mb-3">
-            <label for="description" class="form-label">{{ __('Description') }}</label>
-            <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required autofocus>{{$selectedWorld->description}}</textarea>
-            @error('description')
+            <label for="video" class="form-label">{{ __('Video') }}</label>
+            <input id="video" type="file" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ old('video') }}" required autocomplete="video">
+            @error('video')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

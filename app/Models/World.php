@@ -205,6 +205,8 @@ class World extends Model
         'development_mode',
         'published',
         'video',
-        'description'
+        'description',
+        'width',
+        'height'
     ];
 }

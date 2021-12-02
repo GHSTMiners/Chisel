@@ -16,6 +16,8 @@ class AlterWorlds extends Migration
         Schema::table('worlds', function (Blueprint $table) {
             $table->string('video')->nullable();
             $table->text('description')->nullable();
+            $table->unsignedInteger('width')->default(40);
+            $table->unsignedInteger('height')->default(1000);
         });
     }
 

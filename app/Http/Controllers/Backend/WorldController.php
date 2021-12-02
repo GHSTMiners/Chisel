@@ -19,7 +19,9 @@ class WorldController extends Controller
             'video' => ['file', 'mimetypes:video/mp4', 'required'],
             'description' => ['string', 'required'],
             'development_mode' => ['boolean'],
-            'published' => ['boolean']
+            'published' => ['boolean'],
+            'width' => ['numeric', 'required'],
+            'height' => ['numeric', 'required']
         ]);
         $data['video'] = $data['video']->store('/slider/video', 'public');
 
@@ -43,7 +45,9 @@ class WorldController extends Controller
             'video' => ['mimetypes:video/mp4'],
             'description' => ['string'],
             'development_mode' => ['boolean'],
-            'published' => ['boolean']
+            'published' => ['boolean'],
+            'width' => ['numeric'],
+            'height' => ['numeric']
         ]);
 
         if(array_key_exists('video', $data)) $data['video'] = $data['video']->store('/slider/video', 'public');
