@@ -13,7 +13,7 @@ class AlterSoils extends Migration
      */
     public function up()
     {
-        Schema::table('worlds', function (Blueprint $table) {
+        Schema::table('soils', function (Blueprint $table) {
             $table->unsignedInteger('order')->default(0);
         });
     }

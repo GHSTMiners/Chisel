@@ -79,6 +79,10 @@
                                     </li>
                                 </ul>
                             </li>
+
+                            @if (Route::has('whitespace.index'))
+                                    <a class="dropdown-item  {{Route::is('whitespace*') ? 'active' : ''}}" href="{{ route('whitespace.index') }}">{{ __('Whitespace') }}</a>
+                                @endif
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

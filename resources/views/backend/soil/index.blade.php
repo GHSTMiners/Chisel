@@ -1,5 +1,6 @@
 @extends('backend.layouts.app')
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
     <div class="container">
             <div class="d-flex justify-content-between pb-3">

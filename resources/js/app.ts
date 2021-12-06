@@ -17,7 +17,10 @@ jQuery(($) => {
         $.ajax({
           type:"POST",
           url: "soil/update-sorting",
-          data: newOrder
+          data: JSON.stringify(newOrder),
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
         });
       });
     });

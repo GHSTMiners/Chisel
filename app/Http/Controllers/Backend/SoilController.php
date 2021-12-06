@@ -31,6 +31,16 @@ class SoilController extends Controller
         $soil->delete();
         return redirect()->route('soil.index');
     }    
+
+    public function updateSorting() {
+        $array = request()->json(); 
+        for ($i=0; $i < sizeof($array); $i++) { 
+            $soil = Soil::find($array->get($i));
+            $soil->order = $i;
+            $soil->save();
+        }
+        echo sizeof(request()->json());
+    }
     
     public function update(Soil $soil) {
         $data = request()->validate([
