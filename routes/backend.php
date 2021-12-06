@@ -25,7 +25,7 @@ Route::resources([
     'matter/soil' => \App\Http\Controllers\Backend\SoilController::class,
     'matter/rock' => \App\Http\Controllers\Backend\RockController::class,
     'matter/rock-spawns' => \App\Http\Controllers\Backend\RockSpawnController::class,
-
+    'matter/whitespace' => \App\Http\Controllers\Backend\WhiteSpaceController::class,
     'items/explosive' => \App\Http\Controllers\Backend\ExplosiveController::class,
     'items/consumable' => \App\Http\Controllers\Backend\ConsumableController::class,
     'items/consumable/consumableVitalEffect' => \App\Http\Controllers\Backend\ConsumableVitalEffectController::class,
