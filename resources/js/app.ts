@@ -3,6 +3,23 @@ jQuery(($) => {
         $(".clickable-row").click(function () {
             window.location = $(this).data("href");
         });
+
+        let sortable = require('bootstrap-html5sortable')
+
+        // @ts-ignore: using code that is not supported by typescript
+        $('.table-sortable tbody').sortable().bind('sortupdate', function(e, ui) {
+          //Get indexes of rows 
+          let newOrder : Array<number> = []
+        $('.table-sortable tbody tr').each(function() {
+          newOrder.push(Number($(this).find("td:eq(0)").text()));
+        });
+        console.log(newOrder);
+        $.ajax({
+          type:"POST",
+          url: "soil/update-sorting",
+          data: newOrder
+        });
+      });
     });
 
     document.addEventListener("DOMContentLoaded", function(){

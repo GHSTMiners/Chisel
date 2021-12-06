@@ -21,6 +21,7 @@ class Soil extends Model
         'dig_multiplier',
         'top_image',
         'middle_image',
-        'bottom_image'
+        'bottom_image',
+        'order'
     ];
 }

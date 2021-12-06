@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('administrator');
+Route::post('/matter/soil/update-sorting', [App\Http\Controllers\Backend\SoilController::class, 'updateSorting'])->name('updateSortingSoil');
 
 
 Auth::routes(['register' => true]);
