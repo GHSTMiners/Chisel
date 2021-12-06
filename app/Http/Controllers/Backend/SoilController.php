@@ -15,7 +15,7 @@ class SoilController extends Controller
     }
     
     public function index() {
-        $soil = request()->selectedWorld->soil;
+        $soil = request()->selectedWorld->soil->sortBy('order');
         return view('backend.soil.index', compact('soil'));
     }
 

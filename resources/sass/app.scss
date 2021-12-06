@@ -19,6 +19,29 @@
   background-color: #BDBDBD;
 }
 
+.soil-table-image {
+  max-height: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-sortable {
+  position: relative;
+}
+.table-sortable .sortable-placeholder {
+  height: 117px;
+}
+.table-sortable .sortable-placeholder:after {
+  position: absolute;
+  z-index: 10;
+  content: " ";
+  height: 117px;
+  background: #f9f9f9;
+  left: 0;
+  right: 0;
+}
+
 /* ============ desktop view ============ */
 @media all and (min-width: 992px) {
 	.dropdown-menu li{ position: relative; 	}

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('administrator');
+Route::post('/matter/soil/update-sorting', [App\Http\Controllers\Backend\SoilController::class, 'updateSorting'])->name('updateSortingSoil');
 
 
 Auth::routes(['register' => true]);
@@ -25,7 +26,6 @@ Route::resources([
     'matter/soil' => \App\Http\Controllers\Backend\SoilController::class,
     'matter/rock' => \App\Http\Controllers\Backend\RockController::class,
     'matter/rock-spawns' => \App\Http\Controllers\Backend\RockSpawnController::class,
-
     'items/explosive' => \App\Http\Controllers\Backend\ExplosiveController::class,
     'items/consumable' => \App\Http\Controllers\Backend\ConsumableController::class,
     'items/consumable/consumableVitalEffect' => \App\Http\Controllers\Backend\ConsumableVitalEffectController::class,

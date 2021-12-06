@@ -37,6 +37,7 @@
         "@portis/web3": "^4.0.6",
         "@types/js-cookie": "^3.0.0",
         "@walletconnect/web3-provider": "^1.6.6",
+        "bootstrap-html5sortable": "^1.0.0",
         "http-browserify": "^1.7.0",
         "https-browserify": "^1.0.0",
         "js-cookie": "^3.0.1",

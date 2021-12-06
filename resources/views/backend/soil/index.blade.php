@@ -6,39 +6,35 @@
                 <h1>Soil</h1>
                 <a type="button" href="{{ route('soil.create') }}" class="btn btn-primary btn-lg">Add soil 🌱</a>
             </div>
-        <div class="row">
-        @foreach ($soil as $currentSoil)
-                <div class="col-sm-4 pb-4">
-                    <div class="card">
-                        <img src="{{"/storage/".$currentSoil->top_image}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-title">{{$currentSoil->name}}</h3>
-                            <p class="card-text">Dig multiplier: {{$currentSoil->dig_multiplier}}</p>
 
-                                <div class="row">
+            <table class="table table-sortable table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Layers</th>
+                        <th scope="col">Dig multiplier</th>
+                        <th scope="col">Top image</th>
+                        <th scope="col">Middle image</th>
+                        <th scope="col">Bottom image</th>
 
-                                <div class="col">
-                                    <a href="{{route('soil.edit', $currentSoil->id)}}" class="btn btn-primary">Edit</a>
-                                </div>
-                                <div class="col">
-                                    <div class="float-right">
-                                        <form method="POST" action="{{ route('soil.destroy', [$currentSoil->id]) }}">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach ($soil as $currentSoil)
+                    <tr dragable="true" class="clickable-row" style="display: table-row;" data-href="{{route('soil.edit', $currentSoil->id)}}">
+                        <td scope="row">{{$currentSoil->id}}</td>
+                        <td>{{$currentSoil->name}}</td>
+                        <td>{{$currentSoil->layers}}</td>
+                        <td>{{$currentSoil->dig_multiplier}}</td>
+                        <td><img class="soil-table-image" src="{{"/storage/".$currentSoil->top_image}}" class="mx-auto d-block" alt="..."></td>
+                        <td><img class="soil-table-image" src="{{"/storage/".$currentSoil->middle_image}}" class="mx-auto d-block" alt="..."></td>
+                        <td><img class="soil-table-image" src="{{"/storage/".$currentSoil->bottom_image}}" class="mx-auto d-block" alt="..."></td>
 
-                                            <div class="d-flex form-group justify-content-end">
-                                                <input type="submit" class="btn btn-danger delete-crypto" value="Delete">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
     </div>
 
 @endsection
