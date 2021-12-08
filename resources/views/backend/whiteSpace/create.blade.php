@@ -6,13 +6,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('skill.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('whitespace.store') }}" enctype="multipart/form-data">
                             @csrf
-                            <h4 class="card-title">{{ __('Add Skill') }}</h4>
+                            <h4 class="card-title">{{ __('Add Whitespace') }}</h4>
                             <div class="mb-3">
-                                <label for="name" class="form-label">{{ __('Name') }}</label>
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                @error('name')
+                                <label for="starting_layer" class="form-label">{{ __('Starting layer') }}</label>
+                                <input id="starting_layer" placeholder="0" step="1" type="number" class="form-control @error('starting_layer') is-invalid @enderror" name="starting_layer" value="{{ old('starting_layer') }}" required autocomplete="name" autofocus>
+                                @error('starting_layer')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -20,9 +20,9 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="description" class="form-label">{{ __('Description') }}</label>
-                                <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autofocus></textarea>
-                                @error('description')
+                                <label for="ending_layer" class="form-label">{{ __('Ending layer') }}</label>
+                                <input id="ending_layer" placeholder="100" step="1" type="number" class="form-control @error('ending_layer') is-invalid @enderror" name="ending_layer" value="{{ old('ending_layer') }}" required autocomplete="name" autofocus>
+                                @error('ending_layer')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -30,29 +30,9 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="minimum" class="form-label">{{ __('Minimum') }}</label>
-                                <input id="minimum" step="any" type="number" class="form-control @error('minimum') is-invalid @enderror" name="minimum" value="{{ old('minimum') ?? 0 }}" required autofocus>
-                                @error('minimum')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="maximum" class="form-label">{{ __('Maximum') }}</label>
-                                <input id="maximum" step="any" type="number" class="form-control @error('maximum') is-invalid @enderror" name="maximum" value="{{ old('maximum') ?? 100 }}" required autofocus>
-                                @error('maximum')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="initial" class="form-label">{{ __('Initial') }}</label>
-                                <input id="initial" step="any" type="number" class="form-control @error('initial') is-invalid @enderror" name="initial" value="{{ old('initial') ?? 100 }}" required autocomplete="name" autofocus>
-                                @error('initial')
+                                <label for="spawn_rate" class="form-label">{{ __('Spawn rate') }}</label>
+                                <input id="spawn_rate" inputmode="decimal" placeholder="100.0" type="number" step=0.1 class="form-control @error('spawn_rate') is-invalid @enderror" name="spawn_rate" value="{{ old('spawn_rate') }}" required autocomplete="name" autofocus aria-describedby="basic-addon1">
+                                @error('spawn_rate')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -45,6 +45,10 @@ class World extends Model
         return $this->hasMany(Consumable::class);
     }
 
+    public function whiteSpaces() {
+        return $this->hasMany(WhiteSpace::class);
+    }
+
 
     public static function create(array $attributes = []) {
         $model = static::query()->create($attributes);
