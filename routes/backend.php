@@ -34,7 +34,11 @@ Route::resources([
     'gameplay/vital' => \App\Http\Controllers\Backend\VitalController::class,
     'gameplay/skill' => \App\Http\Controllers\Backend\SkillController::class,
     'gameplay/trait' => \App\Http\Controllers\Backend\AavegotchiTraitController::class,
-    'gameplay/traitEffect' => \App\Http\Controllers\Backend\TraitEffectController::class,
+    'gameplay/trait-effect' => \App\Http\Controllers\Backend\TraitEffectController::class,
     'world/puzzle' => \App\Http\Controllers\Backend\PuzzleController::class,
     'world' => \App\Http\Controllers\Backend\WorldController::class
 ]);
+
+//Scoped bindings for traiteffect
+Route::resource('gameplay/trait-effect.vitals', \App\Http\Controllers\Backend\TraitVitalEffectController::class);
+Route::resource('gameplay/trait-effect.skills', \App\Http\Controllers\Backend\TraitSkillEffectController::class);

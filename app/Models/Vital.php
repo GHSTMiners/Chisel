@@ -9,6 +9,10 @@ class Vital extends Model
 {
     use HasFactory;
 
+    public function traitEffects() {
+        return $this->hasMany(TraitVitalEffect::class);
+    }
+
     protected $fillable = [
         'name',
         'world_id',

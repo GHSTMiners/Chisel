@@ -9,6 +9,10 @@ class Skill extends Model
 {
     use HasFactory;
 
+    public function traitEffects() {
+        return $this->hasMany(TraitSkillEffect::class);
+    }
+
     protected $fillable = [
         'name',
         'world_id',

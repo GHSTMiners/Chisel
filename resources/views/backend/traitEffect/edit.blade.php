@@ -7,72 +7,37 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between pb-3">
-                        <h4 class="card-title">{{ __('Edit Trait Efffect') }}</h4>   
-                        @if(!$skill->default)
-                        <form method="POST" action="{{ route('traitEffect.destroy', [$skill->id]) }}">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
+                            <h4 class="card-title">{{ __('Edit Trait Efffect') }}</h4>   
+                            <form method="POST" action="{{ route('trait-effect.destroy', [$traitEffect->id]) }}">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
 
-                            <div class="d-flex form-group justify-content-end">
-                                <input type="submit" class="btn btn-danger btn-lg" value="Delete">
-                            </div>
-                        </form>
-                        @endif
+                                <div class="d-flex form-group justify-content-end">
+                                    <input type="submit" class="btn btn-danger btn-lg" value="Delete">
+                                </div>
+                            </form>
                         </div>
-                        <form method="POST" action="{{ route('skill.update', $skill->id) }}" enctype="multipart/form-data">
-                            @csrf
-                            @method('patch')
-                            <div class="mb-3">
-                                <label for="name" class="form-label">{{ __('Name') }}</label>
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $skill->name }}" required autocomplete="name" autofocus @if($skill->default) disabled @endif>
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <div class="card-body">
+                        <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-consumable-tab" data-bs-toggle="tab" data-bs-target="#nav-consumable" type="button" role="tab" aria-controls="nav-consumable" aria-selected="true">Consumable</button>
+                            <button class="nav-link" id="nav-vitals-tab" data-bs-toggle="tab" data-bs-target="#nav-vitals" type="button" role="tab" aria-controls="nav-vitals" aria-selected="false">Vital effects</button>
+                            <button class="nav-link" id="nav-skills-tab" data-bs-toggle="tab" data-bs-target="#nav-skills" type="button" role="tab" aria-controls="nav-skills" aria-selected="false">Skill effects</button>
+                        </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-consumable" role="tabpanel" aria-labelledby="nav-consumable-tab">
+                            @include('backend.traitEffect.editTabs.edit')
+                        </div>
+                        <div class="tab-pane fade" id="nav-vitals" role="tabpanel" aria-labelledby="nav-vitals-tab">
+                            @include('backend.traitEffect.editTabs.vitalEffect.index')
 
-                            <div class="mb-3">
-                                <label for="description" class="form-label">{{ __('Description') }}</label>
-                                <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required autofocus>{{old('description') ?? $skill->description}}</textarea>
-                                @error('description')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="minimum" class="form-label">{{ __('Minimum') }}</label>
-                                <input id="minimum" step="any" type="number" class="form-control @error('minimum') is-invalid @enderror" name="minimum" value="{{ old('minimum') ?? $skill->minimum }}" required autocomplete="name" autofocus>
-                                @error('minimum')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="maximum" class="form-label">{{ __('Maximum') }}</label>
-                                <input id="maximum" step="any" type="number" class="form-control @error('maximum') is-invalid @enderror" name="maximum" value="{{ old('maximum') ?? $skill->maximum }}" required autocomplete="name" autofocus>
-                                @error('maximum')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="initial" class="form-label">{{ __('Initial') }}</label>
-                                <input id="initial" step="any" type="number" class="form-control @error('initial') is-invalid @enderror" name="initial" value="{{ old('initial') ?? $skill->initial }}" required autocomplete="name" autofocus>
-                                @error('initial')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg">{{ __('Update') }}</button>  
-                        </form>
+                        </div>
+                        <div class="tab-pane fade" id="nav-skills" role="tabpanel" aria-labelledby="nav-skills-tab">
+                            @include('backend.traitEffect.editTabs.skillEffect.index')
+                        </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

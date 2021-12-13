@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('traitEffect.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('trait-effect.store') }}" enctype="multipart/form-data">
                             @csrf
                             <h4 class="card-title">{{ __('Add Trait Effect') }}</h4>
                             <div class="mb-3">
@@ -21,7 +21,7 @@
 
                             <div class="mb-3">
                                 <label for="description" class="form-label">{{ __('Description') }}</label>
-                                <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autofocus></textarea>
+                                <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" autofocus></textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -30,34 +30,16 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="minimum" class="form-label">{{ __('Minimum') }}</label>
-                                <input id="minimum" step="any" type="number" class="form-control @error('minimum') is-invalid @enderror" name="minimum" value="{{ old('minimum') ?? 0 }}" required autofocus>
-                                @error('minimum')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <label for="description" class="form-label">{{ __('Trait') }}</label>
+                                <select class="form-select" aria-label="trait_id" name="trait_id">
+                                @foreach ($traits as $currentTrait)
+                                    <option value="{{$currentTrait->id}}">{{$currentTrait->name}}</option>
+                                    
+                                @endforeach
+                                </select>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="maximum" class="form-label">{{ __('Maximum') }}</label>
-                                <input id="maximum" step="any" type="number" class="form-control @error('maximum') is-invalid @enderror" name="maximum" value="{{ old('maximum') ?? 100 }}" required autofocus>
-                                @error('maximum')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="initial" class="form-label">{{ __('Initial') }}</label>
-                                <input id="initial" step="any" type="number" class="form-control @error('initial') is-invalid @enderror" name="initial" value="{{ old('initial') ?? 100 }}" required autocomplete="name" autofocus>
-                                @error('initial')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            
                             <button type="submit" class="btn btn-primary btn-lg">{{ __('Add') }}</button>  
                         </form>
                     </div>
