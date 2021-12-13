@@ -50,7 +50,7 @@ class World extends Model
     }
 
     public function traitEffects() { 
-        return $this->hasMany(traitEffect::class);
+        return $this->hasMany(TraitEffect::class);
     }
 
     public static function create(array $attributes = []) {
