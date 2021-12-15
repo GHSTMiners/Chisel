@@ -18,8 +18,8 @@ class CreateBackgroundsTable extends Migration
             $table->timestamps();
             $table->foreignId('world_id')->references('id')->on('worlds')->onDelete('cascade');
             $table->string('image');
-            $table->unsignedInteger('starting_layer');
-            $table->unsignedInteger('ending_layer');
+            $table->integer('starting_layer');
+            $table->integer('ending_layer');
         });
     }
 
