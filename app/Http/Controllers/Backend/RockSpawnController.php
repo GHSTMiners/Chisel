@@ -34,9 +34,9 @@ class RockSpawnController extends Controller
         $rocks = request()->selectedWorld->rocks;
         $data = request()->validate([
             'rock_id' => ['numeric', 'exists:rocks,id'],
-            'starting_layer' => ['numeric', 'gt:0'],
-            'ending_layer' => ['numeric', 'gt:0'],
-            'spawn_rate' => ['numeric', 'gt:0', 'lte:100'],            
+            'starting_layer' => ['numeric', 'gte:0'],
+            'ending_layer' => ['numeric', 'gte:0'],
+            'spawn_rate' => ['numeric', 'gte:0', 'lte:1'],            
         ]);
         $rockSpawn->update($data);
         return redirect()->route('rock-spawns.index');
@@ -45,9 +45,9 @@ class RockSpawnController extends Controller
     public function store() {
         $data = request()->validate([
             'rock_id' => ['required', 'numeric', 'exists:rocks,id'],
-            'starting_layer' => ['required', 'numeric', 'gt:0'],
-            'ending_layer' => ['required', 'numeric', 'gt:0'],
-            'spawn_rate' => ['required', 'numeric', 'gt:0', 'lte:100'],            
+            'starting_layer' => ['required', 'numeric', 'gte:0'],
+            'ending_layer' => ['required', 'numeric', 'gte:0'],
+            'spawn_rate' => ['required', 'numeric', 'gte:0', 'lte:1'],            
         ]);
         $data['world_id'] = request()->selectedWorld->id;
         \App\Models\RockSpawn::create($data);

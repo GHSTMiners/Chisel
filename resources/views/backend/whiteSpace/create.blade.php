@@ -31,13 +31,21 @@
 
                             <div class="mb-3">
                                 <label for="spawn_rate" class="form-label">{{ __('Spawn rate') }}</label>
-                                <input id="spawn_rate" inputmode="decimal" placeholder="100.0" type="number" step=0.1 class="form-control @error('spawn_rate') is-invalid @enderror" name="spawn_rate" value="{{ old('spawn_rate') }}" required autocomplete="name" autofocus aria-describedby="basic-addon1">
+                                <input id="spawn_rate" inputmode="decimal" placeholder="0.5000" type="number" step=0.0001 class="form-control @error('spawn_rate') is-invalid @enderror" name="spawn_rate" value="{{ old('spawn_rate') }}" required autocomplete="name" autofocus aria-describedby="basic-addon1">
                                 @error('spawn_rate')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="background_only" id="background_only" value=1>
+                                    <label class="form-check-label" for="background_only">{{ __('Background only') }}</label>
+                                </div>
+                            </div>
+
                             <button type="submit" class="btn btn-primary btn-lg">{{ __('Add') }}</button>  
                         </form>
                     </div>

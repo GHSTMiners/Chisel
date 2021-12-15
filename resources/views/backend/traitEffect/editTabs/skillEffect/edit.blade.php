@@ -6,8 +6,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('trait-effect.skills.store', $traitEffect->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('trait-effect.skills.update', $traitEffect->id) }}" enctype="multipart/form-data">
                             @csrf
+                            @method('patch')
+
                             <h4 class="card-title">{{ __('Edit Trait Skill effect') }}</h4>
 
                             <div class="mb-3">
@@ -49,7 +51,7 @@
                                 @enderror
                             </div>
                             
-                            <button type="submit" class="btn btn-primary btn-lg">{{ __('Add') }}</button>  
+                            <button type="submit" class="btn btn-primary btn-lg">{{ __('Update') }}</button>  
                         </form>
                     </div>
                 </div>

@@ -13,6 +13,7 @@ class WhiteSpace extends Model
         'world_id',
         'starting_layer',
         'ending_layer',
-        'spawn_rate'
+        'spawn_rate',
+        'background_only'
     ];
 }

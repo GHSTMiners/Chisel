@@ -33,9 +33,11 @@ class WhiteSpaceController extends Controller
 
     public function update(WhiteSpace $whitespace) {
         $data = request()->validate([
-            'starting_layer' => ['numeric', 'gt:0'],
-            'ending_layer' => ['numeric', 'gt:0'],
-            'spawn_rate' => ['numeric', 'gt:0', 'lte:100'],            
+            'starting_layer' => ['numeric', 'gte:0'],
+            'ending_layer' => ['numeric', 'gte:0'],
+            'spawn_rate' => ['numeric', 'gte:0', 'lte:1'],  
+            'background_only' => 'boolean',
+          
         ]);
         $whitespace->update($data);
         return redirect()->route('whitespace.index');
@@ -44,9 +46,11 @@ class WhiteSpaceController extends Controller
 
     public function store() {
         $data = request()->validate([
-            'starting_layer' => ['required', 'numeric', 'gt:0'],
-            'ending_layer' => ['required', 'numeric', 'gt:0'],
-            'spawn_rate' => ['required', 'numeric', 'gt:0', 'lte:100'],            
+            'starting_layer' => ['required', 'numeric', 'gte:0'],
+            'ending_layer' => ['required', 'numeric', 'gte:0'],
+            'spawn_rate' => ['required', 'numeric', 'gte:0', 'lte:1'],    
+            'background_only' => 'boolean',
+        
         ]);
         $data['world_id'] = request()->selectedWorld->id;
         \App\Models\WhiteSpace::create($data);

@@ -8,6 +8,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('trait-effect.vitals.update', [$traitEffect, $traitVitalEffect]) }}" enctype="multipart/form-data">
                             @csrf
+                            @method('patch')
                             <h4 class="card-title">{{ __('Edit Trait Vital effect') }}</h4>
 
                             <div class="mb-3">

@@ -34,9 +34,9 @@ class CryptoSpawnController extends Controller
     public function update(CryptoSpawn $cryptoSpawn) {
         $data = request()->validate([
             'crypto_id' => ['numeric', 'exists:cryptos,id'],
-            'starting_layer' => ['numeric', 'gt:0'],
-            'ending_layer' => ['numeric', 'gt:0'],
-            'spawn_rate' => ['numeric', 'gt:0', 'lte:100'],            
+            'starting_layer' => ['numeric', 'gte:0'],
+            'ending_layer' => ['numeric', 'gte:0'],
+            'spawn_rate' => ['numeric', 'gte:0', 'lte:1'],            
         ]);
         $cryptoSpawn->update($data);
         return redirect()->route('crypto-spawns.index');

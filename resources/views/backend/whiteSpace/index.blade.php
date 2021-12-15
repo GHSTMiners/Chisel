@@ -14,6 +14,8 @@
                     <th scope="col">Starting layer</th>
                     <th scope="col">Ending layer</th>
                     <th scope="col">Spawn rate</th>
+                    <th scope="col">Background only</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +25,7 @@
                     <td>{{$currentWhiteSpace->starting_layer}}</td>
                     <td>{{$currentWhiteSpace->ending_layer}}</td>
                     <td>{{$currentWhiteSpace->spawn_rate}}</td>
+                    <td>{{$currentWhiteSpace->background_only}}</td>
                 </tr>
             @endforeach
             </tbody>
