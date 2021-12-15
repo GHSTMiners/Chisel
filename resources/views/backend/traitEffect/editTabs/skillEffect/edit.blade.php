@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('trait-effect.skills.update', $traitEffect->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('trait-effect.skills.update', [$traitEffect, $traitVitalEffect]) }}" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
 
