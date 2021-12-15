@@ -28,7 +28,7 @@ class WhiteSpaceController extends Controller
 
     public function destroy(WhiteSpace $whitespace) {
         $whitespace->delete();
-        return redirect()->route('whiteSpace.index');
+        return redirect()->route('whitespace.index');
     }  
 
     public function update(WhiteSpace $whitespace) {
@@ -53,7 +53,7 @@ class WhiteSpaceController extends Controller
             'spawn_rate' => ['required', 'numeric', 'gte:0', 'lte:1'],    
             'background_only' => 'boolean',
         ]);
-        
+
         $data['world_id'] = request()->selectedWorld->id;
         \App\Models\WhiteSpace::create($data);
         return redirect()->route('whitespace.index');

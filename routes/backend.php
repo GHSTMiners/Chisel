@@ -36,6 +36,7 @@ Route::resources([
     'gameplay/trait' => \App\Http\Controllers\Backend\AavegotchiTraitController::class,
     'gameplay/trait-effect' => \App\Http\Controllers\Backend\TraitEffectController::class,
     'world/puzzle' => \App\Http\Controllers\Backend\PuzzleController::class,
+    'world/background' => \App\Http\Controllers\Backend\BackgroundController::class,
     'world' => \App\Http\Controllers\Backend\WorldController::class
 ]);
 

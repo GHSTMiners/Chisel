@@ -9,6 +9,10 @@ class World extends Model
 {
     use HasFactory;
 
+    public function backgrounds() {
+        return $this->hasMany(Background::class);
+    }
+
     public function crypto() {
         return $this->hasMany(Crypto::class);
     }

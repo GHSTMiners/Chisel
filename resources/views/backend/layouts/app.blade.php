@@ -99,7 +99,6 @@
                                 @if (Route::has('trait.index'))
                                     <a class="dropdown-item  {{(!Route::is('trait-effect*') && Route::is('trait*')) ? 'active' : ''}}" href="{{ route('trait.index') }}">{{ __('Traits') }}</a>
                                 @endif
-
                                 @if (Route::has('trait-effect.index'))
                                     <a class="dropdown-item  {{ Route::is('trait-effect*') ? 'active' : ''}}" href="{{ route('trait-effect.index') }}">{{ __('Traits Effects') }}</a>
                                 @endif
@@ -121,12 +120,15 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle {{str_contains(url()->current(), 'world') ? 'active' : ''}}" href="#" id="gameplayDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle {{str_contains(url()->current(), 'world') ? 'active' : ''}}" href="#" id="world" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ __('World')}}   
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="gameplayDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="world">
                                 @if (Route::has('puzzle.index'))
                                     <a class="dropdown-item  {{Route::is('puzzle*') ? 'active' : ''}}" href="{{ route('puzzle.index') }}">{{ __('Puzzles') }}</a>
+                                @endif
+                                @if (Route::has('background.index'))
+                                    <a class="dropdown-item  {{Route::is('background*') ? 'active' : ''}}" href="{{ route('background.index') }}">{{ __('Backgrounds') }}</a>
                                 @endif
                             </ul>
                         </li>
