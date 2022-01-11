@@ -33,7 +33,7 @@ class WorldController extends Controller
         if(!$world->published) abort(404);
         if(!Cache::has('world_'.$world->id) || $world->development_mode) {
             Cache::put('world_'.$world->id, 
-            $world->with('crypto.spawns', 'backgrounds', 'soil', 'whiteSpaces', 'explosives.explosionCoordinates', 'rocks.spawns', 'skills.traitEffects.trait', 'vitals.traitEffects.trait', 'consumables.consumableVitalEffects', 'consumables.consumableSkillEffects')->find($world->id),
+            $world->with('crypto.spawns', 'backgrounds', 'soil', 'whiteSpaces', 'explosives.explosionCoordinates', 'rocks.spawns', 'skills', 'vitals', 'consumables.consumableVitalEffects', 'consumables.consumableSkillEffects')->find($world->id),
             now()->addMinutes(10));
         } 
         return response()->json(

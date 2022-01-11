@@ -1,8 +1,14 @@
-
+import * as mathjs from "mathjs"
 jQuery(($) => {
         $(".clickable-row").click(function () {
             window.location = $(this).data("href");
         });
+
+        $(".math-expression").each( (input, element ) => {
+          if(element instanceof HTMLInputElement) {
+            validate(element)
+          }
+        })
 
         let sortable = require('bootstrap-html5sortable')
 
@@ -57,5 +63,37 @@ jQuery(($) => {
           })
         }
         // end if innerWidth
-        }); 
+        });
+        
+        
+        function validate(input : HTMLInputElement) {
+          let value : string = input.value
+          // provide a scope
+          let scope = {
+            energy: 3,
+            aggressiveness: 4,
+            spookiness: 4,
+            brain_size: 5,
+            eye_shape: 6,
+            eye_color: 6
+          }
+
+          try {
+            mathjs.evaluate(value, scope)
+            $(input).addClass("is-valid")
+            $(input).removeClass("is-invalid")
+            
+          } catch (error : any) {
+            $(input.parentElement).find(".invalid-feedback").text(error)
+            $(input).addClass("is-invalid")
+            $(input).removeClass("is-valid")
+          }
+        }
+
+
+        $(".math-expression").keyup(function() {
+          if(this instanceof HTMLInputElement) {
+            validate(this)
+          }
+        });
         // DOMContentLoaded  end

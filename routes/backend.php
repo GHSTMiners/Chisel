@@ -22,24 +22,17 @@ Auth::routes(['register' => true]);
 //Crypto
 Route::resources([
     'matter/crypto' => \App\Http\Controllers\Backend\CryptoController::class,
-    'matter/crypto-spawns' => \App\Http\Controllers\Backend\CryptoSpawnController::class,
+    'matter/crypto-spawnws' => \App\Http\Controllers\Backend\CryptoSpawnController::class,
     'matter/soil' => \App\Http\Controllers\Backend\SoilController::class,
     'matter/rock' => \App\Http\Controllers\Backend\RockController::class,
     'matter/rock-spawns' => \App\Http\Controllers\Backend\RockSpawnController::class,
     'matter/whitespace' => \App\Http\Controllers\Backend\WhiteSpaceController::class,
     'items/explosive' => \App\Http\Controllers\Backend\ExplosiveController::class,
     'items/consumable' => \App\Http\Controllers\Backend\ConsumableController::class,
-    'items/consumable/consumableVitalEffect' => \App\Http\Controllers\Backend\ConsumableVitalEffectController::class,
-    'items/consumable/consumableSkillEffect' => \App\Http\Controllers\Backend\ConsumableSkillEffectController::class,
     'gameplay/vital' => \App\Http\Controllers\Backend\VitalController::class,
     'gameplay/skill' => \App\Http\Controllers\Backend\SkillController::class,
     'gameplay/trait' => \App\Http\Controllers\Backend\AavegotchiTraitController::class,
-    'gameplay/trait-effect' => \App\Http\Controllers\Backend\TraitEffectController::class,
     'world/puzzle' => \App\Http\Controllers\Backend\PuzzleController::class,
     'world/background' => \App\Http\Controllers\Backend\BackgroundController::class,
     'world' => \App\Http\Controllers\Backend\WorldController::class
 ]);
-
-//Scoped bindings for traiteffect
-Route::resource('gameplay/trait-effect.vitals', \App\Http\Controllers\Backend\TraitVitalEffectController::class);
-Route::resource('gameplay/trait-effect.skills', \App\Http\Controllers\Backend\TraitSkillEffectController::class);

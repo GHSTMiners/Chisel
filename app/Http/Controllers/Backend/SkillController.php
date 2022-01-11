@@ -33,11 +33,11 @@ class SkillController extends Controller
 
     public function update(Skill $skill) {
         $data = request()->validate([
-            'name' => ['string', 'required'],
-            'description' => ['string', 'required'],
-            'minimum' => ['required', 'numeric'],
-            'maximum' => ['required', 'numeric'],
-            'initial' => ['required', 'numeric']
+            'name' => ['string'],
+            'description' => ['string'],
+            'minimum' => ['string'],
+            'maximum' => ['string'],
+            'initial' => ['string']
         ]);
 
         $skill->update($data);
@@ -48,9 +48,9 @@ class SkillController extends Controller
         $data = request()->validate([
             'name' => ['string', 'required'],
             'description' => ['string', 'required'],
-            'minimum' => ['required', 'numeric'],
-            'maximum' => ['required', 'numeric'],
-            'initial' => ['required', 'numeric']
+            'minimum' => ['string', 'required'],
+            'maximum' => ['string', 'required'],
+            'initial' => ['string', 'required']
         ]);
 
         $data['world_id'] = $model->id;

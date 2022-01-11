@@ -53,10 +53,6 @@ class World extends Model
         return $this->hasMany(WhiteSpace::class);
     }
 
-    public function traitEffects() { 
-        return $this->hasMany(TraitEffect::class);
-    }
-
     public static function create(array $attributes = []) {
         $model = static::query()->create($attributes);
         echo $model->id;

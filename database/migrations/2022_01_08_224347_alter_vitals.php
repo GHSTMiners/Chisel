@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TraitVitalEffectsAlter extends Migration
+class AlterVitals extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class TraitVitalEffectsAlter extends Migration
      */
     public function up()
     {
-        Schema::table('trait_vital_effects', function (Blueprint $table) {
-            $table->foreignId('trait_id')->references('id')->on('aavegotchi_traits')->onDelete('cascade');            
+        Schema::table('vitals', function (Blueprint $table) {
+            $table->text('minimum')->change();
+            $table->text('maximum')->change();
+            $table->text('initial')->change();
         });
     }
 

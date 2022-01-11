@@ -31,25 +31,25 @@ class VitalController extends Controller
         return redirect()->route('vital.index');
     }  
 
-    public function update(Soil $soil) {
+    public function update(Vital $vital) {
         $data = request()->validate([
-            'name' => ['string', 'required'],
-            'minimum' => ['required', 'numeric'],
-            'maximum' => ['required', 'numeric'],
-            'initial' => ['required', 'numeric']
+            'name' => ['string'],
+            'minimum' => ['string'],
+            'maximum' => ['string'],
+            'initial' => ['string']
         ]);
 
-        $soil->update($data);
-        return redirect()->route('soil.index');
+        $vital->update($data);
+        return redirect()->route('vital.index');
     }
 
     public function store() {
         $data = request()->validate([
             'name' => ['string', 'required'],
             'world_id' => request()->selectedWorld->id,
-            'minimum' => ['required', 'numeric'],
-            'maximum' => ['required', 'numeric'],
-            'initial' => ['required', 'numeric']
+            'minimum' => ['required', 'string'],
+            'maximum' => ['required', 'string'],
+            'initial' => ['required', 'string']
         ]);
         \App\Models\Vital::create($data);
         return redirect()->route('vital.index');

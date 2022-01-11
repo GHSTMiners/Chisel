@@ -19,7 +19,7 @@
                         </form>
                         @endif
                         </div>
-                        <form method="POST" action="{{ route('vital.update', $vital->id) }}" enctype="multipart/form-data">
+                        <form method="POST" autocomplete="off" action="{{ route('vital.update', $vital->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <div class="mb-3">
@@ -34,32 +34,41 @@
 
                             <div class="mb-3">
                                 <label for="minimum" class="form-label">{{ __('Minimum') }}</label>
-                                <input id="minimum" step="any" type="number" class="form-control @error('minimum') is-invalid @enderror" name="minimum" value="{{ old('minimum') ?? $vital->minimum }}" required autocomplete="name" autofocus>
+                                <input id="minimum" type="text" class="form-control math-expression @error('minimum') is-invalid @enderror" name="minimum" value="{{ old('minimum') ?? $vital->minimum }}" required autocomplete="name" autofocus>
                                 @error('minimum')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <div class="invalid-feedback">
+                                    Formula invalid
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="maximum" class="form-label">{{ __('Maximum') }}</label>
-                                <input id="maximum" step="any" type="number" class="form-control @error('maximum') is-invalid @enderror" name="maximum" value="{{ old('maximum') ?? $vital->maximum }}" required autocomplete="name" autofocus>
+                                <input id="maximum" type="text" class="form-control math-expression @error('maximum') is-invalid @enderror" name="maximum" value="{{ old('maximum') ?? $vital->maximum }}" required autocomplete="name" autofocus>
                                 @error('maximum')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <div class="invalid-feedback">
+                                    Formula invalid
+                                </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="initial" class="form-label">{{ __('Initial') }}</label>
-                                <input id="initial" step="any" type="number" class="form-control @error('initial') is-invalid @enderror" name="initial" value="{{ old('initial') ?? $vital->initial }}" required autocomplete="name" autofocus>
+                                <input id="initial" type="text" class="form-control math-expression @error('initial') is-invalid @enderror" name="initial" value="{{ old('initial') ?? $vital->initial }}" required autocomplete="name" autofocus>
                                 @error('initial')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <div class="invalid-feedback">
+                                    Formula invalid
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-lg">{{ __('Update') }}</button>  
                         </form>
