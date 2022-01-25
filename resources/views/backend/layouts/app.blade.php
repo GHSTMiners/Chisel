@@ -99,9 +99,6 @@
                                 @if (Route::has('trait.index'))
                                     <a class="dropdown-item  {{(!Route::is('trait-effect*') && Route::is('trait*')) ? 'active' : ''}}" href="{{ route('trait.index') }}">{{ __('Traits') }}</a>
                                 @endif
-                                @if (Route::has('trait-effect.index'))
-                                    <a class="dropdown-item  {{ Route::is('trait-effect*') ? 'active' : ''}}" href="{{ route('trait-effect.index') }}">{{ __('Traits Effects') }}</a>
-                                @endif
                             </ul>
                         </li>
 
@@ -129,6 +126,17 @@
                                 @endif
                                 @if (Route::has('background.index'))
                                     <a class="dropdown-item  {{Route::is('background*') ? 'active' : ''}}" href="{{ route('background.index') }}">{{ __('Backgrounds') }}</a>
+                                @endif
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {{str_contains(url()->current(), 'assets') ? 'active' : ''}}" href="#" id="assets" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ __('Assets')}}   
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="assets">
+                                @if (Route::has('sprite-sheets.index'))
+                                    <a class="dropdown-item  {{Route::is('sprite-sheets*') ? 'active' : ''}}" href="{{ route('sprite-sheets.index') }}">{{ __('Spritesheets') }}</a>
                                 @endif
                             </ul>
                         </li>

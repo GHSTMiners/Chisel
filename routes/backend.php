@@ -21,8 +21,9 @@ Auth::routes(['register' => true]);
 
 //Crypto
 Route::resources([
+    'assets/sprite-sheets' => \App\Http\Controllers\Backend\SpriteSheetController::class,
     'matter/crypto' => \App\Http\Controllers\Backend\CryptoController::class,
-    'matter/crypto-spawnws' => \App\Http\Controllers\Backend\CryptoSpawnController::class,
+    'matter/crypto-spawns' => \App\Http\Controllers\Backend\CryptoSpawnController::class,
     'matter/soil' => \App\Http\Controllers\Backend\SoilController::class,
     'matter/rock' => \App\Http\Controllers\Backend\RockController::class,
     'matter/rock-spawns' => \App\Http\Controllers\Backend\RockSpawnController::class,
