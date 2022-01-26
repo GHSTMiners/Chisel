@@ -1,5 +1,11 @@
 import * as mathjs from "mathjs"
 jQuery(($) => {
+
+        $(".spritesheet-field").change(function() {
+          console.log("jaaajaaaa")
+        })
+
+
         $(".clickable-row").click(function () {
             window.location = $(this).data("href");
         });
