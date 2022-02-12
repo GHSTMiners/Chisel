@@ -127,6 +127,9 @@
                                 @if (Route::has('background.index'))
                                     <a class="dropdown-item  {{Route::is('background*') ? 'active' : ''}}" href="{{ route('background.index') }}">{{ __('Backgrounds') }}</a>
                                 @endif
+                                @if (Route::has('building.index'))
+                                    <a class="dropdown-item  {{Route::is('building*') ? 'active' : ''}}" href="{{ route('building.index') }}">{{ __('Buildings') }}</a>
+                                @endif
                             </ul>
                         </li>
 
@@ -140,6 +143,7 @@
                                 @endif
                             </ul>
                         </li>
+                        
                         @endauth
                     </ul>
 
