@@ -16,6 +16,10 @@ class Building extends Model
         'spawn_x',
         'spawn_y',
         'video',
-        'type'
+        'activation_sound',
+        'activation_message',
+        'type',
+        'crypto_id',
+        'price'
     ];
 }

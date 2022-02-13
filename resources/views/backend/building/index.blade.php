@@ -19,9 +19,7 @@
                                 <p class="card-text">X: {{$currentBuilding->spawn_x}}, Y: {{$currentBuilding->spawn_y}}</p>
                             </div>
 
-
                                 <div class="row">
-
                                 <div class="col">
                                     <a href="{{route('building.edit', $currentBuilding->id)}}" class="btn btn-primary">Edit</a>
                                 </div>

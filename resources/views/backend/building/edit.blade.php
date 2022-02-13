@@ -41,10 +41,38 @@
                                     </span>
                                 @enderror
                             </div>
+                            <label for="price" class="form-label">{{ __('Price') }}</label>
+                            <div class="input-group mb-3">
+                                <input id="price" type="text" class="form-control" placeholder="0.00" aria-label="price" name="price" value="{{ old('price') ?? $building->price}}" required>
+                                <select class="form-select" aria-label="crypto" name="crypto_id">
+                                @foreach ($crypto as $currentCrypto)
+                                    <option value="{{$currentCrypto->id}}" @if( $building->crypto_id == $currentCrypto->id) selected @endif >{{$currentCrypto->name}}</option>
+                                    
+                                @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="activation_message" class="form-label">{{ __('Message') }}</label>
+                                <input id="activation_message" type="text" class="form-control @error('activation_message') is-invalid @enderror" name="activation_message" value="{{ old('activation_message') ?? $building->activation_message }}" required autofocus></input>
+                                @error('activation_message')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             <div class="mb-3">
                                 <label for="video" class="form-label">{{ __('Video') }}</label>
                                 <input id="video" name="video" type="file" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ old('video') }}" accept="video/webm">
                                 @error('video')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="activation_sound" class="form-label">{{ __('Activation sound') }}</label>
+                                <input id="activation_sound" type="file" class="form-control @error('activation_sound') is-invalid @enderror" name="activation_sound" value="{{ old('activation_sound') }}" autocomplete="activation_sound">
+                                @error('activation_sound')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

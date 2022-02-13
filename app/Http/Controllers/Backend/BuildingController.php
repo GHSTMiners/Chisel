@@ -14,16 +14,19 @@ class BuildingController extends Controller
     }
 
     public function index() {
+        $crypto = request()->selectedWorld->crypto;
         $buildings = request()->selectedWorld->buildings;
-        return view('backend.building.index', compact('buildings'));
+        return view('backend.building.index', compact('buildings', 'crypto'));
     }
 
     public function create() {
-        return view('backend.building.create');
+        $crypto = request()->selectedWorld->crypto;
+        return view('backend.building.create', compact('crypto'));
     }
 
     public function edit(Building $building ) {
-        return view('backend.building.edit', compact('building'));
+        $crypto = request()->selectedWorld->crypto;
+        return view('backend.building.edit', compact('building', 'crypto'));
     }
 
     public function update(Building $building) {
@@ -31,10 +34,15 @@ class BuildingController extends Controller
             'type' => [],
             'spawn_x' => ['numeric'],
             'spawn_y' => ['numeric'],
+            'price' => ['numeric'],
+            'crypto_id' => ['numeric', 'exists:cryptos,id'],
+            'activation_message' => ['string'],
             'video' => ['mimetypes:video/webm'],
+            'activation_sound' => ['mimetypes:audio/x-wav,audio/mpeg'],
         ]);
 
         if(array_key_exists('video', $data)) $data['video'] = $data['video']->store('buildings', 'public');
+        if(array_key_exists('activation_sound', $data)) $data['activation_sound'] = $data['activation_sound']->store('buildings', 'public');
 
         $building->update($data);
         return redirect()->route('building.index');
@@ -50,11 +58,16 @@ class BuildingController extends Controller
             'type' => ['required'],
             'spawn_x' => ['required', 'numeric'],
             'spawn_y' => ['required', 'numeric'],
+            'price' => ['required', 'numeric'],
+            'crypto_id' => ['required', 'numeric', 'exists:cryptos,id'],
+            'activation_message' => ['required', 'string'],
             'video' => ['required', 'mimetypes:video/webm'],
+            'activation_sound' => ['required', 'mimetypes:audio/x-wav,audio/mpeg'],
         ]);
-
         $data['world_id'] = request()->selectedWorld->id;
         $data['video'] = request('video')->store('buildings', 'public');
+        $data['activation_sound'] = request('activation_sound')->store('buildings', 'public');
+
         \App\Models\Building::create($data);
         return redirect()->route('building.index');
     }
