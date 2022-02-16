@@ -29,6 +29,10 @@ class World extends Model
         return $this->hasMany(Soil::class);
     }
 
+    public function buildings() {
+        return $this->hasMany(Building::class);
+    }
+
     public function explosives() {
         return $this->hasMany(Explosive::class);
     }

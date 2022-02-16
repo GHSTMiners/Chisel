@@ -130,6 +130,9 @@
                                 @if (Route::has('music.index'))
                                     <a class="dropdown-item  {{Route::is('music*') ? 'active' : ''}}" href="{{ route('music.index') }}">{{ __('Music') }}</a>
                                 @endif
+                                @if (Route::has('building.index'))
+                                    <a class="dropdown-item  {{Route::is('building*') ? 'active' : ''}}" href="{{ route('building.index') }}">{{ __('Buildings') }}</a>
+                                @endif
                             </ul>
                         </li>
 

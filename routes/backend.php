@@ -35,5 +35,6 @@ Route::resources([
     'world/puzzle' => \App\Http\Controllers\Backend\PuzzleController::class,
     'world/background' => \App\Http\Controllers\Backend\BackgroundController::class,
     'world/music' => \App\Http\Controllers\Backend\MusicController::class,
+    'world/building' => \App\Http\Controllers\Backend\BuildingController::class,
     'world' => \App\Http\Controllers\Backend\WorldController::class
 ]);
