@@ -30,6 +30,11 @@ class RockSpawnController extends Controller
         return view('backend.rockSpawns.edit', compact('rockSpawn', 'rocks'));
     }
 
+    public function destroy(RockSpawn $rockSpawn) {
+        $rockSpawn->delete();
+        return redirect()->route('rock-spawns.index');
+    }
+
     public function update(RockSpawn $rockSpawn) {
         $rocks = request()->selectedWorld->rocks;
         $data = request()->validate([

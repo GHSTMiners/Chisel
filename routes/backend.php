@@ -17,11 +17,10 @@ Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->
 Route::post('/matter/soil/update-sorting', [App\Http\Controllers\Backend\SoilController::class, 'updateSorting'])->name('updateSortingSoil');
 
 
-Auth::routes(['register' => true]);
+Auth::routes(['register' => false]);
 
 //Crypto
 Route::resources([
-    'assets/sprite-sheets' => \App\Http\Controllers\Backend\SpriteSheetController::class,
     'matter/crypto' => \App\Http\Controllers\Backend\CryptoController::class,
     'matter/crypto-spawns' => \App\Http\Controllers\Backend\CryptoSpawnController::class,
     'matter/soil' => \App\Http\Controllers\Backend\SoilController::class,
@@ -35,5 +34,6 @@ Route::resources([
     'gameplay/trait' => \App\Http\Controllers\Backend\AavegotchiTraitController::class,
     'world/puzzle' => \App\Http\Controllers\Backend\PuzzleController::class,
     'world/background' => \App\Http\Controllers\Backend\BackgroundController::class,
+    'world/music' => \App\Http\Controllers\Backend\MusicController::class,
     'world' => \App\Http\Controllers\Backend\WorldController::class
 ]);

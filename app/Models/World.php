@@ -13,6 +13,10 @@ class World extends Model
         return $this->hasMany(Background::class);
     }
 
+    public function music() {
+        return $this->hasMany(Music::class);
+    }
+
     public function crypto() {
         return $this->hasMany(Crypto::class);
     }

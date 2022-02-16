@@ -31,6 +31,11 @@ class CryptoSpawnController extends Controller
         return view('backend.cryptoSpawns.edit', compact('cryptoSpawn', 'crypto'));
     }
 
+    public function destroy(CryptoSpawn $cryptoSpawn) {
+        $cryptoSpawn->delete();
+        return redirect()->route('crypto-spawns.index');
+    }
+
     public function update(CryptoSpawn $cryptoSpawn) {
         $data = request()->validate([
             'crypto_id' => ['numeric', 'exists:cryptos,id'],

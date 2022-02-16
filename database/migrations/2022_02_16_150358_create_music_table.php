@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSpriteSheetsTable extends Migration
+class CreateMusicTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateSpriteSheetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sprite_sheets', function (Blueprint $table) {
+        Schema::create('music', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignId('world_id')->references('id')->on('worlds')->onDelete('cascade');
-            $table->text('image');
-            $table->integer('frame_width');
-            $table->integer('frame_height');
-            $table->integer('start_frame');
-            $table->integer('end_frame');
+            $table->text('name');
+            $table->text('audio');
         });
     }
 
@@ -32,6 +29,6 @@ class CreateSpriteSheetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sprite_sheets');
+        Schema::dropIfExists('music');
     }
 }
