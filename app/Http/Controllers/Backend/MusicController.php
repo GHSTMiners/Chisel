@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 
+use App\Models\Music;
 use Illuminate\Http\Request;
+
 
 class MusicController extends Controller
 {
@@ -12,30 +14,47 @@ class MusicController extends Controller
         $this->middleware('auth');
     }
 
-    public function index() {
-        $crypto = request()->selectedWorld->music;
-        return view('backend.music.index', compact('musics', 'crypto'));
+    public function index()
+    {
+        $music = request()->selectedWorld->music;
+        return view('backend.music.index', compact('music'));
     }
 
     public function create() {
-        $crypto = request()->selectedWorld->crypto;
-        return view('backend.music.create', compact('crypto'));
+        return view('backend.music.create');
     }
 
     public function edit(Music $music) {
-        $crypto = request()->selectedWorld->crypto;
-        return view('backend.music.edit', compact('music', 'crypto'));
+        return view('backend.music.edit', compact('music'));
+    }
+
+    public function destroy(Music $music) {
+        $music->delete();
+        return redirect()->route('music.index');
     }
 
     public function update(Music $music) {
         $data = request()->validate([
-            'music' => ['required', 'mimetypes:audio/x-wav,audio/mpeg'],
-            'name' => ['required', 'string']
+            'name' => ['string'],
+            'music' => ['mimes:mp3,wav']
         ]);
 
         if(array_key_exists('music', $data)) $data['music'] = $data['music']->store('music', 'public');
-        
-        $building->update($data);
+
+        $music->update($data);
+        return redirect()->route('music.index');
+    }
+
+    public function store() {
+        $data = request()->validate([
+            'name' => ['required', 'string'],
+            'audio' => ['required', 'mimes:mp3,wav']          
+        ]);
+
+        if(array_key_exists('audio', $data)) $data['audio'] = $data['audio']->store('audio', 'public');
+        $data['world_id'] = request()->selectedWorld->id;
+
+        \App\Models\Music::create($data);
         return redirect()->route('music.index');
     }
 }

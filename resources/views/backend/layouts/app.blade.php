@@ -127,23 +127,15 @@
                                 @if (Route::has('background.index'))
                                     <a class="dropdown-item  {{Route::is('background*') ? 'active' : ''}}" href="{{ route('background.index') }}">{{ __('Backgrounds') }}</a>
                                 @endif
+                                @if (Route::has('music.index'))
+                                    <a class="dropdown-item  {{Route::is('music*') ? 'active' : ''}}" href="{{ route('music.index') }}">{{ __('Music') }}</a>
+                                @endif
                                 @if (Route::has('building.index'))
                                     <a class="dropdown-item  {{Route::is('building*') ? 'active' : ''}}" href="{{ route('building.index') }}">{{ __('Buildings') }}</a>
                                 @endif
                             </ul>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle {{str_contains(url()->current(), 'assets') ? 'active' : ''}}" href="#" id="assets" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ __('Assets')}}   
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="assets">
-                                @if (Route::has('sprite-sheets.index'))
-                                    <a class="dropdown-item  {{Route::is('sprite-sheets*') ? 'active' : ''}}" href="{{ route('sprite-sheets.index') }}">{{ __('Spritesheets') }}</a>
-                                @endif
-                            </ul>
-                        </li>
-                        
                         @endauth
                     </ul>
 

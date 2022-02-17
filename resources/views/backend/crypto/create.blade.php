@@ -8,7 +8,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('crypto.store') }}" enctype="multipart/form-data">
                             @csrf
-                            <h4 class="card-title">{{ __('Add crypto') }}</h4>
+                            <h4 class="card-title">{{ __('Add crypto 💰') }}</h4>
                             <div class="mb-3">
                                 <label for="name" class="form-label">{{ __('Name') }}</label>
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
