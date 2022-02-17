@@ -57,8 +57,6 @@ class CryptoController extends Controller
             'mining_sound' => ['mimes:mp3,wav']
         ]);
 
-        dd($data);
-
         if(array_key_exists('soil_image', $data)) $data['soil_image'] = $data['soil_image']->store('crypto/soil', 'public');
         if(array_key_exists('wallet_image', $data)) $data['wallet_image'] = $data['wallet_image']->store('crypto/wallet', 'public');
         if(array_key_exists('mining_sound', $data)) $data['mining_sound'] = $data['mining_sound']->store('crypto/sound', 'public');
