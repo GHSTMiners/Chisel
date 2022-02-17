@@ -65,10 +65,6 @@ class World extends Model
         return $this->hasMany(SpriteSheet::class);
     }
 
-    public function music() {
-        return $this->hasMany(Music::class);
-    }
-
     public static function create(array $attributes = []) {
         $model = static::query()->create($attributes);
         echo $model->id;
