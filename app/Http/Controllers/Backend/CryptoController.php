@@ -49,13 +49,15 @@ class CryptoController extends Controller
     public function update(Crypto $crypto) {
         $data = request()->validate([
             'name' => '',
-            'shortcode' => 'string',
+            'shortcode' => '',
             'wallet_address' => ['regex:/0x[\da-f]/i'],
             'weight' => ['numeric', 'between:0,99999.99'],
             'soil_image' => ['image'],
             'wallet_image' => ['image'],
             'mining_sound' => ['mimes:mp3,wav']
         ]);
+
+        dd($data);
 
         if(array_key_exists('soil_image', $data)) $data['soil_image'] = $data['soil_image']->store('crypto/soil', 'public');
         if(array_key_exists('wallet_image', $data)) $data['wallet_image'] = $data['wallet_image']->store('crypto/wallet', 'public');

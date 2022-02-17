@@ -22,8 +22,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="shortcode" class="form-label">{{ __('Shortcode') }}</label>
-                                <input id="shortcode" type="text" class="form-control @error('shortcode') is-invalid @enderror" shortcode="shortcode" value="{{ old('shortcode') ?? $crypto->shortcode}}" required autocomplete="shortcode" autofocus>
+                                <label for="shortcode" class="form-label">{{ __('shortcode') }}</label>
+                                <input id="shortcode" type="text" class="form-control @error('shortcode') is-invalid @enderror" name="shortcode" value="{{ old('shortcode') ?? $crypto->shortcode}}" required autocomplete="shortcode" autofocus>
                                 @error('shortcode')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
