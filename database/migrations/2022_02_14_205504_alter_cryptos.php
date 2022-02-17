@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterSoils extends Migration
+class AlterCryptos extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AlterSoils extends Migration
     public function up()
     {
         Schema::table('cryptos', function (Blueprint $table) {
-            $table->text('shortcode')->default("");
+            $table->text('shortcode')->default('');
         });
     }
 

@@ -22,6 +22,16 @@
                             </div>
 
                             <div class="mb-3">
+                                <label for="shortcode" class="form-label">{{ __('Shortcode') }}</label>
+                                <input id="shortcode" type="text" class="form-control @error('shortcode') is-invalid @enderror" shortcode="shortcode" value="{{ old('shortcode') ?? $crypto->shortcode}}" required autocomplete="shortcode" autofocus>
+                                @error('shortcode')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="wallet_address" class="form-label">{{ __('Wallet address') }}</label>
                                 <input id="wallet_address" type="text" class="form-control @error('name') is-invalid @enderror" name="wallet_address" value="{{ old('wallet_address') ?? $crypto->wallet_address }}" autocomplete="wallet_address" autofocus>
                                 @error('wallet_address')
@@ -63,7 +73,7 @@
 
                             <div class="mb-3">
                                 <label for="mining_sound" class="form-label">{{ __('Mining sound') }}</label>
-                                <input id="mining_sound" type="file" class="form-control @error('mining_sound') is-invalid @enderror" name="mining_sound" value="{{ old('mining_sound') }}" required autocomplete="mining_sound">
+                                <input id="mining_sound" type="file" class="form-control @error('mining_sound') is-invalid @enderror" name="mining_sound" value="{{ old('mining_sound') }}" autocomplete="mining_sound">
                                 @error('mining_sound')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -20,6 +20,7 @@ class Crypto extends Model
      */
     protected $fillable = [
         'name',
+        'shortcode',
         'world_id',
         'wallet_address',
         'weight',

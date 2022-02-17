@@ -49,6 +49,7 @@ class CryptoController extends Controller
     public function update(Crypto $crypto) {
         $data = request()->validate([
             'name' => '',
+            'shortcode' => 'string',
             'wallet_address' => ['regex:/0x[\da-f]/i'],
             'weight' => ['numeric', 'between:0,99999.99'],
             'soil_image' => ['image'],
@@ -67,6 +68,7 @@ class CryptoController extends Controller
     public function store() {
         $data = request()->validate([
             'name' => 'required',
+            'shortcode' => 'string',
             'wallet_address' => ['required', 'regex:/0x[\da-f]/i'],
             'weight' => ['required', 'numeric', 'between:0,99999.99'],
             'soil_image' => ['required', 'image'],
@@ -80,6 +82,7 @@ class CryptoController extends Controller
 
         \App\Models\Crypto::create([
             'name' => $data['name'],
+            'shortcode' => $data['shortcode'],
             'world_id' => request()->selectedWorld->id,
             'wallet_address' => $data['wallet_address'],
             'weight' => $data['weight'],

@@ -21,6 +21,7 @@ Auth::routes(['register' => true]);
 
 //Crypto
 Route::resources([
+    'assets/music' => \App\Http\Controllers\Backend\MusicController::class,
     'assets/sprite-sheets' => \App\Http\Controllers\Backend\SpriteSheetController::class,
     'matter/crypto' => \App\Http\Controllers\Backend\CryptoController::class,
     'matter/crypto-spawns' => \App\Http\Controllers\Backend\CryptoSpawnController::class,

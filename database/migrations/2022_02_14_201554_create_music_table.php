@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterSoils extends Migration
+class CreateMusicTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AlterSoils extends Migration
      */
     public function up()
     {
-        Schema::table('cryptos', function (Blueprint $table) {
-            $table->text('shortcode')->default("");
+        Schema::create('music', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->foreignId('world_id')->references('id')->on('worlds')->onDelete('cascade');
+            $table->text('music');
+            $table->text('name');
         });
     }
 
@@ -25,6 +29,6 @@ class AlterSoils extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('music');
     }
 }
