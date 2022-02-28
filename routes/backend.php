@@ -21,6 +21,7 @@ Auth::routes(['register' => false]);
 
 //Crypto
 Route::resources([
+    'global/wallet' => \App\Http\Controllers\Backend\WalletController::class,
     'matter/crypto' => \App\Http\Controllers\Backend\CryptoController::class,
     'matter/crypto-spawns' => \App\Http\Controllers\Backend\CryptoSpawnController::class,
     'matter/soil' => \App\Http\Controllers\Backend\SoilController::class,

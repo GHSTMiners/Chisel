@@ -136,6 +136,17 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {{str_contains(url()->current(), 'global') ? 'active' : ''}}" href="#" id="world" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ __('Global')}}   
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="world">
+                                @if (Route::has('wallet.index'))
+                                    <a class="dropdown-item  {{Route::is('wallet*') ? 'active' : ''}}" href="{{ route('wallet.index') }}">{{ __('Wallets') }}</a>
+                                @endif
+                            </ul>
+                        </li>
+
                         @endauth
                     </ul>
 

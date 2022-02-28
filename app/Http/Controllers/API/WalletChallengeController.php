@@ -73,7 +73,7 @@ class WalletChallengeController extends Controller
             abort(403);
         }
 
-        //If we reach this point, we can create a wallet auth token and delte the challenge
+        //If we reach this point, we can create a wallet auth token and delete the challenge
         $challenge->delete();
         $token = WalletAuthToken::create([
             'wallet_id' => $challenge->wallet->id,
