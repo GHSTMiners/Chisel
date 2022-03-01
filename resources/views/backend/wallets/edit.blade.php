@@ -7,8 +7,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between pb-3">
-                        <h4 class="card-title">{{ __('Edit spawn') }}</h4>   
-                        <form method="POST" action="{{ route('crypto-spawns.destroy', [$cryptoSpawn->id]) }}">
+                        <h4 class="card-title">{{ __('Edit wallet') }}</h4>   
+                        <form method="POST" action="{{ route('wallet.destroy', [$wallet->id]) }}">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
@@ -17,23 +17,13 @@
                             </div>
                         </form>
                         </div>
-                        <form method="POST" action="{{ route('crypto-spawns.update', $cryptoSpawn->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('wallet.update', $wallet->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
-                            <label for="price" class="form-label">{{ __('Crypto') }}</label>
-                            <div class="input-group mb-3">
-                                <select class="form-select" aria-label="crypto_id" name="crypto_id">
-                                @foreach ($crypto as $currentCrypto)
-                                    <option value="{{$currentCrypto->id}}" @if($cryptoSpawn->crypto_id == $currentCrypto->id) selected @endif >{{$currentCrypto->name}}  </option>
-                                    
-                                @endforeach
-                                </select>
-                            </div>
-
                             <div class="mb-3">
-                                <label for="starting_layer" class="form-label">{{ __('Starting layer') }}</label>
-                                <input id="starting_layer" placeholder="0" step="1" type="number" class="form-control @error('starting_layer') is-invalid @enderror" name="starting_layer" value="{{ old('starting_layer') ?? $cryptoSpawn->starting_layer }}" required autocomplete="name" autofocus>
-                                @error('starting_layer')
+                                <label for="address" class="form-label">{{ __('Wallet address') }}</label>
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') ?? $wallet->address }}" autocomplete="address" readonly>
+                                @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -41,23 +31,34 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="ending_layer" class="form-label">{{ __('Ending layer') }}</label>
-                                <input id="ending_layer" placeholder="100" step="1" type="number" class="form-control @error('ending_layer') is-invalid @enderror" name="ending_layer" value="{{ old('ending_layer') ?? $cryptoSpawn->ending_layer}}" required autocomplete="name" autofocus>
-                                @error('ending_layer')
+                                <label for="chain_id" class="form-label">{{ __('Chain ID') }}</label>
+                                <input id="chain_id" type="text" class="form-control @error('chain_id') is-invalid @enderror" name="chain_id" value="{{ old('chain_id') ?? $wallet->chain_id }}" autocomplete="chain_id" readonly>
+                                @error('chain_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+                            <label for="chain_id" class="form-label">{{ __('Roles') }}</label>
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="admin" id="admin" value=1 @if($wallet->role->admin) checked @endif>
+                                    <label class="form-check-label" for="admin">{{ __('Admin') }}</label>
+                                </div>
+                            </div>
 
                             <div class="mb-3">
-                                <label for="spawn_rate" class="form-label">{{ __('Spawn rate') }}</label>
-                                <input id="spawn_rate" inputmode="decimal" placeholder="0.5000" type="number" step=0.0001 class="form-control @error('spawn_rate') is-invalid @enderror" name="spawn_rate" value="{{ old('spawn_rate') ?? $cryptoSpawn->spawn_rate }}" required autocomplete="name" autofocus aria-describedby="basic-addon1">
-                                @error('spawn_rate')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="developer" id="developer" value=1 @if($wallet->role->developer) checked @endif>
+                                    <label class="form-check-label" for="developer">{{ __('Developer') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="moderator" id="moderator" value=1 @if($wallet->role->moderator) checked @endif>
+                                    <label class="form-check-label" for="moderator">{{ __('Moderator') }}</label>
+                                </div>
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-lg">{{ __('Update') }}</button>  

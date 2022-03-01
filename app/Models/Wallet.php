@@ -21,4 +21,16 @@ class Wallet extends Model
         'address',
         'chain_id',
     ];
+
+    public static function create(array $attributes = []) {
+        $model = static::query()->create($attributes);
+
+        //Create role
+        \App\Models\WalletRole::create([
+            'wallet_id' => $model->id,
+            'admin' => $attributes['admin'],
+            'developer' => $attributes['developer'],
+            'moderator' => $attributes['moderator']
+        ]);
+    }
 }

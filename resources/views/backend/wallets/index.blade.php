@@ -4,7 +4,7 @@
     <div class="container">
             <div class="d-flex justify-content-between pb-3">
                 <h1>Wallets</h1>
-                <a type="button" href="{{ route('wallet.create') }}" class="btn btn-primary btn-lg">Add spawn</a>
+                <a type="button" href="{{ route('wallet.create') }}" class="btn btn-primary btn-lg">Add wallet</a>
             </div>
 
         <form>
