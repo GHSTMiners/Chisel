@@ -25,6 +25,11 @@ class Wallet extends Model
     public static function create(array $attributes = []) {
         $model = static::query()->create($attributes);
 
+        //Fill attributes if they are empty
+        if(!array_key_exists('admin', $attributes)) $attributes['admin'] = FALSE;
+        if(!array_key_exists('developer', $attributes)) $attributes['developer'] = FALSE;
+        if(!array_key_exists('moderator', $attributes)) $attributes['moderator'] = FALSE;
+
         //Create role
         \App\Models\WalletRole::create([
             'wallet_id' => $model->id,
@@ -32,5 +37,7 @@ class Wallet extends Model
             'developer' => $attributes['developer'],
             'moderator' => $attributes['moderator']
         ]);
+
+        return $model;
     }
 }

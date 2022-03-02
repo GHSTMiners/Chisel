@@ -23,6 +23,7 @@ Route::apiResource('crypto', \App\Http\Controllers\API\CryptoController::class, 
 Route::get('aavegotchi/{id}', '\App\Http\Controllers\API\AavegotchiController@view', array("as" => "api"));
 Route::post('wallet/challenge', '\App\Http\Controllers\API\WalletChallengeController@challenge', array("as" => "api"));
 Route::post('wallet/validate', '\App\Http\Controllers\API\WalletChallengeController@validate_challenge', array("as" => "api"));
+Route::post('token/validate', '\App\Http\Controllers\API\WalletAuthTokenController@validate_token', array("as" => "api"));
 Route::get('wallet/auth', '\App\Http\Controllers\API\WalletChallengeController@authenticate', array("as" => "api"));
 Route::get('wallet/sign-out', '\App\Http\Controllers\API\WalletChallengeController@sign_out', array("as" => "api"))->name("wallet_sign_out");
 

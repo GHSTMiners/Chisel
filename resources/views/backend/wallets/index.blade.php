@@ -30,7 +30,13 @@
         @foreach ($wallets as $currentWallet)
             <tr class="clickable-row" data-href="{{route('wallet.edit', $currentWallet->id)}}">
                 <th scope="row">{{$currentWallet->id}}</th>
-                <td>{{$currentWallet->address}}</td>
+                @if($currentWallet->chain_id === 1)
+                    <td><a href="https://etherscan.io/address/{{$currentWallet->address}}" target="_blank">{{$currentWallet->address}}</a></td>
+                @elseif($currentWallet->chain_id == 137)
+                    <td><a href="https://polygonscan.com/address/{{$currentWallet->address}}" target="_blank">{{$currentWallet->address}}</a></td>
+                @else
+                    <td>{{$currentWallet->address}}</td>
+                @endif
                 <td>{{$currentWallet->chain_id}}</td>
                 <td>{{$currentWallet->role->admin ? '✔️' : '❌'}}</td>
                 <td>{{$currentWallet->role->developer ? '✔️' : '❌'}}</td>

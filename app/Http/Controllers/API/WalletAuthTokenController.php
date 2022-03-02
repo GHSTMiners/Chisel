@@ -21,5 +21,17 @@ class WalletAuthTokenController extends Controller
         //Fetch token for this request
         $token = WalletAuthToken::where('token', $data['token'])->first();
 
+        if($token) {
+            if($token->wallet->address === $data['wallet_address']) {
+                return response()->json(
+                    array("success" => true),
+                    200, [], JSON_UNESCAPED_SLASHES
+                );
+            }
+        }
+        return response()->json(
+            array("success" => false),
+            200, [], JSON_UNESCAPED_SLASHES
+        );
     }
 }
