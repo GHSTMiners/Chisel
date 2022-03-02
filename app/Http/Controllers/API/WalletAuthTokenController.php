@@ -24,7 +24,7 @@ class WalletAuthTokenController extends Controller
         if($token) {
             if($token->wallet->address === $data['wallet_address']) {
                 return response()->json(
-                    array("success" => true),
+                    array("success" => true, "roles" => $token->wallet->role),
                     200, [], JSON_UNESCAPED_SLASHES
                 );
             }
