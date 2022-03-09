@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WalletBan extends Model
+class ApiKeyIp extends Model
 {
     use HasFactory;
 
-    public function wallet() {
-        return $this->belongsTo(Wallet::class);
+    public function apiKey() {
+        return $this->belongsTo(ApiKey::class);
     }
-    
+
     protected $fillable = [
-        'banned_until'
+        'ip',
+        'api_key_id'
     ];
 }

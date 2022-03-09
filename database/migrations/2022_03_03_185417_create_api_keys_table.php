@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWalletBansTable extends Migration
+class CreateApiKeysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateWalletBansTable extends Migration
      */
     public function up()
     {
-        Schema::create('wallet_bans', function (Blueprint $table) {
+        Schema::create('api_keys', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('wallet_id')->references('id')->on('wallets')->onDelete('cascade');
-            $table->dateTime('banned_until', $precision = 0);
+            $table->string('key', 50)->unique();
+            $table->text('notes')->nullable();
         });
     }
 
@@ -28,6 +28,6 @@ class CreateWalletBansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wallet_bans');
+        Schema::dropIfExists('api_keys');
     }
 }

@@ -144,6 +144,10 @@
                                 @if (Route::has('wallet.index'))
                                     <a class="dropdown-item  {{Route::is('wallet*') ? 'active' : ''}}" href="{{ route('wallet.index') }}">{{ __('Wallets') }}</a>
                                 @endif
+
+                                @if (Route::has('api-keys.index'))
+                                    <a class="dropdown-item  {{Route::is('api-keys*') ? 'active' : ''}}" href="{{ route('api-keys.index') }}">{{ __('API keys') }}</a>
+                                @endif
                             </ul>
                         </li>
 
