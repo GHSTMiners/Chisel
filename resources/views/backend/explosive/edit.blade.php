@@ -63,7 +63,7 @@
 
                             <div class="mb-3">
                                 <label for="explosion_sound" class="form-label">{{ __('Explosion sound') }}</label>
-                                <input id="explosion_sound" type="file" class="form-control @error('explosion_sound') is-invalid @enderror" name="explosion_sound" value="{{ old('explosion_sound') }}" required autocomplete="explosion_sound">
+                                <input id="explosion_sound" type="file" class="form-control @error('explosion_sound') is-invalid @enderror" name="explosion_sound" value="{{ old('explosion_sound') }}" autocomplete="explosion_sound">
                                 @error('explosion_sound')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -90,10 +90,7 @@
                                 @endfor
                                 <br/>
                                 <input class="form-check-input" type="radio" checked disabled> <label for="explosive_coordinates" class="form-label">{{ __('  = Position of explosive') }}</label>
-
                             </div>
-
-
                             <button type="submit" class="btn btn-primary btn-lg">{{ __('Update') }}</button>  
                         </form>
                     </div>

@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
+        'api' => \App\Http\Middleware\APIKeyAuthenticator::class,
         'worldInjector' => \App\Http\Middleware\WorldInjector::class,
         'walletInjector' => \App\Http\Middleware\WalletInjector::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
