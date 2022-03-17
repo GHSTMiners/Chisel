@@ -25,7 +25,7 @@
                                 <input id="price" type="text" class="form-control" placeholder="0.00" aria-label="price" name="price" value={{$explosive->price}}>
                                 <select class="form-select" aria-label="crypto_id" name="crypto_id">
                                 @foreach ($crypto as $currentCrypto)
-                                    <option value="{{$currentCrypto->id}}">{{$currentCrypto->name}}</option>
+                                    <option value="{{$currentCrypto->id}}"  @if( $explosive->crypto_id == $currentCrypto->id) selected @endif >{{$currentCrypto->name}}</option>
                                     
                                 @endforeach
                                 </select>
