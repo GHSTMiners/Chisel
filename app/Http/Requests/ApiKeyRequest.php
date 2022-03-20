@@ -9,10 +9,9 @@ class ApiKeyRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        $this->replace(['ip_addresses' => explode(',', preg_replace("/\s+/", "", $this->ip_addresses)),
-                       'key' => $this->key,
-                       'notes'=> $this->notes]);
-
+        if($this->ip_addresses !== null) {
+            $this->merge(['ip_addresses' => explode(',', preg_replace("/\s+/", "", $this->ip_addresses))]);
+        }
     }
 
     /**

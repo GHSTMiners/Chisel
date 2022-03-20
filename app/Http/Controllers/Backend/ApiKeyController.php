@@ -64,13 +64,22 @@ class ApiKeyController extends Controller
 
     public function update(ApiKey $api_key, ApiKeyRequest $request){
         $data = $request->validate([
-            'key' => ['required', 'string', 'size:50'],
-            'ip_addresses' => ['array'],
+            'ip_addresses' => 'nullable|array',
             'ip_addresses.*' => ['ip'],
             'notes' => 'nullable|string',
         ]);
-
         
+        $api_key->ips()->delete();
+        
+        //Add ip addresses if it has any
+        if($data['ip_addresses'] !== null) {
+            foreach ($data['ip_addresses'] as &$address) {
+                ApiKeyIp::create([
+                    'api_key_id' => $api_key->id,
+                    'ip' => $address
+                ]);
+            }
+        }
 
         $api_key->update($data);
 

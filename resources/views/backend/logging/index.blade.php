@@ -12,17 +12,19 @@
                 <th scope="col">IP Address</th>
                 <th scope="col">Gotchi</th>
                 <th scope="col">Wallet</th>
+                <th scope="col">Time</th>
             </tr>
         </thead>
         <tbody>
         @foreach ($logs as $currentLog)
             <tr>
                 <th scope="row">{{$currentLog->id}}</th>
-                <td>{{$currentSkill->score}}</td>
-                <td>{{$currentSkill->event}}</td>
-                <td>{{$currentSkill->ip_address}}</td>
-                <td>{{$currentSkill->gotchi}}</td>
-                <td>{{$currentSkill->wallet}}</td>
+                <td>{{$currentLog->score}}</td>
+                <td>{{$currentLog->event}}</td>
+                <td>{{$currentLog->ipAddress->ip}}</td>
+                <td>{{$currentLog->gotchi ? $currentLog->gotchi->gotchi_id : null}}</td>
+                <td>{{$currentLog->wallet ? $currentLog->wallet->address : null}}</td>
+                <td>{{$currentLog->created_at}}</td>
             </tr>
         @endforeach
         </tbody>

@@ -37,12 +37,13 @@ class APIKeyAuthenticator
         $api_key = ApiKey::firstWhere('key', $request_api_key);
         if ($api_key === null) abort(403);
 
-        // Check if key has an ip whitelist, if so validate if client IP is in whitelsit
+        // Check if key has an ip whitelist, if so validate if client IP is in whitelist
         $allowed_ips = $api_key->ips;
-        if ($allowed_ips->isNotEmpty()){
-            
-            if (!$allowed_ips->contains($request->ip())){
-                abort(401);
+        if ($allowed_ips->isNotEmpty()){            
+            if (!$allowed_ips->contains(function($value, $key) use($request) {
+                return $value->ip === $request->ip();
+            })) {
+                abort(403);
             }
         }
         return $next($request);

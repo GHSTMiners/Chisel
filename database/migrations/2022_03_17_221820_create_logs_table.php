@@ -16,9 +16,9 @@ class CreateLogsTable extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('ip_address_id')->references('id')->on('ip_addresses')->onDelete('cascade')->nullable();
-            $table->foreignId('gotchi_id')->references('id')->on('gotchis')->onDelete('cascade')->nullable();
-            $table->foreignId('wallet_id')->references('id')->on('wallets')->onDelete('cascade')->nullable();
+            $table->foreignId('ip_address_id')->references('id')->on('ip_addresses')->onDelete('cascade');
+            $table->foreignId('gotchi_id')->nullable()->references('id')->on('gotchis')->onDelete('cascade');
+            $table->foreignId('wallet_id')->nullable()->references('id')->on('wallets')->onDelete('cascade');
             $table->integer('score');
             $table->string('event');
         });

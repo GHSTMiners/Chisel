@@ -10,15 +10,15 @@ class Log extends Model
     use HasFactory;
 
     public function ipAddress() {
-        return $this->hasOne(IpAddress::class);
+        return $this->belongsTo(IpAddress::class);
     }
 
     public function gotchi() {
-        return $this->hasOne(Gotchi::class);
+        return $this->belongsTo(Gotchi::class);
     }
 
     public function wallet() {
-        return $this->hasOne(Wallet::class);
+        return $this->belongsTo(Wallet::class);
     }
 
     protected $fillable = [
