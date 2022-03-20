@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::apiResource('logging', \App\Http\Controllers\API\LogController::class, array("as" => "api"));
 Route::apiResource('world', \App\Http\Controllers\API\WorldController::class, array("as" => "api"));
 Route::apiResource('crypto', \App\Http\Controllers\API\CryptoController::class, array("as" => "api"));
 Route::get('aavegotchi/{id}', '\App\Http\Controllers\API\AavegotchiController@view', array("as" => "api"));

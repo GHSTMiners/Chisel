@@ -61,4 +61,20 @@ class ApiKeyController extends Controller
 
         return redirect()->route('api-keys.index');
     }
+
+    public function update(ApiKey $api_key, ApiKeyRequest $request){
+        $data = $request->validate([
+            'key' => ['required', 'string', 'size:50'],
+            'ip_addresses' => ['array'],
+            'ip_addresses.*' => ['ip'],
+            'notes' => 'nullable|string',
+        ]);
+
+        
+
+        $api_key->update($data);
+
+        return redirect()->route('api-keys.index');
+    }
 }
+

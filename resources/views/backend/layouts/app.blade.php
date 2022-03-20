@@ -141,6 +141,10 @@
                                 {{ __('Global')}}   
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="world">
+                                @if (Route::has('logging.index'))
+                                    <a class="dropdown-item  {{Route::is('logging*') ? 'active' : ''}}" href="{{ route('logging.index') }}">{{ __('Logging') }}</a>
+                                @endif
+                            
                                 @if (Route::has('wallet.index'))
                                     <a class="dropdown-item  {{Route::is('wallet*') ? 'active' : ''}}" href="{{ route('wallet.index') }}">{{ __('Wallets') }}</a>
                                 @endif

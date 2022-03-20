@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Gotchi extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'gotchi_id'
+    ];
 }

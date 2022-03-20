@@ -21,6 +21,7 @@ Auth::routes(['register' => false]);
 
 //Crypto
 Route::resources([
+    'global/logging' => \App\Http\Controllers\Backend\LogController::class,
     'global/api-keys' => \App\Http\Controllers\Backend\ApiKeyController::class,
     'global/wallet' => \App\Http\Controllers\Backend\WalletController::class,
     'matter/crypto' => \App\Http\Controllers\Backend\CryptoController::class,
