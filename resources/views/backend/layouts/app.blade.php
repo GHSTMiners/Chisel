@@ -152,6 +152,10 @@
                                 @if (Route::has('api-keys.index'))
                                     <a class="dropdown-item  {{Route::is('api-keys*') ? 'active' : ''}}" href="{{ route('api-keys.index') }}">{{ __('API keys') }}</a>
                                 @endif
+
+                                @if (Route::has('games.index'))
+                                    <a class="dropdown-item  {{Route::is('games*') ? 'active' : ''}}" href="{{ route('games.index') }}">{{ __('Games') }}</a>
+                                @endif
                             </ul>
                         </li>
 
