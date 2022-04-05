@@ -12,4 +12,6 @@ class GameStatisticCategory extends Model
     protected $fillable = [
         'name'
     ];
+
+    protected $visible = ['id', 'name'];
 }

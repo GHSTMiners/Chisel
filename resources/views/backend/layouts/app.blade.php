@@ -152,9 +152,19 @@
                                 @if (Route::has('api-keys.index'))
                                     <a class="dropdown-item  {{Route::is('api-keys*') ? 'active' : ''}}" href="{{ route('api-keys.index') }}">{{ __('API keys') }}</a>
                                 @endif
+                            </ul>
+                        </li>
 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {{str_contains(url()->current(), 'statistics') ? 'active' : ''}}" href="#" id="world" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ __('Statistics')}}   
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="world">
                                 @if (Route::has('games.index'))
                                     <a class="dropdown-item  {{Route::is('games*') ? 'active' : ''}}" href="{{ route('games.index') }}">{{ __('Games') }}</a>
+                                @endif
+                                @if (Route::has('categories.index'))
+                                    <a class="dropdown-item  {{Route::is('categories*') ? 'active' : ''}}" href="{{ route('categories.index') }}">{{ __('Categories') }}</a>
                                 @endif
                             </ul>
                         </li>

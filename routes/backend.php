@@ -21,7 +21,9 @@ Auth::routes(['register' => true]);
 
 //Crypto
 Route::resources([
-    'global/games' => \App\Http\Controllers\Backend\GameController::class,
+    'statistics/games' => \App\Http\Controllers\Backend\GameController::class,
+    'statistics/categories' => \App\Http\Controllers\Backend\GameStatisticCategoryController::class,
+
     'global/logging' => \App\Http\Controllers\Backend\LogController::class,
     'global/api-keys' => \App\Http\Controllers\Backend\ApiKeyController::class,
     'global/wallet' => \App\Http\Controllers\Backend\WalletController::class,

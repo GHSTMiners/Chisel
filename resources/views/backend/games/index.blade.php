@@ -2,6 +2,9 @@
 @section('content')
 
     <div class="container">
+        <div class="d-flex justify-content-between pb-3">
+            <h1>Games</h1>
+        </div>
         <table class="table table-striped table-bordered table-hover">
 
         <thead class="thead-dark">
