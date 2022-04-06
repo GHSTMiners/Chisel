@@ -16,14 +16,16 @@ class WorldController extends Controller
     public function store() {
         $data = request()->validate([
             'name' => ['string', 'required'],
-            'video' => ['file', 'mimetypes:video/mp4', 'required'],
+            'video' => ['file', 'mimetypes:video/mp4'],
             'description' => ['string', 'required'],
             'development_mode' => ['boolean'],
             'published' => ['boolean'],
             'width' => ['numeric', 'required'],
-            'height' => ['numeric', 'required']
+            'height' => ['numeric', 'required'],
+            'world_crypto_id' => ['numeric', 'exists:cryptos,id']
+
         ]);
-        $data['video'] = $data['video']->store('/slider/video', 'public');
+        if(array_key_exists('video', $data)) $data['video'] = $data['video']->store('/slider/video', 'public');
 
         $newWorld = \App\Models\World::create($data);
         //Select new world
@@ -47,7 +49,9 @@ class WorldController extends Controller
             'development_mode' => ['boolean'],
             'published' => ['boolean'],
             'width' => ['numeric'],
-            'height' => ['numeric']
+            'height' => ['numeric'],
+            'world_crypto_id' => ['numeric', 'exists:cryptos,id']
+
         ]);
 
         if(array_key_exists('video', $data)) $data['video'] = $data['video']->store('/slider/video', 'public');

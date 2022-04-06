@@ -151,6 +151,16 @@
                 </span>
             @enderror
         </div>
+
+        <label for="price" class="form-label">{{ __('World crypto') }}</label>
+        <div class="input-group mb-3">
+            <select class="form-select" aria-label="world_crypto_id" name="world_crypto_id">
+            @foreach ($selectedWorld->crypto as $currentCrypto)
+                <option value="{{$currentCrypto->id}}"  @if( $selectedWorld->world_crypto_id == $currentCrypto->id) selected @endif >{{$currentCrypto->name}}</option>
+                
+            @endforeach
+            </select>
+        </div>
           <div class="mb-3">
               <div class="form-check form-switch">
                   <input class="form-check-input" type="checkbox" name="development_mode" id="development_mode" value=1 @if($selectedWorld->development_mode) checked @endif()>

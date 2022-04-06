@@ -226,6 +226,7 @@ class World extends Model
         'video',
         'description',
         'width',
-        'height'
+        'height',
+        'world_crypto_id'
     ];
 }

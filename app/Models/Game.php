@@ -17,4 +17,6 @@ class Game extends Model
         'room_id',
         'world_id'
     ];
+
+    protected $visible = ['room_id'];
 }

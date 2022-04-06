@@ -30,12 +30,12 @@ class APIKeyAuthenticator
         
 
         if ($request_api_key === null){
-            abort(403);
+            abort(403, "API key is missing");
         }
 
         // Check if key exists
         $api_key = ApiKey::firstWhere('key', $request_api_key);
-        if ($api_key === null) abort(403);
+        if ($api_key === null) abort(403, 'Your key is invalid');
 
         // Check if key has an ip whitelist, if so validate if client IP is in whitelist
         $allowed_ips = $api_key->ips;
@@ -43,7 +43,7 @@ class APIKeyAuthenticator
             if (!$allowed_ips->contains(function($value, $key) use($request) {
                 return $value->ip === $request->ip();
             })) {
-                abort(403);
+                abort(403, 'This IP adres is not allow to use this API key');
             }
         }
         return $next($request);
