@@ -26,6 +26,10 @@ class GameStatisticEntry extends Model
     }
 
     protected $fillable = [
+        'game_id',
+        'gotchi_id',
+        'wallet_id',
+        'game_statistic_category_id',
         'value'
     ];
 }

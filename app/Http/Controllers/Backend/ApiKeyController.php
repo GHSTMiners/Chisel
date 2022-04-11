@@ -41,7 +41,7 @@ class ApiKeyController extends Controller
         // console.log
         $data = $request->validate([
             'key' => ['required', 'string', 'size:50'],
-            'ip_addresses' => ['array'],
+            'ip_addresses' => ['nullable|array'],
             'ip_addresses.*' => ['ip'],
             'notes' => 'nullable|string',
 
