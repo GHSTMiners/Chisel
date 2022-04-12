@@ -10,8 +10,13 @@ class GameStatisticCategory extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'name'
     ];
+
+    public function entries() {
+        return $this->hasMany(GameStatisticEntry::class);
+    }
 
     protected $visible = ['id', 'name'];
 }

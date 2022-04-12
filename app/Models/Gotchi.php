@@ -12,4 +12,7 @@ class Gotchi extends Model
     protected $fillable = [
         'gotchi_id'
     ];
+
+    protected $visible = ['gotchi_id'];
+
 }
