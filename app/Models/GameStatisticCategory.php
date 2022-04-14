@@ -18,5 +18,9 @@ class GameStatisticCategory extends Model
         return $this->hasMany(GameStatisticEntry::class);
     }
 
+    public function highscores() {
+        return $this->hasMany(Highscore::class);
+    }
+
     protected $visible = ['id', 'name'];
 }

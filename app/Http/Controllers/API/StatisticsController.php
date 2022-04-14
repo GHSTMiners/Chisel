@@ -27,13 +27,13 @@ class StatisticsController extends Controller
         );
     }
 
-    public function fetch_all($category_id) {
+    public function gotchi($category_id) {
         //Fetch category
         $category = GameStatisticCategory::findOrFail($category_id);
 
         //Parse request
         $data = request()->validate([
-            'gotchi_id' => ['numeric', 'exists:gotchis,gotchi_id'],
+            'gotchi_id' => ['required', 'numeric', 'exists:gotchis,gotchi_id'],
             'wallet_address' => ['string', 'regex:/0x[\da-f]/i', 'exists:wallets,address']
         ]);
 
@@ -55,6 +55,21 @@ class StatisticsController extends Controller
         }
 
         $query = $query->with('gotchi', 'wallet');
+        
+        return response()->json(
+            $query->get(),
+            200, [], JSON_UNESCAPED_SLASHES
+        );
+    }
+
+    public function highscores($category_id) {
+        //Fetch category
+        $category = GameStatisticCategory::findOrFail($category_id);
+
+        //Prepare query
+        $query = $category->highscores();
+
+        $query = $query->with('gotchi', 'entry');
         
         return response()->json(
             $query->get(),

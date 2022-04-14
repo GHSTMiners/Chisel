@@ -12,6 +12,8 @@ use App\Models\Game;
 use App\Models\Gotchi;
 use App\Models\Wallet;
 use App\Models\GameStatisticEntry;
+use App\Models\Highscore;
+
 use App\Models\GameStatisticCategory;
 
 
@@ -71,14 +73,33 @@ class GameController extends Controller
         if(isset($game) && isset($gotchi) && isset($wallet)) {
             //Enter category entries into array
             for ($i=0; $i < count($data['categories']); $i++) { 
+                //Find through category name
                 $category = GameStatisticCategory::where('name', $data['categories'][$i])->firstOrFail();
-                GameStatisticEntry::create([
+
+                //Insert entry into database
+                $statistics_entry = GameStatisticEntry::create([
                     'game_id' => $game->id,
                     'gotchi_id' => $gotchi->id,
                     'wallet_id' => $wallet->id,
                     'game_statistic_category_id' => $category->id,
                     'value' => $data['values'][$i]
                 ]);
+
+                //Check if it is an highscore
+                $highscore = Highscore::where('gotchi_id', $gotchi->id)->where('game_statistic_category_id', $category->id)->firstOr(function() use ($gotchi, $category, $statistics_entry) {
+                    return Highscore::create([
+                        'gotchi_id' => $gotchi->id,
+                        'game_statistic_category_id' => $category->id,
+                        'game_statistic_entry_id' => $statistics_entry->id, 
+                    ]);
+                });
+
+                //If a new highscore has been reached, update entry                
+                if(intval($statistics_entry->value) > intval($highscore->entry->value)) {
+                    $highscore->update([
+                        'game_statistic_entry_id' => $statistics_entry->id
+                    ]);
+                }
             }
         } else abort(405, "Couldn't find something");
 

@@ -20,8 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('logging', \App\Http\Controllers\API\LogController::class, array("as" => "api"));
 Route::apiResource('world', \App\Http\Controllers\API\WorldController::class, array("as" => "api"));
 Route::get('statistics/categories', '\App\Http\Controllers\API\StatisticsController@categories', array("as" => "api"));
-Route::post('statistics/fetch_all/{category_id}', '\App\Http\Controllers\API\StatisticsController@fetch_all', array("as" => "api"));
-Route::get('statistics/fetch_top/{category_id}', '\App\Http\Controllers\API\StatisticsController@fetch_top', array("as" => "api"));
+Route::post('statistics/gotchi/{category_id}', '\App\Http\Controllers\API\StatisticsController@gotchi', array("as" => "api"));
+Route::get('statistics/highscores/{category_id}', '\App\Http\Controllers\API\StatisticsController@highscores', array("as" => "api"));
 
 Route::post('game/create', '\App\Http\Controllers\API\GameController@create', array("as" => "api"));
 Route::post('game/add_statistics', '\App\Http\Controllers\API\GameController@add_statistics', array("as" => "api"));
