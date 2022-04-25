@@ -14,7 +14,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('walletInjector');
     }
 
     /**
@@ -24,7 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $worlds = World::all();
-        return view('frontend.home.index', compact('worlds'));
+        return view('frontend.home.index');
     }
 }

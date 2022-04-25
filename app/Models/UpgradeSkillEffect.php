@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class UpgradeSkillEffect extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'upgrade_id',
+        'skill_id',
+        'formula'
+    ];
 }

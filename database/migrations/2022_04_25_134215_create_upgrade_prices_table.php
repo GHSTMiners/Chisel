@@ -17,12 +17,12 @@ class CreateUpgradePricesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('upgrade_id')->references('id')->on('upgrades')->onDelete('cascade');
-            $table->foreignId('crypto')->references('id')->on('cryptos')->onDelete('cascade');
-            $table->integer('tier_1');
-            $table->integer('tier_2');
-            $table->integer('tier_3');
-            $table->integer('tier_4');
-            $table->integer('tier_5');
+            $table->foreignId('crypto_id')->references('id')->on('cryptos')->onDelete('cascade');
+            $table->integer('tier_1')->nullable();
+            $table->integer('tier_2')->nullable();
+            $table->integer('tier_3')->nullable();
+            $table->integer('tier_4')->nullable();
+            $table->integer('tier_5')->nullable();
         });
     }
 

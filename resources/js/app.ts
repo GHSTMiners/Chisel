@@ -81,7 +81,9 @@ jQuery(($) => {
             spookiness: 4,
             brain_size: 5,
             eye_shape: 6,
-            eye_color: 6
+            eye_color: 6,
+            tier: 1,
+            original: 2,
           }
 
           try {

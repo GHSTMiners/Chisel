@@ -18,7 +18,7 @@ class CreateUpgradesTable extends Migration
             $table->timestamps();
             $table->foreignId('world_id')->references('id')->on('worlds')->onDelete('cascade');
             $table->string('name');
-
+            $table->text('description');
         });
     }
 

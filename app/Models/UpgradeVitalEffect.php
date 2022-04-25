@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class UpgradeVitalEffect extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'upgrade_id',
+        'vital_id',
+        'formula'
+    ];
 }
