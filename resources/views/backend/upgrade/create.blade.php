@@ -84,7 +84,7 @@
                                                 @foreach ($skills as $currentSkill)
                                                 <tr>
                                                     <th scope="row">{{$currentSkill->name}}</th>
-                                                    <td><input name="skill[{{$currentSkill->id}}]" onchange="validateExpression(this)" class="form-control math-expression" placeholder="e.g. tier * 1.1 * (origional)" type="text"></td>
+                                                    <td><input name="skill[{{$currentSkill->id}}]" onchange="validateExpression(this)" class="form-control math-expression" placeholder="e.g. tier * 1.1 * (original)" type="text"></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -105,7 +105,7 @@
                                                 @foreach ($vitals as $currentVital)
                                                 <tr>
                                                     <th scope="row">{{$currentVital->name}}</th>
-                                                    <td><input name="vital[{{$currentVital->id}}]" onchange="validateExpression(this)" class="form-control math-expression" placeholder="e.g. tier * 1.1 * (origional)" type="text"></td>
+                                                    <td><input name="vital[{{$currentVital->id}}]" onchange="validateExpression(this)" class="form-control math-expression" placeholder="e.g. tier * 1.1 * (original)" type="text"></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
