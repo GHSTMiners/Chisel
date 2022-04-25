@@ -86,15 +86,20 @@ jQuery(($) => {
             original: 2,
           }
 
-          try {
-            mathjs.evaluate(value, scope)
-            $(input).addClass("is-valid")
-            $(input).removeClass("is-invalid")
-            
-          } catch (error : any) {
-            $(input.parentElement).find(".invalid-feedback").text(error)
-            $(input).addClass("is-invalid")
+          if (value === "") {
             $(input).removeClass("is-valid")
+            $(input).removeClass("is-invalid")
+          } else {
+            try {
+              mathjs.evaluate(value, scope)
+              $(input).addClass("is-valid")
+              $(input).removeClass("is-invalid")
+              
+            } catch (error : any) {
+              $(input.parentElement).find(".invalid-feedback").text(error)
+              $(input).addClass("is-invalid")
+              $(input).removeClass("is-valid")
+            }
           }
         }
 
