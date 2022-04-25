@@ -86,7 +86,7 @@ jQuery(($) => {
             original: 2,
           }
 
-          if (value === "") {
+          if (!!value) {
             $(input).removeClass("is-valid")
             $(input).removeClass("is-invalid")
           } else {
