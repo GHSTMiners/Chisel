@@ -97,7 +97,10 @@
                                     <a class="dropdown-item  {{Route::is('skill*') ? 'active' : ''}}" href="{{ route('skill.index') }}">{{ __('Skills') }}</a>
                                 @endif
                                 @if (Route::has('trait.index'))
-                                    <a class="dropdown-item  {{(!Route::is('trait-effect*') && Route::is('trait*')) ? 'active' : ''}}" href="{{ route('trait.index') }}">{{ __('Traits') }}</a>
+                                    <a class="dropdown-item  {{(Route::is('trait*')) ? 'active' : ''}}" href="{{ route('trait.index') }}">{{ __('Traits') }}</a>
+                                @endif
+                                @if (Route::has('upgrade.index'))
+                                    <a class="dropdown-item  {{(Route::is('upgrade*')) ? 'active' : ''}}" href="{{ route('upgrade.index') }}">{{ __('Upgrades') }}</a>
                                 @endif
                             </ul>
                         </li>

@@ -65,9 +65,12 @@ class World extends Model
         return $this->hasMany(SpriteSheet::class);
     }
 
+    public function upgrades() {
+        return $this->hasMany(Upgrade::class);
+    }
+
     public static function create(array $attributes = []) {
         $model = static::query()->create($attributes);
-        echo $model->id;
 
         //Create skills
         \App\Models\Skill::create([

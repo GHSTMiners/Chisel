@@ -27,17 +27,22 @@ Route::resources([
     'global/logging' => \App\Http\Controllers\Backend\LogController::class,
     'global/api-keys' => \App\Http\Controllers\Backend\ApiKeyController::class,
     'global/wallet' => \App\Http\Controllers\Backend\WalletController::class,
+
     'matter/crypto' => \App\Http\Controllers\Backend\CryptoController::class,
     'matter/crypto-spawns' => \App\Http\Controllers\Backend\CryptoSpawnController::class,
     'matter/soil' => \App\Http\Controllers\Backend\SoilController::class,
     'matter/rock' => \App\Http\Controllers\Backend\RockController::class,
     'matter/rock-spawns' => \App\Http\Controllers\Backend\RockSpawnController::class,
     'matter/whitespace' => \App\Http\Controllers\Backend\WhiteSpaceController::class,
+
     'items/explosive' => \App\Http\Controllers\Backend\ExplosiveController::class,
     'items/consumable' => \App\Http\Controllers\Backend\ConsumableController::class,
+
     'gameplay/vital' => \App\Http\Controllers\Backend\VitalController::class,
     'gameplay/skill' => \App\Http\Controllers\Backend\SkillController::class,
     'gameplay/trait' => \App\Http\Controllers\Backend\AavegotchiTraitController::class,
+    'gameplay/upgrade' => \App\Http\Controllers\Backend\UpgradeController::class,
+
     'world/puzzle' => \App\Http\Controllers\Backend\PuzzleController::class,
     'world/background' => \App\Http\Controllers\Backend\BackgroundController::class,
     'world/music' => \App\Http\Controllers\Backend\MusicController::class,
