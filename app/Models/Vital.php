@@ -17,4 +17,12 @@ class Vital extends Model
         'initial',
         'default'
     ];
+
+    protected $visible = [
+        'id',
+        'name', 
+        'minimum',
+        'maximum',
+        'initial'
+    ];
 }

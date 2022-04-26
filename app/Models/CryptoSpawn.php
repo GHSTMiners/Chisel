@@ -20,4 +20,12 @@ class CryptoSpawn extends Model
         'ending_layer',
         'spawn_rate'
     ];
+
+    protected $visible = [
+        'id', 
+        'crypto_id', 
+        'starting_layer',
+        'ending_layer',
+        'spawn_rate'
+    ];
 }

@@ -18,4 +18,13 @@ class Skill extends Model
         'initial',
         'default'
     ];
+
+    protected $visible = [
+        'id',
+        'name', 
+        'description',
+        'minimum',
+        'maximum',
+        'initial'
+    ];
 }

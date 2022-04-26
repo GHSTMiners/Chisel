@@ -14,4 +14,10 @@ class UpgradeSkillEffect extends Model
         'skill_id',
         'formula'
     ];
+
+    protected $visible = [
+        'id', 
+        'skill_id', 
+        'formula'
+    ];
 }

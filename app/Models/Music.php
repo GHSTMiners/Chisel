@@ -14,4 +14,10 @@ class Music extends Model
         'name',
         'audio'
     ];
+
+    protected $visible = [
+        'id', 
+        'name',
+        'audio'
+    ];
 }

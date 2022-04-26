@@ -29,4 +29,14 @@ class Crypto extends Model
         'mining_sound'
     ];
 
+    protected $visible = [
+        'id',
+        'name', 
+        'wallet_address',
+        'soil_image',
+        'wallet_image',
+        'mining_sound',
+        'shortcode',
+        'spawns'
+    ];
 }

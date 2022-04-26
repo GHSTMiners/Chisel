@@ -15,4 +15,11 @@ class Background extends Model
         'ending_layer',
         'world_id'
     ];
+
+    protected $visible = [
+        'id', 
+        'starting_layer',
+        'ending_layer',
+        'ending_layer'
+    ];
 }

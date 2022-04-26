@@ -101,7 +101,7 @@
                                                 <tr>
                                                     <th scope="row">{{$currentSkill->name}}</th>
                                                     <td>
-                                                        <input name="skill[{{$currentSkill->id}}]" onchange="validateExpression(this)" class="form-control math-expression" @if($currentSkillEffect) value={{$currentSkillEffect->formula}}@endif placeholder="e.g. tier * 1.1 * (original)" type="text">
+                                                        <input name="skill[{{$currentSkill->id}}]" onchange="validateExpression(this)" class="form-control math-expression" @if($currentSkillEffect) value="{{$currentSkillEffect->formula}}"@endif placeholder="e.g. tier * 1.1 * (original)" type="text">
                                                         <div class="invalid-feedback">
                                                             Formula invalid
                                                         </div>
@@ -129,7 +129,7 @@
                                                 @endphp
                                                 <tr>
                                                     <th scope="row">{{$currentVital->name}}</th>
-                                                    <td><input name="vital[{{$currentVital->id}}]" onchange="validateExpression(this)" class="form-control math-expression" @if($currentVitalEffect) value={{$currentVitalEffect->formula}}@endif placeholder="e.g. tier * 1.1 * (original)" type="text"></td>
+                                                    <td><input name="vital[{{$currentVital->id}}]" onchange="validateExpression(this)" class="form-control math-expression" @if($currentVitalEffect) value="{{$currentVitalEffect->formula}}"@endif placeholder="e.g. tier * 1.1 * (original)" type="text"></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>

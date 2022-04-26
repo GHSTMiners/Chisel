@@ -232,4 +232,29 @@ class World extends Model
         'height',
         'world_crypto_id'
     ];
+
+    protected $visible = [
+        'id',
+        'name', 
+        'development_mode', 
+        'published', 
+        'video', 
+        'description', 
+        'width',
+        'height',
+        'world_crypto_id',
+        'crypto',
+        'backgrounds',
+        'buildings',
+        'music',
+        'soil',
+        'white_spaces',
+        'explosives',
+        'rocks',
+        'skills',
+        'vitals',
+        'upgrades',
+        'consumables'
+    ];
+
 }

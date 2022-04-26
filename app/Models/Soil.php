@@ -24,4 +24,15 @@ class Soil extends Model
         'bottom_image',
         'order'
     ];
+
+    protected $visible = [
+        'id', 
+        'name',
+        'layers',
+        'dig_multiplier',
+        'top_image',
+        'middle_image',
+        'bottom_image',
+        'order'
+    ];
 }

@@ -22,4 +22,16 @@ class Building extends Model
         'crypto_id',
         'price'
     ];
+
+    protected $visible = [
+        'id', 
+        'spawn_x',
+        'spawn_y',
+        'video',
+        'activation_sound',
+        'activation_message',
+        'type',
+        'crypto_id',
+        'price'
+    ];
 }

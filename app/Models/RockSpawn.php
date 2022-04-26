@@ -20,4 +20,12 @@ class RockSpawn extends Model
         'ending_layer',
         'spawn_rate'
     ];
+
+    protected $visible = [
+        'id',
+        'rock_id',
+        'starting_layer',
+        'ending_layer',
+        'spawn_rate'
+    ];
 }

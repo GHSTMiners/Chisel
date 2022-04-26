@@ -23,4 +23,15 @@ class Explosive extends Model
         'drop_image',
         'explosion_sound'
     ];
+
+    protected $visible = [
+        'id',
+        'name',
+        'crypto_id',
+        'price',
+        'inventory_image',
+        'soil_image',
+        'drop_image',
+        'explosion_sound'
+    ];
 }

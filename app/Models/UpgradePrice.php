@@ -18,4 +18,7 @@ class UpgradePrice extends Model
         'tier_4',
         'tier_5'
     ];
+
+    protected $visible = ['id', 'crypto_id', 'tier_1', 'tier_2', 'tier_3', 'tier_4', 'tier_5'];
+
 }

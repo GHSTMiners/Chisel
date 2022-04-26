@@ -26,4 +26,15 @@ class Rock extends Model
         'explodeable',
         'lava'
     ];
+
+    protected $visible = [
+        'id',
+        'name',
+        'world_id',
+        'image',
+        'digable',
+        'explodeable',
+        'lava',
+        'spawns'
+    ];
 }

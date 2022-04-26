@@ -14,4 +14,10 @@ class UpgradeVitalEffect extends Model
         'vital_id',
         'formula'
     ];
+
+    protected $visible = [
+        'id', 
+        'vital_id', 
+        'formula'
+    ];
 }

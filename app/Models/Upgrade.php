@@ -26,4 +26,7 @@ class Upgrade extends Model
         'world_id',
         'description'
     ];
+
+    protected $visible = ['id', 'name', 'description', 'prices', 'skill_effects', 'vital_effects'];
+
 }
