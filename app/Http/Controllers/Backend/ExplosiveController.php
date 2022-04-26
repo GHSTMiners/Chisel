@@ -49,7 +49,7 @@ class ExplosiveController extends Controller
         if(array_key_exists('soil_image', $data)) $data['soil_image'] = $data['soil_image']->store('/explosive', 'public');
         if(array_key_exists('inventory_image', $data)) $data['inventory_image'] = $data['inventory_image']->store('/explosive', 'public');
         if(array_key_exists('drop_image', $data)) $data['drop_image'] = $data['drop_image']->store('/explosive', 'public');
-        if(array_key_exists('mining_sound', $data)) $data['mining_sound'] = $data['mining_sound']->store('/explosive', 'public');
+        if(array_key_exists('explosion_sound', $data)) $data['explosion_sound'] = $data['explosion_sound']->store('/explosive', 'public');
 
         $explosive->explosionCoordinates()->delete();
         foreach($data['explosive_coordinates'] as $columns) {

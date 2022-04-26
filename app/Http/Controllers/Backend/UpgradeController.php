@@ -59,16 +59,18 @@ class UpgradeController extends Controller
 
         //Create prizes for upgrade
         foreach($data['price'] as $key=>$value) {
-            $upgrade->prices()->create(
-                [
-                    'crypto_id' => $key,
-                    'tier_1' => $value[1],
-                    'tier_2' => $value[2],
-                    'tier_3' => $value[3],
-                    'tier_4' => $value[4],
-                    'tier_5' => $value[5]
-                ]
-            );
+            if(count(array_filter($value)) > 0) {
+                $upgrade->prices()->create(
+                    [
+                        'crypto_id' => $key,
+                        'tier_1' => $value[1],
+                        'tier_2' => $value[2],
+                        'tier_3' => $value[3],
+                        'tier_4' => $value[4],
+                        'tier_5' => $value[5]
+                    ]
+                );
+            }
         }
 
         //Create skill effects for upgrade
@@ -118,16 +120,18 @@ class UpgradeController extends Controller
         //Create prizes for upgrade
         $upgrade->prices()->delete();
         foreach($data['price'] as $key=>$value) {
-            $upgrade->prices()->create(
-                [
-                    'crypto_id' => $key,
-                    'tier_1' => $value[1],
-                    'tier_2' => $value[2],
-                    'tier_3' => $value[3],
-                    'tier_4' => $value[4],
-                    'tier_5' => $value[5]
-                ]
-            );
+            if(count(array_filter($value)) > 0) {
+                $upgrade->prices()->create(
+                    [
+                        'crypto_id' => $key,
+                        'tier_1' => $value[1],
+                        'tier_2' => $value[2],
+                        'tier_3' => $value[3],
+                        'tier_4' => $value[4],
+                        'tier_5' => $value[5]
+                    ]
+                );
+            }
         }
 
         //Create skill effects for upgrade
