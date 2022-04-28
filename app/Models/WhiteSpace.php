@@ -16,4 +16,12 @@ class WhiteSpace extends Model
         'spawn_rate',
         'background_only'
     ];
+
+    protected $visible = [
+        'id',
+        'starting_layer', 
+        'ending_layer',
+        'spawn_rate',
+        'background_only'
+    ];
 }

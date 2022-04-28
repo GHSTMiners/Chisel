@@ -17,4 +17,10 @@ class ExplosionCoordinate extends Model
         'x',
         'y'
     ];
+
+    protected $visible = [
+        'id',
+        'x', 
+        'y'
+    ];
 }
