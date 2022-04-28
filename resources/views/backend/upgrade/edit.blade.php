@@ -72,11 +72,11 @@
                                                 @endphp
                                                 <tr>
                                                     <th scope="row">{{$currentCrypto->name}}</th>
-                                                    <td><input name="price[{{$currentCrypto->id}}][1]" class="form-control" @if($currentPrice->tier_1) value={{$currentPrice->tier_1}} @endif placeholder="0" type="number"></td>
-                                                    <td><input name="price[{{$currentCrypto->id}}][2]" class="form-control" @if($currentPrice->tier_2) value={{$currentPrice->tier_2}} @endif placeholder="0" type="number"></td>
-                                                    <td><input name="price[{{$currentCrypto->id}}][3]" class="form-control" @if($currentPrice->tier_3) value={{$currentPrice->tier_3}} @endif placeholder="0" type="number"></td>
-                                                    <td><input name="price[{{$currentCrypto->id}}][4]" class="form-control" @if($currentPrice->tier_4) value={{$currentPrice->tier_4}} @endif placeholder="0" type="number"></td>
-                                                    <td><input name="price[{{$currentCrypto->id}}][5]" class="form-control" @if($currentPrice->tier_5) value={{$currentPrice->tier_5}} @endif placeholder="0" type="number"></td>
+                                                    <td><input name="price[{{$currentCrypto->id}}][1]" class="form-control" @if($currentPrice) value={{$currentPrice->tier_1}} @endif placeholder="0" type="number"></td>
+                                                    <td><input name="price[{{$currentCrypto->id}}][2]" class="form-control" @if($currentPrice) value={{$currentPrice->tier_2}} @endif placeholder="0" type="number"></td>
+                                                    <td><input name="price[{{$currentCrypto->id}}][3]" class="form-control" @if($currentPrice) value={{$currentPrice->tier_3}} @endif placeholder="0" type="number"></td>
+                                                    <td><input name="price[{{$currentCrypto->id}}][4]" class="form-control" @if($currentPrice) value={{$currentPrice->tier_4}} @endif placeholder="0" type="number"></td>
+                                                    <td><input name="price[{{$currentCrypto->id}}][5]" class="form-control" @if($currentPrice) value={{$currentPrice->tier_5}} @endif placeholder="0" type="number"></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
