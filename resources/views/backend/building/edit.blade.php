@@ -17,6 +17,7 @@
                                     <option value="Garage" @if($building->type == "Garage") selected @endif>Garage</option>
                                     <option value="Refinery" @if($building->type == "Refinery") selected @endif>Refinery</option>
                                     <option value="Bazaar" @if($building->type == "Bazaar") selected @endif>Bazaar</option>
+                                    <option value="Portal" @if($building->type == "Portal") selected @endif>Portal</option>
                                 </select>
                             </div>
                             @error('type')

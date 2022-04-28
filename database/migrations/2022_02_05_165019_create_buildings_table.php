@@ -22,7 +22,7 @@ class CreateBuildingsTable extends Migration
             $table->text('video');
             $table->text('activation_sound');
             $table->text('activation_message');
-            $table->enum('type', ['Fuel', 'Garage', 'Refinery', 'Bazaar']);
+            $table->enum('type', ['Fuel', 'Garage', 'Refinery', 'Bazaar', 'Portal']);
             $table->foreignId('crypto_id')->references('id')->on('cryptos')->onDelete('cascade');
             $table->float('price', 8, 2)->default(0);
         });

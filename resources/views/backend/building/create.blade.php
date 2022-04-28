@@ -16,6 +16,7 @@
                                     <option value="Garage">Garage</option>
                                     <option value="Refinery">Refinery</option>
                                     <option value="Bazaar">Bazaar</option>
+                                    <option value="Portal">Portal</option>
                                 </select>
                             </div>
                             @error('type')
