@@ -18,6 +18,7 @@ class Background extends Model
 
     protected $visible = [
         'id', 
+        'image',
         'starting_layer',
         'ending_layer',
         'ending_layer'
