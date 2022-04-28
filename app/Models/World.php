@@ -248,7 +248,7 @@ class World extends Model
         'buildings',
         'music',
         'soil',
-        'white_spaces',
+        'whiteSpaces',
         'explosives',
         'rocks',
         'skills',
