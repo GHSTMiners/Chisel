@@ -22,7 +22,7 @@
                             <div class="mb-3">
                                 <label for="audio" class="form-label">{{ __('Music') }}</label>
                                 <input id="audio" type="file" class="form-control @error('audio') is-invalid @enderror" name="audio" value="{{ old('audio') }}" required autocomplete="music">
-                                @error('music')
+                                @error('audio')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

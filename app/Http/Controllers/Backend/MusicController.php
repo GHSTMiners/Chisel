@@ -36,10 +36,10 @@ class MusicController extends Controller
     public function update(Music $music) {
         $data = request()->validate([
             'name' => ['string'],
-            'music' => ['mimes:mp3,wav']
+            'audio' => ['mimes:mp3,wav']
         ]);
 
-        if(array_key_exists('music', $data)) $data['music'] = $data['music']->store('music', 'public');
+        if(array_key_exists('audio', $data)) $data['audio'] = $data['audio']->store('music', 'public');
 
         $music->update($data);
         return redirect()->route('music.index');
@@ -51,7 +51,7 @@ class MusicController extends Controller
             'audio' => ['required', 'mimes:mp3,wav']          
         ]);
 
-        if(array_key_exists('audio', $data)) $data['audio'] = $data['audio']->store('audio', 'public');
+        if(array_key_exists('audio', $data)) $data['audio'] = $data['audio']->store('music', 'public');
         $data['world_id'] = request()->selectedWorld->id;
 
         \App\Models\Music::create($data);

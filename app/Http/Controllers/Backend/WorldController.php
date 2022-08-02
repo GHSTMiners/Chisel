@@ -16,7 +16,7 @@ class WorldController extends Controller
     public function store() {
         $data = request()->validate([
             'name' => ['string', 'required'],
-            'video' => ['file', 'mimetypes:video/mp4'],
+            'thumbnail' => ['file', 'mimes:png,jpg'],
             'description' => ['string', 'required'],
             'development_mode' => ['boolean'],
             'published' => ['boolean'],
@@ -25,7 +25,7 @@ class WorldController extends Controller
             'world_crypto_id' => ['numeric', 'exists:cryptos,id']
 
         ]);
-        if(array_key_exists('video', $data)) $data['video'] = $data['video']->store('/slider/video', 'public');
+        if(array_key_exists('thumbnail', $data)) $data['thumbnail'] = $data['thumbnail']->store('thumbnail', 'public');
 
         $newWorld = \App\Models\World::create($data);
         //Select new world
@@ -44,7 +44,7 @@ class WorldController extends Controller
 
         $data = request()->validate([
             'name' => ['string'],
-            'video' => ['mimetypes:video/mp4'],
+            'thumbnail' => ['mimes:png,jpg'],
             'description' => ['string'],
             'development_mode' => ['boolean'],
             'published' => ['boolean'],
@@ -54,7 +54,7 @@ class WorldController extends Controller
 
         ]);
 
-        if(array_key_exists('video', $data)) $data['video'] = $data['video']->store('/slider/video', 'public');
+        if(array_key_exists('thumbnail', $data)) $data['thumbnail'] = $data['thumbnail']->store('thumbnail', 'public');
         if(!array_key_exists('development_mode', $data)) $data['development_mode'] = FALSE;
         if(!array_key_exists('published', $data)) $data['published'] = FALSE;
 

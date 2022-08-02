@@ -78,9 +78,9 @@
         </div>
 
         <div class="mb-3">
-            <label for="video" class="form-label">{{ __('Video') }}</label>
-            <input id="video" type="file" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ old('video') }}" required autocomplete="video">
-            @error('video')
+            <label for="thumbnail" class="form-label">{{ __('Thumbnail') }}</label>
+            <input id="thumbnail" type="file" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail" value="{{ old('thumbnail') }}" required autocomplete="thumbnail">
+            @error('thumbnail')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -143,9 +143,9 @@
         </div>
 
         <div class="mb-3">
-            <label for="video" class="form-label">{{ __('Video') }}</label>
-            <input id="video" type="file" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ old('video') }}" required autocomplete="video">
-            @error('video')
+            <label for="thumbnail" class="form-label">{{ __('Thumbnail') }}</label>
+            <input id="thumbnail" type="file" class="form-control @error('thumbnail') is-invalid @enderror" name="thumbnail" value="{{ old('thumbnail') }}" required autocomplete="thumbnail">
+            @error('thumbnail')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
