@@ -1,4 +1,7 @@
 import * as mathjs from "mathjs"
+import * as L from "leaflet"
+import $ from "jquery";
+
 jQuery(($) => {
 
         $(".spritesheet-field").change(function() {
@@ -110,3 +113,22 @@ jQuery(($) => {
           }
         });
         // DOMContentLoaded  end
+
+        let map = new L.Map('map', {
+          center: new L.LatLng(	52.36, 4.89814),
+          zoom: 12,
+        });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        let marker = L.marker([52.36, 4.89814]).addTo(map);
+
+        map.on('click', function(e){
+          var coord = e.latlng;
+          var lat = coord.lat;
+          var lng = coord.lng;
+          $("#latitude").val(lat)
+          $("#longitude").val(lng)
+          marker.setLatLng(coord)
+          console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+        });

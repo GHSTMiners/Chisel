@@ -23,7 +23,7 @@ Auth::routes(['register' => true]);
 Route::resources([
     'statistics/games' => \App\Http\Controllers\Backend\GameController::class,
     'statistics/categories' => \App\Http\Controllers\Backend\GameStatisticCategoryController::class,
-
+    'global/server-regions' => \App\Http\Controllers\Backend\ServerRegionController::class,
     'global/logging' => \App\Http\Controllers\Backend\LogController::class,
     'global/api-keys' => \App\Http\Controllers\Backend\ApiKeyController::class,
     'global/wallet' => \App\Http\Controllers\Backend\WalletController::class,

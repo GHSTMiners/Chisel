@@ -2,7 +2,6 @@ import Web3 from "web3";
 import Web3Modal from "web3modal";
 import Portis from "@portis/web3";
 import $ from "jquery";
-import FrontPageSlider from "./FrontpageSlider";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Cookies from "js-cookie";
 
@@ -35,7 +34,6 @@ $(async function() {
   $(".btn-play-forward").prop('playbackRate', 2);
   $(".btn-play-reverse").prop('playbackRate', 2);
 
-  let slider : FrontPageSlider = new FrontPageSlider();
 });
 
 $(".btn-wallet").on('click', async function() {

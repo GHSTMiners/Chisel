@@ -1,3 +1,8 @@
+#map {
+  height: 240px;
+  width: 100%;
+}
+
 .puzzle-designer {
   min-width: 1000;
   min-height: 1000;
