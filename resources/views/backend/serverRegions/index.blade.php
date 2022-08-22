@@ -3,7 +3,7 @@
 
     <div class="container">
             <div class="d-flex justify-content-between pb-3">
-                <h1>Skills</h1>
+                <h1>Server Regions</h1>
                 <a type="button" href="{{ route('server-regions.create') }}" class="btn btn-primary btn-lg">Add server region 🖥️</a>
             </div>
         <table class="table table-striped table-bordered table-hover">
