@@ -36,7 +36,7 @@ class MusicController extends Controller
     public function update(Music $music) {
         $data = request()->validate([
             'name' => ['string'],
-            'audio' => ['mimes:mp3,wav']
+            'audio' => ['mimes:application/octet-stream,audio/mpeg,mpga,mp3,wav,ogg']
         ]);
 
         if(array_key_exists('audio', $data)) $data['audio'] = $data['audio']->store('music', 'public');
@@ -46,6 +46,7 @@ class MusicController extends Controller
     }
 
     public function store() {
+        dd(request());
         $data = request()->validate([
             'name' => ['required', 'string'],
             'audio' => ['required', 'mimes:application/octet-stream,audio/mpeg,mpga,mp3,wav,ogg']          

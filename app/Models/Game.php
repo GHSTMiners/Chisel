@@ -13,9 +13,14 @@ class Game extends Model
         return $this->belongsTo(World::class);
     }
 
+    public function server_region() {
+        return $this->belongsTo(ServerRegion::class);
+    }
+
     protected $fillable = [
         'room_id',
-        'world_id'
+        'world_id',
+        'server_region_id'
     ];
 
     protected $visible = ['room_id'];

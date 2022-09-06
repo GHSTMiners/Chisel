@@ -16,7 +16,7 @@ class ServerRegion extends Model
         'flag',
         'longitude',
         'latitude',
-        'active'
+        'active',
     ];
 
     protected $visible = [

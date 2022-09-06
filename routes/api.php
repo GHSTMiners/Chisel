@@ -32,4 +32,5 @@ Route::post('token/validate', '\App\Http\Controllers\API\WalletAuthTokenControll
 Route::get('wallet/auth', '\App\Http\Controllers\API\WalletChallengeController@authenticate', array("as" => "api"));
 Route::get('wallet/sign-out', '\App\Http\Controllers\API\WalletChallengeController@sign_out', array("as" => "api"))->name("wallet_sign_out");
 Route::get('servers/all', '\App\Http\Controllers\API\ServerRegionController@regions', array("as" => "api"));
+Route::get('servers/{region_id}', '\App\Http\Controllers\API\ServerRegionController@region_by_id', array("as" => "api"));
 

@@ -27,5 +27,15 @@ class ServerRegionController extends Controller
         );
     }
 
+    public function region_by_id($region_id)
+    {
+        //Fetch category
+        $region = ServerRegion::findOrFail($region_id);
+        return response()->json(
+            $region,
+            200, [], JSON_UNESCAPED_SLASHES
+        );
+    }
+
     
 }

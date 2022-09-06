@@ -28,7 +28,8 @@ class GameController extends Controller
     {
         // Validate request data
         $data = request()->validate([
-            'world_id' =>  ['required', 'numeric', 'exists:worlds,id']
+            'world_id' =>  ['required', 'numeric', 'exists:worlds,id'],
+            'server_region_id' =>  ['numeric', 'exists:server_regions,id']
         ]);
 
         //Generate a random uuid
