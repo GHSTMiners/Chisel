@@ -32,11 +32,10 @@ class GameController extends Controller
             'server_region_id' =>  ['numeric', 'exists:server_regions,id']
         ]);
 
+        $data['room_id'] = Str::uuid();
+
         //Generate a random uuid
-        $game = Game::create([
-            'world_id' => $data['world_id'],
-            'room_id' => Str::uuid()
-        ]);
+        $game = Game::create($data);
 
         return response()->json(
             $game,
