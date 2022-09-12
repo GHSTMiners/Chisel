@@ -28,6 +28,7 @@ Route::resources([
     'global/api-keys' => \App\Http\Controllers\Backend\ApiKeyController::class,
     'global/wallet' => \App\Http\Controllers\Backend\WalletController::class,
 
+    'matter/fall-through' => \App\Http\Controllers\Backend\FallThroughLayerController::class,
     'matter/crypto' => \App\Http\Controllers\Backend\CryptoController::class,
     'matter/crypto-spawns' => \App\Http\Controllers\Backend\CryptoSpawnController::class,
     'matter/soil' => \App\Http\Controllers\Backend\SoilController::class,

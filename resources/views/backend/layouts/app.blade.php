@@ -78,12 +78,17 @@
                                     @if (Route::has('rock-spawns.index'))
                                         <a class="dropdown-item  {{Route::is('rock-spawns*') ? 'active' : ''}}" href="{{ route('rock-spawns.index') }}">{{ __('Edit spawns') }}</a>
                                     @endif
+
                                     </li>
                                 </ul>
                             </li>
 
-                            @if (Route::has('whitespace.index'))
+                                @if (Route::has('whitespace.index'))
                                     <a class="dropdown-item  {{Route::is('whitespace*') ? 'active' : ''}}" href="{{ route('whitespace.index') }}">{{ __('Whitespace') }}</a>
+                                @endif
+
+                                @if (Route::has('fall-through.index'))
+                                    <a class="dropdown-item  {{Route::is('fall-through*') ? 'active' : ''}}" href="{{ route('fall-through.index') }}">{{ __('Fallthrough') }}</a>
                                 @endif
                             </ul>
                         </li>

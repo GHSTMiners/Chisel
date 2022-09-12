@@ -69,6 +69,10 @@ class World extends Model
         return $this->hasMany(Upgrade::class);
     }
 
+    public function fallThroughLayers() {
+        return $this->hasMany(FallThroughLayer::class);
+    }
+
     public static function create(array $attributes = []) {
         $model = static::query()->create($attributes);
 
@@ -254,7 +258,8 @@ class World extends Model
         'skills',
         'vitals',
         'upgrades',
-        'consumables'
+        'consumables',
+        'fallThroughLayers'
     ];
 
 }
