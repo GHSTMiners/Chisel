@@ -43,8 +43,8 @@ class CalculateServerStats implements ShouldQueue
         $statistics_categories = GameStatisticCategory::all();
         foreach($statistics_categories as $category) {
             $response[$category->id]['total'] = $category->entries()->sum('value');
-            $response[$category->id]['24h'] = $category->entries()->sum('value');
-            $response[$category->id]['7d'] = $category->entries()->sum('value');
+            $response[$category->id]['24h'] = $category->entries()->where('created_at', '>=', Carbon::now()->subDay())->sum('value');
+            $response[$category->id]['7d'] = $category->entries()->where('created_at', '>=', Carbon::now()->subWeek())->sum('value');
         }
     }
 }
