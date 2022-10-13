@@ -15,24 +15,13 @@ class ServerStatsController extends Controller
 {
     public function games()
     {
-        // Calculate amount of games
-        $response['amount_total'] = Game::count();
-        $response['amount_24h'] = Game::where('created_at', '>=', Carbon::now()->subDay())->count();
-        $response['amount_7d'] = Game::where('created_at', '>=', Carbon::now()->subWeek())->count();
-        // Get stats category ID's
-        $deaths_category = GameStatisticCategory::where('name' , 'Deaths')->first();
-        $total_crypto_category = GameStatisticCategory::where('name' , 'Total crypto')->first();
-        $blocks_mined_category = GameStatisticCategory::where('name' , 'Blocks mined')->first();
-        // Fetch stats for category ID's
-        // Iterate through categories
-        $statistics_categories = GameStatisticCategory::all();
-        foreach($statistics_categories as $category) {
-            $response[$category->id]['total'] = $category->entries()->sum('value');
-            $response[$category->id]['24h'] = $category->entries()->where('created_at', '>=', Carbon::now()->subDay())->sum('value');
-            $response[$category->id]['7d'] = $category->entries()->where('created_at', '>=', Carbon::now()->subWeek())->sum('value');
+        // Check if response is in cache
+        if(!Cache::has('game_server_stats')) {
+            abort(503);
         }
+        // Fetch from cache and return
         return response()->json(
-            $response,
+            Cache::get('game_server_stats'),
             200, [], JSON_UNESCAPED_SLASHES
         );
     }

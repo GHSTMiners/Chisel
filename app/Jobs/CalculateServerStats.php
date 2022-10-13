@@ -46,5 +46,8 @@ class CalculateServerStats implements ShouldQueue
             $response[$category->id]['24h'] = $category->entries()->where('created_at', '>=', Carbon::now()->subDay())->sum('value');
             $response[$category->id]['7d'] = $category->entries()->where('created_at', '>=', Carbon::now()->subWeek())->sum('value');
         }
+
+        // Store result in cache
+        Cache::put('game_server_stats', $response);
     }
 }

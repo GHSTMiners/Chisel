@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Jobs\CalculateServerStats;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,8 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('cloudflare:reload')->daily();
-
+        $schedule->job(new CalculateServerStats)->everyFifteenMinutes();
         // $schedule->command('inspire')->hourly();
     }
 

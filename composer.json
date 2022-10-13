@@ -5,7 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0",
         "digitaldonkey/ethereum-php": "dev-master",
         "doctrine/dbal": "^3.2",
         "fruitcake/laravel-cors": "^2.0",
@@ -14,13 +14,11 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "monicahq/laravel-cloudflare": "^2.0",
         "panxianhai/php-ecrecover": "dev-master",
-        "renoki-co/laravel-web3": "^1.2",
-        "sc0vu/web3.php": "dev-master"
+        "renoki-co/laravel-web3": "^1.2"
     },
     "require-dev": {
-        "facade/laravel-ignition": "^2.5",
+        "spatie/laravel-ignition": "^1.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
