@@ -7,7 +7,6 @@ use Cache;
 use App\Models\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 
 use App\Models\GameStatisticCategory;
 use App\Models\Gotchi;
