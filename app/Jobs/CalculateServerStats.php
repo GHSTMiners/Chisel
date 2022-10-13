@@ -1,29 +1,44 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Jobs;
 
-use App\Models\Log;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 use App\Models\GameStatisticCategory;
 use App\Models\Gotchi;
 use App\Models\Game;
 
-class ServerStatsController extends Controller
+class CalculateServerStats implements ShouldQueue
 {
-    public function games()
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    /**
+     * Create a new job instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
     {
         // Calculate amount of games
         $response['amount_total'] = Game::count();
         $response['amount_24h'] = Game::where('created_at', '>=', Carbon::now()->subDay())->count();
         $response['amount_7d'] = Game::where('created_at', '>=', Carbon::now()->subWeek())->count();
-        // Get stats category ID's
-        $deaths_category = GameStatisticCategory::where('name' , 'Deaths')->first();
-        $total_crypto_category = GameStatisticCategory::where('name' , 'Total crypto')->first();
-        $blocks_mined_category = GameStatisticCategory::where('name' , 'Blocks mined')->first();
-        // Fetch stats for category ID's
+
         // Iterate through categories
         $statistics_categories = GameStatisticCategory::all();
         foreach($statistics_categories as $category) {
@@ -31,11 +46,5 @@ class ServerStatsController extends Controller
             $response[$category->id]['24h'] = $category->entries()->sum('value');
             $response[$category->id]['7d'] = $category->entries()->sum('value');
         }
-        return response()->json(
-            $response,
-            200, [], JSON_UNESCAPED_SLASHES
-        );
     }
-
-    
 }
