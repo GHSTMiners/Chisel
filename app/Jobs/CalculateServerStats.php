@@ -9,6 +9,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
+use Cache;
+
 use App\Models\GameStatisticCategory;
 use App\Models\Gotchi;
 use App\Models\Game;
