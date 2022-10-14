@@ -15,7 +15,6 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "panxianhai/php-ecrecover": "dev-master",
-        "renoki-co/laravel-web3": "^1.2"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",
