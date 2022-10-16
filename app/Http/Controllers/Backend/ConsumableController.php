@@ -8,23 +8,25 @@ use App\Models\Crypto;
 use App\Models\Vital;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Interfaces\WorldRepositoryInterface;
 
 class ConsumableController extends Controller
 {
 
-    public function __construct()
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index() {
-        $consumables = request()->selectedWorld->consumables;
+        $consumables = $this->worldRepository->getSelectedWorld()->consumables;
         return view('backend.consumable.index', compact('consumables'));
     }
 
     public function edit(Consumable $consumable ) {
-        $crypto = request()->selectedWorld->crypto;
-        $vitals = request()->selectedWorld->vitals;
+        $crypto = $this->worldRepository->getSelectedWorld()->crypto;
+        $vitals = $this->worldRepository->getSelectedWorld()->vitals;
         return view('backend.consumable.edit', compact('consumable', 'crypto', 'vitals'));
     }
 
@@ -35,7 +37,7 @@ class ConsumableController extends Controller
     }
 
     public function create() {
-        $crypto = request()->selectedWorld->crypto;
+        $crypto = $this->worldRepository->getSelectedWorld()->crypto;
         return view('backend.consumable.create', compact('crypto'));
     }
 
@@ -52,7 +54,7 @@ class ConsumableController extends Controller
 
         $newConsumable = \App\Models\Consumable::create([
             'name' => $data['name'],
-            'world_id' => request()->selectedWorld->id,
+            'world_id' => $this->worldRepository->getSelectedWorld()->id,
             'price' => $data['price'],
             'crypto' => $data['crypto'],
             'description' => $data['description'],

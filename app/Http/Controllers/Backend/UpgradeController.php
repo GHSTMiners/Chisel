@@ -5,31 +5,32 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Upgrade;
 use Illuminate\Http\Request;
+use App\Interfaces\WorldRepositoryInterface;
 
 class UpgradeController extends Controller
 {
-    public function __construct()
-    {
+    public function __construct(WorldRepositoryInterface $worldRepository) {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index() {
-        $upgrades = request()->selectedWorld->upgrades;
+        $upgrades = $this->worldRepository->getSelectedWorld()->upgrades;
         return view('backend.upgrade.index', compact('upgrades'));
     }
 
     public function create() {
-        $crypto = request()->selectedWorld->crypto;
-        $skills = request()->selectedWorld->skills;
-        $vitals = request()->selectedWorld->vitals;
+        $crypto = $this->worldRepository->getSelectedWorld()->crypto;
+        $skills = $this->worldRepository->getSelectedWorld()->skills;
+        $vitals = $this->worldRepository->getSelectedWorld()->vitals;
 
         return view('backend.upgrade.create', compact('crypto', 'skills', 'vitals'));
     }
 
     public function edit(Upgrade $upgrade) {
-        $crypto = request()->selectedWorld->crypto;
-        $skills = request()->selectedWorld->skills;
-        $vitals = request()->selectedWorld->vitals;
+        $crypto = $this->worldRepository->getSelectedWorld()->crypto;
+        $skills = $this->worldRepository->getSelectedWorld()->skills;
+        $vitals = $this->worldRepository->getSelectedWorld()->vitals;
 
         return view('backend.upgrade.edit', compact('crypto', 'skills', 'vitals', 'upgrade'));
     }
@@ -52,7 +53,7 @@ class UpgradeController extends Controller
 
         //Create an upgrade in the database
         $upgrade = Upgrade::create([
-            'world_id' => request()->selectedWorld->id,
+            'world_id' => $this->worldRepository->getSelectedWorld()->id,
             'name' => $data['name'],
             'description' => $data['description']
         ]);

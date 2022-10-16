@@ -6,19 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Models\Crypto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use App\Interfaces\WorldRepositoryInterface;
 
 class CryptoController extends Controller
 {
+    private WorldRepositoryInterface $worldRepository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
-        $this->middleware('worldInjector');
+        $this->worldRepository = $worldRepository;
     }
 
     /**
@@ -28,7 +29,7 @@ class CryptoController extends Controller
      */
     public function index()
     {
-        $crypto = request()->selectedWorld->crypto;
+        $crypto = $this->worldRepository->getSelectedWorld()->crypto;
         return view('backend.crypto.index', compact('crypto'));
     }
 
@@ -83,7 +84,7 @@ class CryptoController extends Controller
         \App\Models\Crypto::create([
             'name' => $data['name'],
             'shortcode' => $data['shortcode'],
-            'world_id' => request()->selectedWorld->id,
+            'world_id' => $this->worldRepository->getSelectedWorld()->id,
             'wallet_address' => $data['wallet_address'],
             'weight' => $data['weight'],
             'soil_image' => $soilImagePath,

@@ -5,27 +5,31 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Building;
 use Illuminate\Http\Request;
+use App\Interfaces\WorldRepositoryInterface;
 
 class BuildingController extends Controller
 {
-    public function __construct()
+    private WorldRepositoryInterface $worldRepository;
+
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index() {
-        $crypto = request()->selectedWorld->crypto;
-        $buildings = request()->selectedWorld->buildings;
+        $crypto = $this->worldRepository->getSelectedWorld()->crypto;
+        $buildings = $this->worldRepository->getSelectedWorld()->buildings;
         return view('backend.building.index', compact('buildings', 'crypto'));
     }
 
     public function create() {
-        $crypto = request()->selectedWorld->crypto;
+        $crypto = $this->worldRepository->getSelectedWorld()->crypto;
         return view('backend.building.create', compact('crypto'));
     }
 
     public function edit(Building $building ) {
-        $crypto = request()->selectedWorld->crypto;
+        $crypto = $this->worldRepository->getSelectedWorld()->crypto;
         return view('backend.building.edit', compact('building', 'crypto'));
     }
 
@@ -64,7 +68,7 @@ class BuildingController extends Controller
             'video' => ['required', 'mimetypes:video/webm'],
             'activation_sound' => ['required', 'mimetypes:audio/x-wav,audio/mpeg'],
         ]);
-        $data['world_id'] = request()->selectedWorld->id;
+        $data['world_id'] = $this->worldRepository->getSelectedWorld()->id;
         $data['video'] = request('video')->store('buildings', 'public');
         $data['activation_sound'] = request('activation_sound')->store('buildings', 'public');
 

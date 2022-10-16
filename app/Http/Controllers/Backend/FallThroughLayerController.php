@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\FallThroughLayer;
-
+use App\Http\Controllers\Controller;
+use App\Interfaces\WorldRepositoryInterface;
 
 class FallThroughLayerController extends Controller
 {
-    public function __construct()
+    private WorldRepositoryInterface $worldRepository;
+
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index() {
-        $fallThroughLayers = request()->selectedWorld->fallThroughLayers;
+        $fallThroughLayers = $this->worldRepository->getSelectedWorld()->fallThroughLayers;
         return view('backend.fallThroughLayer.index', compact('fallThroughLayers'));
     }
 
@@ -51,7 +54,7 @@ class FallThroughLayerController extends Controller
             'layer' => ['numeric', 'required'],
         ]);
 
-        $data['world_id'] = request()->selectedWorld->id;
+        $data['world_id'] = $this->worldRepository->getSelectedWorld()->id;
         \App\Models\FallThroughLayer::create($data);
         return redirect()->route('fall-through.index');
 

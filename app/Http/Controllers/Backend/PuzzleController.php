@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Puzzle;
 use Illuminate\Http\Request;
+use App\Interfaces\WorldRepositoryInterface;
 
 class PuzzleController extends Controller
 {
@@ -13,9 +14,10 @@ class PuzzleController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index() {

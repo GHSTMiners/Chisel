@@ -5,21 +5,24 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Rock;
 use Illuminate\Http\Request;
+use App\Interfaces\WorldRepositoryInterface;
 
 class RockController extends Controller
 {
+    private WorldRepositoryInterface $worldRepository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index() {
-        $rocks = request()->selectedWorld->rocks;
+        $rocks = $this->worldRepository->getSelectedWorld()->rocks;
         return view('backend.rock.index', compact('rocks'));
     }
 
@@ -67,7 +70,7 @@ class RockController extends Controller
 
         \App\Models\Rock::create([
             'name' => $data['name'],
-            'world_id' => request()->selectedWorld->id,
+            'world_id' => $this->worldRepository->getSelectedWorld()->id,
             'image' => $image,
             'digable' => (array_key_exists('digable', $data) ? 1 : 0),
             'explodeable' => (array_key_exists('explodeable', $data) ? 1 : 0),

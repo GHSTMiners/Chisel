@@ -6,28 +6,32 @@ use App\Models\CryptoSpawn;
 
 
 use Illuminate\Http\Request;
+use App\Interfaces\WorldRepositoryInterface;
 
 class CryptoSpawnController extends Controller
 {
-    public function __construct()
+    private WorldRepositoryInterface $worldRepository;
+
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
         $this->middleware('worldInjector');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index()
     {
-        $cryptoSpawns = request()->selectedWorld->cryptoSpawns;
+        $cryptoSpawns = $this->worldRepository->getSelectedWorld()->cryptoSpawns;
         return view('backend.cryptoSpawns.index', compact('cryptoSpawns'));
     }
 
     public function create() {
-        $crypto = request()->selectedWorld->crypto;
+        $crypto = $this->worldRepository->getSelectedWorld()->crypto;
         return view('backend.cryptoSpawns.create', compact('crypto'));
     }
 
     public function edit(CryptoSpawn $cryptoSpawn) {
-        $crypto = request()->selectedWorld->crypto;
+        $crypto = $this->worldRepository->getSelectedWorld()->crypto;
         return view('backend.cryptoSpawns.edit', compact('cryptoSpawn', 'crypto'));
     }
 
@@ -55,7 +59,7 @@ class CryptoSpawnController extends Controller
             'spawn_rate' => ['required', 'numeric', 'gt:0', 'lte:100'],            
         ]);
 
-        $data['world_id'] = request()->selectedWorld->id;
+        $data['world_id'] = $this->worldRepository->getSelectedWorld()->id;
 
         \App\Models\CryptoSpawn::create($data);
         return redirect()->route('crypto-spawns.index');

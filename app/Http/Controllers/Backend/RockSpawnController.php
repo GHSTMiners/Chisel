@@ -5,28 +5,31 @@ use App\Http\Controllers\Controller;
 use App\Models\RockSpawn;
 
 use Illuminate\Http\Request;
+use App\Interfaces\WorldRepositoryInterface;
 
 class RockSpawnController extends Controller
 {
-    public function __construct()
+    private WorldRepositoryInterface $worldRepository;
+
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
-        $this->middleware('worldInjector');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index()
     {
-        $rockSpawns = request()->selectedWorld->rockSpawns;
+        $rockSpawns = $this->worldRepository->getSelectedWorld()->rockSpawns;
         return view('backend.rockSpawns.index', compact('rockSpawns'));
     }
 
     public function create() {
-        $rocks = request()->selectedWorld->rocks;
+        $rocks = $this->worldRepository->getSelectedWorld()->rocks;
         return view('backend.rockSpawns.create', compact('rocks'));
     }
 
     public function edit(RockSpawn $rockSpawn) {
-        $rocks = request()->selectedWorld->rocks;
+        $rocks = $this->worldRepository->getSelectedWorld()->rocks;
         return view('backend.rockSpawns.edit', compact('rockSpawn', 'rocks'));
     }
 
@@ -36,7 +39,7 @@ class RockSpawnController extends Controller
     }
 
     public function update(RockSpawn $rockSpawn) {
-        $rocks = request()->selectedWorld->rocks;
+        $rocks = $this->worldRepository->getSelectedWorld()->rocks;
         $data = request()->validate([
             'rock_id' => ['numeric', 'exists:rocks,id'],
             'starting_layer' => ['numeric', 'gte:0'],
@@ -54,7 +57,7 @@ class RockSpawnController extends Controller
             'ending_layer' => ['required', 'numeric', 'gte:0'],
             'spawn_rate' => ['required', 'numeric', 'gte:0', 'lte:1'],            
         ]);
-        $data['world_id'] = request()->selectedWorld->id;
+        $data['world_id'] = $this->worldRepository->getSelectedWorld()->id;
         \App\Models\RockSpawn::create($data);
         return redirect()->route('rock-spawns.index');
     }

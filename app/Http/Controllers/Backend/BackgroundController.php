@@ -5,16 +5,20 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Background;
 use Illuminate\Http\Request;
+use App\Interfaces\WorldRepositoryInterface;
 
 class BackgroundController extends Controller
 {
-    public function __construct()
+    private WorldRepositoryInterface $worldRepository;
+
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index() {
-        $backgrounds = request()->selectedWorld->backgrounds;
+        $backgrounds = $this->worldRepository->getSelectedWorld()->backgrounds;
         return view('backend.backgrounds.index', compact('backgrounds'));
     }
 
@@ -52,7 +56,7 @@ class BackgroundController extends Controller
         ]);
 
         if(array_key_exists('image', $data)) $data['image'] = $data['image']->store('backgrounds', 'public');
-        $data['world_id'] = request()->selectedWorld->id;
+        $data['world_id'] = $this->worldRepository->getSelectedWorld()->id;
 
         Background::create($data);
         return redirect()->route('background.index');

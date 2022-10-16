@@ -5,16 +5,20 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use App\Interfaces\WorldRepositoryInterface;
 
 class SkillController extends Controller
 {
-    public function __construct()
+    private WorldRepositoryInterface $worldRepository;
+
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index() {
-        $skills = request()->selectedWorld->skills;
+        $skills = $this->worldRepository->getSelectedWorld()->skills;
         return view('backend.skill.index', compact('skills'));
     }
 

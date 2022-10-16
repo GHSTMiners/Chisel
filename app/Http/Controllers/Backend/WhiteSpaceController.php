@@ -1,20 +1,24 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
-use App\Http\Controllers\Controller;
-use App\Models\WhiteSpace;
 
+use App\Models\WhiteSpace;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Interfaces\WorldRepositoryInterface;
 
 class WhiteSpaceController extends Controller
 {
-    public function __construct()
+    private WorldRepositoryInterface $worldRepository;
+
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index() {
-        $whiteSpaces = request()->selectedWorld->whiteSpaces;
+        $whiteSpaces = $this->worldRepository->getSelectedWorld()->whiteSpaces;
         return view('backend.whiteSpace.index', compact('whiteSpaces'));
     }
 
@@ -54,7 +58,7 @@ class WhiteSpaceController extends Controller
             'background_only' => 'boolean',
         ]);
 
-        $data['world_id'] = request()->selectedWorld->id;
+        $data['world_id'] = $this->worldRepository->getSelectedWorld()->id;
         \App\Models\WhiteSpace::create($data);
         return redirect()->route('whitespace.index');
     }

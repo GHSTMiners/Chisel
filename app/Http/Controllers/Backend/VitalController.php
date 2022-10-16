@@ -5,16 +5,20 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Vital;
 use Illuminate\Http\Request;
+use App\Interfaces\WorldRepositoryInterface;
 
 class VitalController extends Controller
 {
-    public function __construct()
+    private WorldRepositoryInterface $worldRepository;
+
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index() {
-        $vitals = request()->selectedWorld->vitals;
+        $vitals = $this->worldRepository->getSelectedWorld()->vitals;
         return view('backend.vital.index', compact('vitals'));
     }
 
@@ -46,11 +50,11 @@ class VitalController extends Controller
     public function store() {
         $data = request()->validate([
             'name' => ['string', 'required'],
-            'world_id' => request()->selectedWorld->id,
             'minimum' => ['required', 'string'],
             'maximum' => ['required', 'string'],
             'initial' => ['required', 'string']
         ]);
+        $data['world_id'] = $this->worldRepository->getSelectedWorld()->id;
         \App\Models\Vital::create($data);
         return redirect()->route('vital.index');
 

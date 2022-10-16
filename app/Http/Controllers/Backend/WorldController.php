@@ -5,14 +5,21 @@ use App\Http\Controllers\Controller;
 
 use App\Models\World;
 use Illuminate\Http\Request;
+use App\Interfaces\WorldRepositoryInterface;
 
 class WorldController extends Controller
 {
+    private WorldRepositoryInterface $worldRepository;
+
+    public function __construct(WorldRepositoryInterface $worldRepository) {
+        $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
+    }
 
     public function index() {
         return redirect()->route('home');
-
     }
+
     public function store() {
         $data = request()->validate([
             'name' => ['string', 'required'],

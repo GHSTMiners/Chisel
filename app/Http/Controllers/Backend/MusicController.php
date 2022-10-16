@@ -5,18 +5,21 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Music;
 use Illuminate\Http\Request;
-
+use App\Interfaces\WorldRepositoryInterface;
 
 class MusicController extends Controller
 {
-    public function __construct()
+    private WorldRepositoryInterface $worldRepository;
+
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index()
     {
-        $music = request()->selectedWorld->music;
+        $music = $this->worldRepository->getSelectedWorld()->music;
         return view('backend.music.index', compact('music'));
     }
 
@@ -53,7 +56,7 @@ class MusicController extends Controller
         ]);
 
         if(array_key_exists('audio', $data)) $data['audio'] = $data['audio']->store('music', 'public');
-        $data['world_id'] = request()->selectedWorld->id;
+        $data['world_id'] = $this->worldRepository->getSelectedWorld()->id;
 
         \App\Models\Music::create($data);
         return redirect()->route('music.index');

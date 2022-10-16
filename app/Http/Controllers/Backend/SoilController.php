@@ -5,17 +5,19 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Soil;
 use Illuminate\Http\Request;
+use App\Interfaces\WorldRepositoryInterface;
 
 class SoilController extends Controller
 {
-    
+    private WorldRepositoryInterface $worldRepository;
+
     public function __construct()
     {
         $this->middleware('auth');
     }
     
     public function index() {
-        $soil = request()->selectedWorld->soil->sortBy('order');
+        $soil = $this->worldRepository->getSelectedWorld()->soil->sortBy('order');
         return view('backend.soil.index', compact('soil'));
     }
 
@@ -77,7 +79,7 @@ class SoilController extends Controller
         \App\Models\Soil::create([
             'name' => $data['name'],
             'layers' => $data['layers'],
-            'world_id' => request()->selectedWorld->id,
+            'world_id' => $this->worldRepository->getSelectedWorld()->id,
             'dig_multiplier' => $data['dig_multiplier'],
             'top_image' => $topImagePath,
             'middle_image' => $middleImagePath,

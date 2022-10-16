@@ -6,15 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Models\Explosive;
 use App\Models\Crypto;
 use Illuminate\Http\Request;
+use App\Interfaces\WorldRepositoryInterface;
 
 class ExplosiveController extends Controller
 {
-    public function __construct() {
+    private WorldRepositoryInterface $worldRepository;
+
+    public function __construct(WorldRepositoryInterface $worldRepository) {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
 
     public function index() {
-        $explosives = request()->selectedWorld->explosives;
+        $explosives = $this->worldRepository->getSelectedWorld()->explosives;
         return view('backend.explosive.index', compact('explosives'));
     }
 
@@ -89,7 +93,7 @@ class ExplosiveController extends Controller
             'name' => $data['name'],
             'price' => $data['price'],
             'crypto_id' => $data['crypto_id'],
-            'world_id' => request()->selectedWorld->id,
+            'world_id' => $this->worldRepository->getSelectedWorld()->id,
             'soil_image' => $soil_image,
             'inventory_image' => $inventory_image,
             'drop_image' => $drop_image,
