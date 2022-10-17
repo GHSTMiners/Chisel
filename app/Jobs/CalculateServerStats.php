@@ -54,7 +54,7 @@ class CalculateServerStats implements ShouldQueue
     private function calculate_game_amounts() {
         // Configure datapoint settings
         $server_game_amounts = [];
-        $history_days = 7;
+        $history_days = 365;
         $point_interval_hours = 1;
         // Calculate start and end dates
         $end_date = new Carbon(Carbon::now()->minute(0)->second(0));
