@@ -9,6 +9,10 @@ class ServerRegion extends Model
 {
     use HasFactory;
 
+    public function games() {
+        return $this->hasMany(Game::class);
+    }
+
     protected $fillable = [
         'id',
         'name',
@@ -25,5 +29,6 @@ class ServerRegion extends Model
         'flag',
         'longitude',
         'latitude',
+        'games'
     ];
 }

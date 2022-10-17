@@ -27,5 +27,17 @@ class ServerStatsController extends Controller
         );
     }
 
+    public function game_amounts()
+    {
+        // Check if response is in cache
+        if(!Cache::has('game_amounts')) {
+            abort(503);
+        }
+        // Fetch from cache and return
+        return response()->json(
+            Cache::get('game_amounts'),
+            200, [], JSON_UNESCAPED_SLASHES
+        );
+    }
     
 }
