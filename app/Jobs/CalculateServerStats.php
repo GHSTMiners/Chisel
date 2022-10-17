@@ -72,6 +72,7 @@ class CalculateServerStats implements ShouldQueue
             foreach($regions as &$region) {
                 $datapoints[$region->id][-1] = $region->games()->whereBetween('created_at', [$current_date, $next_date])->count();
                 foreach($region->games()->whereBetween('created_at', [$current_date, $next_date]) as $game) {
+                    echo $game->uuid;
                     foreach($statistics_categories as $category) {
                         echo $game->statistic_entries()->where('game_statistic_category_id', $category->id)->sum('value');
                     }
