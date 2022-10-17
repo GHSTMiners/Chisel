@@ -30,12 +30,12 @@ class ServerStatsController extends Controller
     public function game_amounts()
     {
         // Check if response is in cache
-        if(!Cache::has('game_amounts')) {
+        if(!Cache::has('game_server_stats_historical')) {
             abort(503);
         }
         // Fetch from cache and return
         return response()->json(
-            Cache::get('game_amounts'),
+            Cache::get('game_server_stats_historical'),
             200, [], JSON_UNESCAPED_SLASHES
         );
     }
