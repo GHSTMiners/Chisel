@@ -35,9 +35,9 @@ class CalculateServerStats implements ShouldQueue
 
     private function calculate_game_stats() {
         // Calculate amount of games
-        $response['amount_total'] = Game::count();
-        $response['amount_24h'] = Game::where('created_at', '>=', Carbon::now()->subDay())->count();
-        $response['amount_7d'] = Game::where('created_at', '>=', Carbon::now()->subWeek())->count();
+        $response[-1]['amount_total'] = Game::count();
+        $response[-1]['amount_24h'] = Game::where('created_at', '>=', Carbon::now()->subDay())->count();
+        $response[-1]['amount_7d'] = Game::where('created_at', '>=', Carbon::now()->subWeek())->count();
     
         // Iterate through categories
         $statistics_categories = GameStatisticCategory::all();
@@ -61,16 +61,23 @@ class CalculateServerStats implements ShouldQueue
         $start_date = Carbon::now()->subDays($history_days);
         // Fetch all server regions
         $regions = ServerRegion::all();
+        $statistics_categories = GameStatisticCategory::all();
         // Loop through all points and count game for that interval for each region
         $current_date = $start_date;
         while ($end_date->greaterThan($current_date)) {
             // Calculate next date
             $next_date= (new Carbon($current_date))->addHours($point_interval_hours);
-            // Iterate through regions
+            // Iterate through regions, game count = -1
             $datapoints = [];
             foreach($regions as &$region) {
-                $datapoints[$region->id] = $region->games()->whereBetween('created_at', [$current_date, $next_date])->count();
+                $datapoints[$region->id][-1] = $region->games()->whereBetween('created_at', [$current_date, $next_date])->count();
+                foreach($statistics_categories as $category) {
+                    foreach($region->games()->whereBetween('created_at', [$current_date, $next_date]) as $game) {
+                        echo $game->statistic_entries()->where('game_statistic_category_id', $category->id)->sum('value');
+                    }
+                }
             }
+
             // Generate object entry
             $entry['start_date']    = $current_date->toDateTimeString();
             $entry['end_date']      = $next_date->toDateTimeString();
@@ -79,7 +86,7 @@ class CalculateServerStats implements ShouldQueue
             $current_date = $next_date;
         }
         // Store result in cache
-        Cache::put('game_amounts', $server_game_amounts);
+        Cache::put('game_server_stats_historical', $server_game_amounts);
     }
 
     /**

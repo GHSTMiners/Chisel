@@ -17,6 +17,10 @@ class Game extends Model
         return $this->belongsTo(ServerRegion::class);
     }
 
+    public function statistic_entries() {
+        return $this->hasMany(GameStatisticEntry::class);
+    }
+
     protected $fillable = [
         'room_id',
         'world_id',
