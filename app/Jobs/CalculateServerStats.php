@@ -35,9 +35,9 @@ class CalculateServerStats implements ShouldQueue
 
     private function calculate_game_stats() {
         // Calculate amount of games
-        $response[-1]['amount_total'] = Game::count();
-        $response[-1]['amount_24h'] = Game::where('created_at', '>=', Carbon::now()->subDay())->count();
-        $response[-1]['amount_7d'] = Game::where('created_at', '>=', Carbon::now()->subWeek())->count();
+        $response[-1]['total'] = Game::count();
+        $response[-1]['24h'] = Game::where('created_at', '>=', Carbon::now()->subDay())->count();
+        $response[-1]['7d'] = Game::where('created_at', '>=', Carbon::now()->subWeek())->count();
     
         // Iterate through categories
         $statistics_categories = GameStatisticCategory::all();
