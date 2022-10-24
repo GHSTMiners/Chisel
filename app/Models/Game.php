@@ -9,7 +9,7 @@ class Game extends Model
 {
     use HasFactory;
 
-    public function World() {
+    public function world() {
         return $this->belongsTo(World::class);
     }
 
@@ -24,8 +24,9 @@ class Game extends Model
     protected $fillable = [
         'room_id',
         'world_id',
-        'server_region_id'
+        'server_region_id',
+        'statistic_entries'
     ];
 
-    protected $visible = ['room_id'];
+    protected $visible = ['room_id', 'statistic_entries'];
 }

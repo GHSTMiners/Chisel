@@ -27,6 +27,17 @@ class StatisticsController extends Controller
         );
     }
 
+    public function game($uuid) {
+        // Fetch statistics
+        $game = Game::where('room_id', $uuid)->firstOrFail();
+        $game->with('statistic_entries');
+
+        return response()->json(
+            $game->get(),
+            200, [], JSON_UNESCAPED_SLASHES
+        );
+    }
+
     public function gotchi($category_id) {
         //Fetch category
         $category = GameStatisticCategory::findOrFail($category_id);
