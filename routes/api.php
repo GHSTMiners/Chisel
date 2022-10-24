@@ -23,7 +23,7 @@ Route::get('statistics/categories', '\App\Http\Controllers\API\StatisticsControl
 Route::post('statistics/gotchi/{category_id}', '\App\Http\Controllers\API\StatisticsController@gotchi', array("as" => "api"));
 Route::get('statistics/highscores/{category_id}', '\App\Http\Controllers\API\StatisticsController@highscores', array("as" => "api"));
 Route::get('statistics/games', '\App\Http\Controllers\API\ServerStatsController@games', array("as" => "api"));
-Route::get('statistics/game/{uuid}', '\App\Http\Controllers\API\ServerStatsController@game', array("as" => "api"));
+Route::get('statistics/game/{uuid}', '\App\Http\Controllers\API\StatisticsController@game', array("as" => "api"));
 Route::get('statistics/game_amounts', '\App\Http\Controllers\API\ServerStatsController@game_amounts', array("as" => "api"));
 
 Route::post('game/create', '\App\Http\Controllers\API\GameController@create', array("as" => "api"));
