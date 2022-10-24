@@ -33,6 +33,6 @@ class GameStatisticEntry extends Model
         'value'
     ];
 
-    protected $visible = ['value', 'gotchi', 'wallet'];
+    protected $visible = ['value', 'gotchi', 'wallet', 'game_statistic_category_id'];
 
 }
