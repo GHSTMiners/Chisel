@@ -30,8 +30,7 @@ class StatisticsController extends Controller
 
     public function game($uuid) {
         // Fetch statistics
-        $game = Game::where('room_id', $uuid)->firstOrFail();
-        $game->with('statistic_entries');
+        $game = Game::where('room_id', $uuid)->with('statistic_entries')->firstOrFail();
 
         return response()->json(
             $game,
