@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\IpAddress;
 use App\Models\Gotchi;
 use App\Models\Wallet;
+use App\Models\Game;
 
 use App\Models\GameStatisticCategory;
 
