@@ -34,7 +34,7 @@ class StatisticsController extends Controller
         $game->with('statistic_entries');
 
         return response()->json(
-            $game->get(),
+            $game,
             200, [], JSON_UNESCAPED_SLASHES
         );
     }
