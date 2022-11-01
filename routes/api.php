@@ -28,6 +28,7 @@ Route::get('statistics/game_amounts', '\App\Http\Controllers\API\ServerStatsCont
 
 Route::post('game/create', '\App\Http\Controllers\API\GameController@create', array("as" => "api"));
 Route::post('game/add_statistics', '\App\Http\Controllers\API\GameController@add_statistics', array("as" => "api"));
+Route::post('game/add_log_entry', '\App\Http\Controllers\API\GameController@add_log_entry', array("as" => "api"));
 
 Route::post('wallet/challenge', '\App\Http\Controllers\API\WalletChallengeController@challenge', array("as" => "api"));
 Route::post('wallet/validate', '\App\Http\Controllers\API\WalletChallengeController@validate_challenge', array("as" => "api"));

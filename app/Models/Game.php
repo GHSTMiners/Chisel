@@ -21,6 +21,10 @@ class Game extends Model
         return $this->hasMany(GameStatisticEntry::class);
     }
 
+    public function log_entry() {
+        return $this->hasOne(GameLogEntry::class);
+    }
+
     protected $fillable = [
         'room_id',
         'world_id',
@@ -28,5 +32,5 @@ class Game extends Model
         'statistic_entries'
     ];
 
-    protected $visible = ['room_id', 'statistic_entries'];
+    protected $visible = ['room_id', 'statistic_entries', 'log_entry'];
 }

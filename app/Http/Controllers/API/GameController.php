@@ -15,6 +15,7 @@ use App\Models\GameStatisticEntry;
 use App\Models\Highscore;
 
 use App\Models\GameStatisticCategory;
+use App\Models\GameLogEntry;
 
 
 class GameController extends Controller
@@ -36,6 +37,33 @@ class GameController extends Controller
 
         //Generate a random uuid
         $game = Game::create($data);
+
+        return response()->json(
+            $game,
+            200, [], JSON_UNESCAPED_SLASHES
+        );
+    }
+
+    public function add_log_entry()
+    {
+        // Validate request data
+        $data = request()->validate([
+            'room_id' => ['required', 'uuid', 'exists:games,room_id'],
+            'log_file' => ['required', 'file']
+        ]);
+
+        //Find the game for this request
+        $game = Game::where('room_id', $data['room_id'])->firstOrFail();
+
+        // Store log file
+        if(array_key_exists('log_file', $data)) $data['log_file'] = $data['log_file']->store('games/logs', 'public');
+
+        // Add database entry
+
+        \App\Models\GameLogEntry::create([
+            'game_id' => $game->id,
+            'log_file' => $data['log_file']
+        ]);
 
         return response()->json(
             $game,
