@@ -30,7 +30,7 @@ class StatisticsController extends Controller
 
     public function game($uuid) {
         // Fetch statistics
-        $game = Game::where('room_id', $uuid)->with('statistic_entries', 'statistic_entries.gotchi')->firstOrFail();
+        $game = Game::where('room_id', $uuid)->with('statistic_entries', 'statistic_entries.gotchi', 'log_entry')->firstOrFail();
 
         return response()->json(
             $game,
@@ -65,7 +65,7 @@ class StatisticsController extends Controller
             $query = $query->where('wallet_id', $wallet->id);
         }
 
-        $query = $query->with('gotchi', 'wallet', 'log_entry');
+        $query = $query->with('gotchi', 'wallet');
         
         return response()->json(
             $query->get(),
