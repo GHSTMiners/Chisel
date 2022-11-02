@@ -49,7 +49,6 @@ class MusicController extends Controller
     }
 
     public function store() {
-        dd(request());
         $data = request()->validate([
             'name' => ['required', 'string'],
             'audio' => ['required', 'mimes:application/octet-stream,audio/mpeg,mpga,mp3,wav,ogg']          
