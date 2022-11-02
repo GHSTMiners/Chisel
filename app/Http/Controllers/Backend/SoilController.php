@@ -11,9 +11,10 @@ class SoilController extends Controller
 {
     private WorldRepositoryInterface $worldRepository;
 
-    public function __construct()
+    public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
+        $this->worldRepository = $worldRepository;
     }
     
     public function index() {
