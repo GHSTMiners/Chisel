@@ -19,6 +19,6 @@ class GameLogEntry extends Model
         'log_file',
     ];
 
-    protected $visible = ['game_id', 'log_file'];
+    protected $visible = ['log_file'];
 
 }
