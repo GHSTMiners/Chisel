@@ -65,7 +65,7 @@ class StatisticsController extends Controller
             $query = $query->where('wallet_id', $wallet->id);
         }
 
-        $query = $query->with('gotchi', 'wallet');
+        $query = $query->with('gotchi', 'wallet', 'log_entry');
         
         return response()->json(
             $query->get(),

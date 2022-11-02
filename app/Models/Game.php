@@ -29,7 +29,8 @@ class Game extends Model
         'room_id',
         'world_id',
         'server_region_id',
-        'statistic_entries'
+        'statistic_entries',
+        'log_entry'
     ];
 
     protected $visible = ['room_id', 'statistic_entries', 'log_entry'];
