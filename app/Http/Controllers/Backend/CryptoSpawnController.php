@@ -15,7 +15,6 @@ class CryptoSpawnController extends Controller
     public function __construct(WorldRepositoryInterface $worldRepository)
     {
         $this->middleware('auth');
-        $this->middleware('worldInjector');
         $this->worldRepository = $worldRepository;
     }
 
