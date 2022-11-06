@@ -17,7 +17,7 @@ Route::get('/', [App\Http\Controllers\Backend\HomeController::class, 'index'])->
 Route::post('/matter/soil/update-sorting', [App\Http\Controllers\Backend\SoilController::class, 'updateSorting'])->name('updateSortingSoil');
 
 
-Auth::routes(['register' => true]);
+Auth::routes(['register' => false]);
 
 //Crypto
 Route::resources([
