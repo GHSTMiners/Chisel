@@ -9,18 +9,7 @@ class WorldRepository implements WorldRepositoryInterface
 {
     private World $selected_world;
 
-    function __construct() {
-        $selectedWorldID = request()->cookie("selected-world");
-        if($selectedWorldID == null) {
-            $selectedWorld = World::first();
-        } else {
-            $selectedWorld = World::find($selectedWorldID);
-            if($selectedWorld == null) {
-                $selectedWorld = World::first();
-            }
-        }
-        $this->selected_world = $selectedWorld;
-    }
+
 
     public function getWorld($id) 
     {
@@ -34,6 +23,16 @@ class WorldRepository implements WorldRepositoryInterface
 
     public function getSelectedWorld() 
     {
+        $selectedWorldID = request()->cookie("selected-world");
+        if($selectedWorldID == null) {
+            $selectedWorld = World::first();
+        } else {
+            $selectedWorld = World::find($selectedWorldID);
+            if($selectedWorld == null) {
+                $selectedWorld = World::first();
+            }
+        }
+        $this->selected_world = $selectedWorld;
         return $this->selected_world;
     }
 }
