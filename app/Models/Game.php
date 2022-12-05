@@ -26,6 +26,7 @@ class Game extends Model
     }
 
     protected $fillable = [
+        'created_at',
         'room_id',
         'world_id',
         'server_region_id',
@@ -33,5 +34,5 @@ class Game extends Model
         'log_entry'
     ];
 
-    protected $visible = ['room_id', 'statistic_entries', 'log_entry'];
+    protected $visible = ['created_at', 'room_id', 'world_id', 'statistic_entries', 'log_entry'];
 }
