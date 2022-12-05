@@ -258,6 +258,7 @@ class World extends Model
         'skills',
         'vitals',
         'upgrades',
+        'teaser',
         'consumables',
         'fallThroughLayers'
     ];

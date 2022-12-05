@@ -21,7 +21,12 @@ class Explosive extends Model
         'inventory_image',
         'soil_image',
         'drop_image',
-        'explosion_sound'
+        'explosion_sound',
+        'mine',
+        'ignore_owner',
+        'lifespan',
+        'purchase_limit',
+        'spawn_limit'
     ];
 
     protected $visible = [
@@ -33,6 +38,11 @@ class Explosive extends Model
         'soil_image',
         'drop_image',
         'explosion_sound',
+        'mine',
+        'ignore_owner',
+        'lifespan',
+        'purchase_limit',
+        'spawn_limit',
         'explosionCoordinates'
     ];
 }

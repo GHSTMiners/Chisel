@@ -38,6 +38,23 @@ class StatisticsController extends Controller
         );
     }
 
+    public function wallet($wallet_address) {
+        // Fetch statistics
+        $wallet = Wallet::where('address', $wallet_address)->firstOrFail();
+        $statistic_entries = $wallet->statistic_entries();
+        // Fetch game_ids for statistic entries
+        $games = array();
+        foreach($statistic_entries as &$entry) {
+            array_push($arr, $entry->game_id);
+        }
+        $games = array_unique($games);
+
+        return response()->json(
+            Game::whereIn('id', $games)->get(),
+            200, [], JSON_UNESCAPED_SLASHES
+        );
+    }
+
     public function gotchi($category_id) {
         //Fetch category
         $category = GameStatisticCategory::findOrFail($category_id);

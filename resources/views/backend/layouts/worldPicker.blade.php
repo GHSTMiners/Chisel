@@ -152,6 +152,16 @@
             @enderror
         </div>
 
+        <div class="mb-3">
+            <label for="teaser" class="form-label">{{ __('Teaser') }}</label>
+            <input id="teaser" type="file" class="form-control @error('teaser') is-invalid @enderror" name="teaser" value="{{ old('teaser') }}" required autocomplete="teaser">
+            @error('teaser')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
         <label for="price" class="form-label">{{ __('World crypto') }}</label>
         <div class="input-group mb-3">
             <select class="form-select" aria-label="world_crypto_id" name="world_crypto_id">

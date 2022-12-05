@@ -91,6 +91,51 @@
                                 <br/>
                                 <input class="form-check-input" type="radio" checked disabled> <label for="explosive_coordinates" class="form-label">{{ __('  = Position of explosive') }}</label>
                             </div>
+
+                            <div class="mb-3">
+                                <label for="lifespan" class="form-label">{{ __('Lifespan (seconds)') }}</label>
+                                <input id="lifespan" step="any" type="number" class="form-control @error('lifespan') is-invalid @enderror" name="lifespan" value="{{ old('lifespan') ?? $explosive->lifespan}}" required autocomplete="name" autofocus>
+                                @error('lifespan')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="purchase_limit" class="form-label">{{ __('Purchase limit') }}</label>
+                                <input id="purchase_limit" step="any" type="number" class="form-control @error('purchase_limit') is-invalid @enderror" name="purchase_limit" value="{{ old('purchase_limit') ?? $explosive->purchase_limit }}" required autocomplete="name" autofocus>
+                                @error('purchase_limit')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="spawn_limit" class="form-label">{{ __('Spawn limit') }}</label>
+                                <input id="spawn_limit" step="any" type="number" class="form-control @error('spawn_limit') is-invalid @enderror" name="spawn_limit" value="{{ old('spawn_limit') ?? $explosive->spawn_limit }}" required autocomplete="name" autofocus>
+                                @error('spawn_limit')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="mine" id="mine" value=1 @if($explosive->mine) checked @endif>
+                                    <label class="form-check-label" for="mine">{{ __('Mine') }}</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="ignore_owner" id="ignore_owner" value=1 @if($explosive->ignore_owner) checked @endif>
+                                    <label class="form-check-label" for="ignore_owner">{{ __('Ignore owner') }}</label>
+                                </div>
+                            </div>
+
                             <button type="submit" class="btn btn-primary btn-lg">{{ __('Update') }}</button>  
                         </form>
                     </div>

@@ -17,6 +17,10 @@ class Wallet extends Model
         return $this->hasMany(WalltBan::class);
     }
 
+    public function statistic_entries() {
+        return $this->hasMany(GameStatisticEntry::class);
+    }
+
     protected $fillable = [
         'address',
         'chain_id',

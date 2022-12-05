@@ -24,6 +24,7 @@ class WorldController extends Controller
         $data = request()->validate([
             'name' => ['string', 'required'],
             'thumbnail' => ['file', 'mimes:png,jpg'],
+            'teaser' => ['file', 'mimes:mp4'],
             'description' => ['string', 'required'],
             'development_mode' => ['boolean'],
             'published' => ['boolean'],
@@ -33,6 +34,7 @@ class WorldController extends Controller
 
         ]);
         if(array_key_exists('thumbnail', $data)) $data['thumbnail'] = $data['thumbnail']->store('thumbnail', 'public');
+        if(array_key_exists('teaser', $data)) $data['teaser'] = $data['teaser']->store('teaser', 'public');
 
         $newWorld = \App\Models\World::create($data);
         //Select new world
@@ -52,6 +54,7 @@ class WorldController extends Controller
         $data = request()->validate([
             'name' => ['string'],
             'thumbnail' => ['mimes:png,jpg'],
+            'teaser' => ['file', 'mimes:mp4'],
             'description' => ['string'],
             'development_mode' => ['boolean'],
             'published' => ['boolean'],
@@ -62,6 +65,7 @@ class WorldController extends Controller
         ]);
 
         if(array_key_exists('thumbnail', $data)) $data['thumbnail'] = $data['thumbnail']->store('thumbnail', 'public');
+        if(array_key_exists('teaser', $data)) $data['teaser'] = $data['teaser']->store('teaser', 'public');
         if(!array_key_exists('development_mode', $data)) $data['development_mode'] = FALSE;
         if(!array_key_exists('published', $data)) $data['published'] = FALSE;
 
