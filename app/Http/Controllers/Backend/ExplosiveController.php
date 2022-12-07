@@ -46,14 +46,20 @@ class ExplosiveController extends Controller
             'inventory_image' => ['image'],
             'drop_image' => ['image'],
             'explosive_coordinates' => ['required', 'array'],
-            'explosion_sound' => ['mimes:mp3,wav']
-
+            'explosion_sound' => ['mimes:mp3,wav'],
+            'ignore_owner' => 'boolean',
+            'mine' => 'boolean',
+            'lifespan' => ['required', 'numeric', 'between:0,99999.99'],
+            'purchase_limit' => ['required', 'numeric', 'between:0,99999.99'],
+            'spawn_limit' => ['required', 'numeric', 'between:0,99999.99']
         ]);
 
         if(array_key_exists('soil_image', $data)) $data['soil_image'] = $data['soil_image']->store('/explosive', 'public');
         if(array_key_exists('inventory_image', $data)) $data['inventory_image'] = $data['inventory_image']->store('/explosive', 'public');
         if(array_key_exists('drop_image', $data)) $data['drop_image'] = $data['drop_image']->store('/explosive', 'public');
         if(array_key_exists('explosion_sound', $data)) $data['explosion_sound'] = $data['explosion_sound']->store('/explosive', 'public');
+        if(!array_key_exists('mine', $data)) $data['digable'] = FALSE;
+        if(!array_key_exists('ignore_owner', $data)) $data['explodeable'] = FALSE;
 
         $explosive->explosionCoordinates()->delete();
         foreach($data['explosive_coordinates'] as $columns) {
@@ -80,7 +86,12 @@ class ExplosiveController extends Controller
             'inventory_image' => ['required', 'image'],
             'drop_image' => ['required', 'image'],
             'explosive_coordinates' => ['required', 'array'],
-            'explosion_sound' => ['required', 'mimes:mp3,wav']
+            'explosion_sound' => ['required', 'mimes:mp3,wav'],
+            'ignore_owner' => 'boolean',
+            'mine' => 'boolean',
+            'lifespan' => ['required', 'numeric', 'between:0,99999.99'],
+            'purchase_limit' => ['required', 'numeric', 'between:0,99999.99'],
+            'spawn_limit' => ['required', 'numeric', 'between:0,99999.99']
         ]);
 
 
@@ -88,6 +99,8 @@ class ExplosiveController extends Controller
         $inventory_image = $data['inventory_image']->store('/explosive', 'public');
         $drop_image = $data['drop_image']->store('/explosive', 'public');
         $explosion_sound = $data['explosion_sound']->store('/explosive', 'public');
+        if(!array_key_exists('mine', $data)) $data['digable'] = FALSE;
+        if(!array_key_exists('ignore_owner', $data)) $data['explodeable'] = FALSE;
 
         $explosive = \App\Models\Explosive::create([
             'name' => $data['name'],
@@ -97,7 +110,12 @@ class ExplosiveController extends Controller
             'soil_image' => $soil_image,
             'inventory_image' => $inventory_image,
             'drop_image' => $drop_image,
-            'explosion_sound' => $explosion_sound
+            'explosion_sound' => $explosion_sound,
+            'ignore_owner' => $data['ignore_owner'],
+            'mine' => $data['mine'],
+            'lifespan' => $data['lifespan'],
+            'purchase_limit' => $data['purchase_limit'],
+            'spawn_limit' => $data['spawn_limit'],
         ]);
 
         foreach($data['explosive_coordinates'] as $columns) {
