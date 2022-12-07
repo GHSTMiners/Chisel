@@ -58,8 +58,8 @@ class ExplosiveController extends Controller
         if(array_key_exists('inventory_image', $data)) $data['inventory_image'] = $data['inventory_image']->store('/explosive', 'public');
         if(array_key_exists('drop_image', $data)) $data['drop_image'] = $data['drop_image']->store('/explosive', 'public');
         if(array_key_exists('explosion_sound', $data)) $data['explosion_sound'] = $data['explosion_sound']->store('/explosive', 'public');
-        if(!array_key_exists('mine', $data)) $data['digable'] = FALSE;
-        if(!array_key_exists('ignore_owner', $data)) $data['explodeable'] = FALSE;
+        if(!array_key_exists('mine', $data)) $data['mine'] = FALSE;
+        if(!array_key_exists('ignore_owner', $data)) $data['ignore_owner'] = FALSE;
 
         $explosive->explosionCoordinates()->delete();
         foreach($data['explosive_coordinates'] as $columns) {
@@ -99,8 +99,8 @@ class ExplosiveController extends Controller
         $inventory_image = $data['inventory_image']->store('/explosive', 'public');
         $drop_image = $data['drop_image']->store('/explosive', 'public');
         $explosion_sound = $data['explosion_sound']->store('/explosive', 'public');
-        if(!array_key_exists('mine', $data)) $data['digable'] = FALSE;
-        if(!array_key_exists('ignore_owner', $data)) $data['explodeable'] = FALSE;
+        if(!array_key_exists('mine', $data)) $data['mine'] = FALSE;
+        if(!array_key_exists('ignore_owner', $data)) $data['ignore_owner'] = FALSE;
 
         $explosive = \App\Models\Explosive::create([
             'name' => $data['name'],
