@@ -60,17 +60,17 @@ class WalletChallengeController extends Controller
         // Fetch challenge and check if it is valid
         $challenge = WalletChallenge::where('challenge', $data['challenge'])->first();
         if($challenge === null or $challenge->created_at->addMinutes(env('APP_CHALLENGE_DURATION', 15)) < Carbon::now()  ) {
-            abort(403);
+            abort(403, "The challange has expired");
         }
 
         //Fetch the wallet that this challenge is from and check agains request data
         if( $challenge->wallet->address !== $data['wallet_address'] or $challenge->wallet->chain_id !== (int)$data['chain_id']) {
-            abort(403);
+            abort(403, "Challenge was generated for a different chain ID");
         }
 
         // Verify signature
         if(personal_ecRecover($data['challenge'], $data['signature']) !== strtolower($challenge->wallet->address)) {
-            abort(403);
+            abort(403, "The signature that was provided to verify this challange was invalid");
         }
 
         //If we reach this point, we can create a wallet auth token and delete the challenge
