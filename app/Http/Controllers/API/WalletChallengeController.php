@@ -67,12 +67,7 @@ class WalletChallengeController extends Controller
         if( strtolower($challenge->wallet->address) !== strtolower($data['wallet_address'])) {
             abort(403, "Challenge was generated for a different wallet address");
         }
-
-        //Fetch the wallet that this challenge is from and check agains request data
-        if($challenge->wallet->chain_id !== (int)$data['chain_id']) {
-            abort(403, "Challenge was generated for a different chain ID");
-        }
-
+        
         // Verify signature
         if(personal_ecRecover($data['challenge'], $data['signature']) !== strtolower($challenge->wallet->address)) {
             abort(403, "The signature that was provided to verify this challange was invalid");
