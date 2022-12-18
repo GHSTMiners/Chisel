@@ -112,7 +112,7 @@ class StatisticsController extends Controller
 
         //Prepare query
         $query = $category->highscores();
-        $query = $query->where('created_at', '>=', Carbon::now()->startOfDay())    
+        $query = $query->where('created_at', '>=', Carbon::now()->startOfDay());
         $query = $query->with('gotchi', 'entry');
         
         return response()->json(
