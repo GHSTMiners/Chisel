@@ -64,7 +64,12 @@ class WalletChallengeController extends Controller
         }
 
         //Fetch the wallet that this challenge is from and check agains request data
-        if( $challenge->wallet->address !== $data['wallet_address'] or $challenge->wallet->chain_id !== (int)$data['chain_id']) {
+        if( strtolower($challenge->wallet->address) !== strtolower($data['wallet_address'])) {
+            abort(403, "Challenge was generated for a different wallet address");
+        }
+
+        //Fetch the wallet that this challenge is from and check agains request data
+        if($challenge->wallet->chain_id !== (int)$data['chain_id']) {
             abort(403, "Challenge was generated for a different chain ID");
         }
 
