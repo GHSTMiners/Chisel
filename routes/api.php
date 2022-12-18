@@ -23,6 +23,7 @@ Route::get('statistics/categories', '\App\Http\Controllers\API\StatisticsControl
 Route::post('statistics/gotchi/{category_id}', '\App\Http\Controllers\API\StatisticsController@gotchi', array("as" => "api"));
 Route::get('statistics/wallet/{wallet_address}', '\App\Http\Controllers\API\StatisticsController@wallet', array("as" => "api"));
 
+Route::get('statistics/daily_highscores/{category_id}', '\App\Http\Controllers\API\StatisticsController@daily_highscores', array("as" => "api"));
 Route::get('statistics/highscores/{category_id}', '\App\Http\Controllers\API\StatisticsController@highscores', array("as" => "api"));
 Route::get('statistics/games', '\App\Http\Controllers\API\ServerStatsController@games', array("as" => "api"));
 Route::get('statistics/game/{uuid}', '\App\Http\Controllers\API\StatisticsController@game', array("as" => "api"));

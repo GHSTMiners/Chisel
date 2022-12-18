@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 use App\Models\IpAddress;
 use App\Models\Gotchi;
@@ -97,6 +98,21 @@ class StatisticsController extends Controller
         //Prepare query
         $query = $category->highscores();
 
+        $query = $query->with('gotchi', 'entry');
+        
+        return response()->json(
+            $query->get(),
+            200, [], JSON_UNESCAPED_SLASHES
+        );
+    }
+
+    public function daily_highscores($category_id) {
+        //Fetch category
+        $category = GameStatisticCategory::findOrFail($category_id);
+
+        //Prepare query
+        $query = $category->highscores();
+        $query = $query->where('created_at', '>=', Carbon::now()->startOfDay())    
         $query = $query->with('gotchi', 'entry');
         
         return response()->json(

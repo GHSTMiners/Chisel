@@ -43,7 +43,7 @@ class APIKeyAuthenticator
             if (!$allowed_ips->contains(function($value, $key) use($request) {
                 return $value->ip === $request->ip();
             })) {
-                abort(403, 'This IP adres is not allow to use this API key');
+                abort(403, 'This IP adres is not allowed to use this API key');
             }
         }
         return $next($request);
