@@ -14,4 +14,10 @@ class WalletRole extends Model
         'developer',
         'moderator'
     ];
+
+    protected $visible = [
+        'admin',
+        'developer',
+        'moderator',
+    ];
 }
