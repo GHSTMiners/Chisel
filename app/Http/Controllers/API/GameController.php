@@ -114,7 +114,7 @@ class GameController extends Controller
                 ]);
 
                 // Do no update high scores if wallet is owner by a developer
-                if(!$wallet->role()->developer) {
+                if(!$wallet->role->developer) {
                     //Check if it is an highscore
                     $highscore = Highscore::where('gotchi_id', $gotchi->id)->where('game_statistic_category_id', $category->id)->firstOr(function() use ($gotchi, $category, $statistics_entry) {
                         return Highscore::create([
