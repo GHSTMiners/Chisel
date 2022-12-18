@@ -113,20 +113,23 @@ class GameController extends Controller
                     'value' => $data['values'][$i]
                 ]);
 
-                //Check if it is an highscore
-                $highscore = Highscore::where('gotchi_id', $gotchi->id)->where('game_statistic_category_id', $category->id)->firstOr(function() use ($gotchi, $category, $statistics_entry) {
-                    return Highscore::create([
-                        'gotchi_id' => $gotchi->id,
-                        'game_statistic_category_id' => $category->id,
-                        'game_statistic_entry_id' => $statistics_entry->id, 
-                    ]);
-                });
+                // Do no update high scores if wallet is owner by a developer
+                if(!$wallet->role()->developer) {
+                    //Check if it is an highscore
+                    $highscore = Highscore::where('gotchi_id', $gotchi->id)->where('game_statistic_category_id', $category->id)->firstOr(function() use ($gotchi, $category, $statistics_entry) {
+                        return Highscore::create([
+                            'gotchi_id' => $gotchi->id,
+                            'game_statistic_category_id' => $category->id,
+                            'game_statistic_entry_id' => $statistics_entry->id, 
+                        ]);
+                    });
 
-                //If a new highscore has been reached, update entry                
-                if(intval($statistics_entry->value) > intval($highscore->entry->value)) {
-                    $highscore->update([
-                        'game_statistic_entry_id' => $statistics_entry->id
-                    ]);
+                    //If a new highscore has been reached, update entry                
+                    if(intval($statistics_entry->value) > intval($highscore->entry->value)) {
+                        $highscore->update([
+                            'game_statistic_entry_id' => $statistics_entry->id
+                        ]);
+                    }
                 }
             }
         } else abort(405, "Couldn't find something");
