@@ -115,7 +115,7 @@ class StatisticsController extends Controller
         $query = $query->where('created_at', '>=', Carbon::now()->startOfDay());
         $query = $query->sortByDesc('value');
         $query = $query->take(3);
-        $query = $query->with('gotchi', 'entry');
+        $query = $query->with('gotchi');
         
         return response()->json(
             $query->get(),
