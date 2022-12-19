@@ -111,8 +111,10 @@ class StatisticsController extends Controller
         $category = GameStatisticCategory::findOrFail($category_id);
 
         //Prepare query
-        $query = $category->highscores();
+        $query = $category->entries();
         $query = $query->where('created_at', '>=', Carbon::now()->startOfDay());
+        $query = $query->sortByDesc('value');
+        $query = $query->take(3);
         $query = $query->with('gotchi', 'entry');
         
         return response()->json(
