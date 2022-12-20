@@ -22,7 +22,7 @@ class WalletAuthTokenController extends Controller
         $token = WalletAuthToken::where('token', $data['token'])->first();
 
         if($token) {
-            if($token->wallet->address === $data['wallet_address']) {
+            if(strtolower($token->wallet->address) === strtolower($data['wallet_address'])) {
                 return response()->json(
                     array("success" => true, "roles" => $token->wallet->role),
                     200, [], JSON_UNESCAPED_SLASHES
