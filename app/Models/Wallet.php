@@ -26,7 +26,7 @@ class Wallet extends Model
         'chain_id',
     ];
 
-    protected $visible = ['address', 'chain_id'];
+    protected $visible = ['address'];
 
     public static function create(array $attributes = []) {
         $model = static::query()->create($attributes);

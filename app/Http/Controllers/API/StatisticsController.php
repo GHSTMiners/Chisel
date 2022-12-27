@@ -98,7 +98,7 @@ class StatisticsController extends Controller
         //Prepare query
         $query = $category->highscores();
 
-        $query = $query->with('gotchi', 'entry');
+        $query = $query->with('gotchi', 'entry', 'entry.wallet');
         
         return response()->json(
             $query->get(),
