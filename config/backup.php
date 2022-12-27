@@ -159,24 +159,8 @@ return [
             \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessfulNotification::class => ['discord'],
         ],
 
-        /*
-         * Here you can specify the notifiable to which the notifications should be sent. The default
-         * notifiable will use the variables specified in this config file.
-         */
-        'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
-
         'discord' => [
-            'webhook_url' => 'https://discord.com/api/webhooks/1057421249548128329/cc9fOvCX7Xm3RBUchHxtQSX2WZysOjhZf7kzH5oAa7PI6IsGyMcJ3GKFc3x0PN8_Q7fN',
-
-            /*
-             * If this is an empty string, the name field on the webhook will be used.
-             */
-            'username' => '',
-
-            /*
-             * If this is an empty string, the avatar on the webhook will be used.
-             */
-            'avatar_url' => '',
+            'webhook_url' => 'https://discord.com/api/webhooks/1057421249548128329/cc9fOvCX7Xm3RBUchHxtQSX2WZysOjhZf7kzH5oAa7PI6IsGyMcJ3GKFc3x0PN8_Q7fN'
         ],
     ],
 
