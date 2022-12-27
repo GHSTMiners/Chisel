@@ -63,6 +63,13 @@
                                 </div>
                             </div>
 
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="development_only" id="development_only" value=1>
+                                    <label class="form-check-label" for="development_only">{{ __('Development only') }}</label>
+                                </div>
+                            </div>
+
                             <button type="submit" class="btn btn-primary btn-lg">{{ __('Add') }}</button>  
                         </form>
                     </div>

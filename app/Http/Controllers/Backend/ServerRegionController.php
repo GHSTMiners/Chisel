@@ -38,11 +38,13 @@ class ServerRegionController extends Controller
             'longitude' => ['required', 'numeric'],
             'latitude' => ['required', 'numeric'],
             'flag' => ['required', 'image'],
-            'active' => ['boolean']            
+            'active' => ['boolean'],
+            'development_only' => ['boolean']            
         ]);
 
         $data['flag'] = $data['flag']->store('/flags', 'public');
         $data['active'] = (array_key_exists('active', $data) ? 1 : 0);
+        $data['development_only'] = (array_key_exists('development_only', $data) ? 1 : 0);
 
         \App\Models\ServerRegion::create($data);
         return redirect()->route('server-regions.index');
@@ -55,11 +57,13 @@ class ServerRegionController extends Controller
             'longitude' => ['required', 'numeric'],
             'latitude' => ['required', 'numeric'],
             'flag' => ['image'],
-            'active' => ['boolean']            
+            'active' => ['boolean'] ,
+            'development_only' => ['boolean']           
         ]);
 
         if(array_key_exists('flag', $data)) $data['flag'] = $data['flag']->store('/flags', 'public');
         $data['active'] = (array_key_exists('active', $data) ? 1 : 0);
+        $data['development_only'] = (array_key_exists('development_only', $data) ? 1 : 0);
 
         $serverRegion->update($data);
         return redirect()->route('server-regions.index');

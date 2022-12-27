@@ -72,6 +72,13 @@
                                     <label class="form-check-label" for="active">{{ __('Active') }}</label>
                                 </div>
                             </div>
+
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="development_only" id="development_only" value=1 @if($serverRegion->development_only) checked @endif>
+                                    <label class="form-check-label" for="development_only">{{ __('Development only') }}</label>
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-primary btn-lg">{{ __('Update') }}</button>  
                         </form>
                     </div>

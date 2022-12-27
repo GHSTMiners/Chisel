@@ -21,6 +21,7 @@ class ServerRegion extends Model
         'longitude',
         'latitude',
         'active',
+        'development_only'
     ];
 
     protected $visible = [
@@ -29,6 +30,7 @@ class ServerRegion extends Model
         'flag',
         'longitude',
         'latitude',
-        'games'
+        'games',
+        'development_only'
     ];
 }
