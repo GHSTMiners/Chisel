@@ -230,6 +230,7 @@ class World extends Model
         'name',
         'development_mode',
         'published',
+        'teaser',
         'thumbnail',
         'description',
         'width',
