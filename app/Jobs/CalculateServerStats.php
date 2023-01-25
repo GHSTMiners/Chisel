@@ -76,7 +76,7 @@ class CalculateServerStats implements ShouldQueue
             // Generate object entry
             $entry['start_date']    = $current_date->toDateTimeString();
             $entry['end_date']      = $next_date->toDateTimeString();
-            $entry['data_points']   = $datapoints;
+            $entry['games_per_region']   = $datapoints;
             array_push($server_game_amounts, $entry);
             $current_date = $next_date;
         }
