@@ -54,8 +54,8 @@ class CalculateServerStats implements ShouldQueue
     private function calculate_game_amounts() {
         // Configure datapoint settings
         $server_game_amounts = [];
-        $history_days = 7;
-        $point_interval_hours = 1;
+        $history_days = 30;
+        $point_interval_hours = 24;
         // Calculate start and end dates
         $end_date = new Carbon(Carbon::now()->minute(0)->second(0));
         $start_date = Carbon::now()->subDays($history_days);
@@ -70,14 +70,7 @@ class CalculateServerStats implements ShouldQueue
             // Iterate through regions, game count = -1
             $datapoints = [];
             foreach($regions as &$region) {
-                $datapoints[$region->id][-1] = $region->games()->whereBetween('created_at', [$current_date, $next_date])->count();
-                foreach($statistics_categories as $category) {
-                    $sum = 0;
-                    foreach($region->games()->whereBetween('created_at', [$current_date, $next_date])->get() as $game) {               
-                        $sum = $sum + $game->statistic_entries()->where('game_statistic_category_id', $category->id)->sum('value');
-                    }
-                    $datapoints[$region->id][$category->id] = $sum;
-                }
+                $datapoints[$region->id] = $region->games()->whereBetween('created_at', [$current_date, $next_date])->count();
             }
 
             // Generate object entry
