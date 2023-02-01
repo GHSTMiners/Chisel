@@ -38,7 +38,9 @@ class ConsumableController extends Controller
 
     public function create() {
         $crypto = $this->worldRepository->getSelectedWorld()->crypto;
-        return view('backend.consumable.create', compact('crypto'));
+        $skills = $this->worldRepository->getSelectedWorld()->skills;
+        $vitals = $this->worldRepository->getSelectedWorld()->vitals;
+        return view('backend.consumable.create', compact('crypto', 'skills', 'vitals'));
     }
 
     public function store() {

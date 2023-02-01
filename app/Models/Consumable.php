@@ -23,6 +23,9 @@ class Consumable extends Model
         'price',
         'crypto',
         'description',
-        'image'
+        'image',
+        'duration',
+        'carry_limit',
+        'purchase_limit'
     ];
 }
