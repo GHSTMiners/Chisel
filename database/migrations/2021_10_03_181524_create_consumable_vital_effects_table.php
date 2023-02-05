@@ -18,9 +18,7 @@ class CreateConsumableVitalEffectsTable extends Migration
             $table->timestamps();
             $table->foreignId('consumable_id')->references('id')->on('consumables')->onDelete('cascade');
             $table->foreignId('vital_id')->references('id')->on('vitals')->onDelete('cascade');
-            $table->enum('effect', ['Increase', 'Decrease']);
-            $table->enum('modifier', ['Fixed', 'Percentage']);
-            $table->smallInteger('amount');
+            $table->string('formula');
         });
     }
 

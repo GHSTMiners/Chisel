@@ -18,10 +18,7 @@ class CreateConsumableSkillEffectsTable extends Migration
             $table->timestamps();
             $table->foreignId('consumable_id')->references('id')->on('consumables')->onDelete('cascade');
             $table->foreignId('skill_id')->references('id')->on('skills')->onDelete('cascade');
-            $table->enum('effect', ['Increase', 'Decrease']);
-            $table->enum('modifier', ['Fixed', 'Percentage']);
-            $table->smallInteger('duration');
-            $table->float('amount');
+            $table->string('formula');
         });
     }
 

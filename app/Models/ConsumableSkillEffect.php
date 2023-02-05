@@ -20,9 +20,6 @@ class ConsumableSkillEffect extends Model
     protected $fillable = [
         'consumable_id',
         'skill_id',
-        'effect',
-        'modifier',
-        'duration',
-        'amount'
+        'formula',
     ];
 }

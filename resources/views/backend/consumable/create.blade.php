@@ -13,6 +13,7 @@
                                     <button class="nav-link active" id="nav-consumable-tab" data-bs-toggle="tab" data-bs-target="#nav-consumable" type="button" role="tab" aria-controls="nav-consumable" aria-selected="true">Information</button>
                                     <button class="nav-link" id="nav-vitals-tab" data-bs-toggle="tab" data-bs-target="#nav-vitals" type="button" role="tab" aria-controls="nav-vitals" aria-selected="false">Vitals</button>
                                     <button class="nav-link" id="nav-skills-tab" data-bs-toggle="tab" data-bs-target="#nav-skills" type="button" role="tab" aria-controls="nav-skills" aria-selected="false">Skills</button>
+                                    <button class="nav-link" id="nav-code-tab" data-bs-toggle="tab" data-bs-target="#nav-code" type="button" role="tab" aria-controls="nav-code" aria-selected="false">Code</button>
                                 </div>
                             </nav>
                             <div class="tab-content" id="nav-tabContent">
@@ -30,7 +31,7 @@
                                     <label for="price" class="form-label">{{ __('Price') }}</label>
                                     <div class="input-group mb-3">
                                         <input id="price" type="text" class="form-control" placeholder="0.00" aria-label="price" name="price" required>
-                                        <select class="form-select" aria-label="crypto" name="crypto">
+                                        <select class="form-select" aria-label="crypto_id" name="crypto_id">
                                         @foreach ($crypto as $currentCrypto)
                                             <option value="{{$currentCrypto->id}}">{{$currentCrypto->name}}</option>
                                             
@@ -126,6 +127,17 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
+                                    <div class="mb-3">
+                                        <textarea id="code" class="form-control @error('code') is-invalid @enderror" rows="20" name="code" value="{{ old('code')}}"></textarea>
+                                        @error('code')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-script" role="tabpanel" aria-labelledby="nav-script-tab">

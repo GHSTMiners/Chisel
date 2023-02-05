@@ -20,8 +20,6 @@ class ConsumableVitalEffect extends Model
     protected $fillable = [
         'consumable_id',
         'vital_id',
-        'effect',
-        'modifier',
-        'amount'
+        'formula'
     ];
 }

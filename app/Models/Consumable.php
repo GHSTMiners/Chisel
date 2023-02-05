@@ -9,11 +9,11 @@ class Consumable extends Model
 {
     use HasFactory;
 
-    public function consumableVitalEffects() {
+    public function vital_effects() {
         return $this->hasMany(ConsumableVitalEffect::class);
     }
 
-    public function consumableSkillEffects() {
+    public function skill_effects() {
         return $this->hasMany(ConsumableSkillEffect::class);
     }
 
@@ -21,11 +21,12 @@ class Consumable extends Model
         'name',
         'world_id',
         'price',
-        'crypto',
+        'crypto_id',
         'description',
         'image',
         'duration',
         'carry_limit',
-        'purchase_limit'
+        'purchase_limit',
+        'script'
     ];
 }
