@@ -7,16 +7,16 @@
     "require": {
         "php": "^8.0",
         "doctrine/dbal": "^3.2",
-        "fruitcake/laravel-cors": "^2.0",
-        "laravel/framework": "^9.0",
-        "laravel/sanctum": "^2.11",
+        "laravel/framework": "^10.0",
+        "laravel/sanctum": "^3.2.1",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.3",
+        "laravel/ui": "^4.2",
+
         "panxianhai/php-ecrecover": "dev-master",
         "spatie/laravel-backup": "^8.1"
     },
     "require-dev": {
-        "spatie/laravel-ignition": "^1.0",
+        "spatie/laravel-ignition": "^2.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
