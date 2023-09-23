@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2021",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "esModuleInterop": true,
+    "allowJs": true
+    
+  },
+  "include": [
+    "resources/js/**/*"
+    ],  // Frontend paths pattern
+	"typeRoots": [
+		"node_modules/@types",
+		"./node_modules/phaser/types"
+	],
+  "types": [
+      "Phaser"
+  ]
+  }

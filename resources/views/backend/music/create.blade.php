@@ -1,0 +1,39 @@
+@extends('backend.layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('music.store') }}" enctype="multipart/form-data">
+                            @csrf
+                            <h4 class="card-title">{{ __('Add music') }}</h4>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">{{ __('Name') }}</label>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="audio" class="form-label">{{ __('Music') }}</label>
+                                <input id="audio" type="file" class="form-control @error('audio') is-invalid @enderror" name="audio" value="{{ old('audio') }}" required autocomplete="music">
+                                @error('audio')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg">{{ __('Add') }}</button>  
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

@@ -1,0 +1,23 @@
+.navbar {
+    position: fixed;
+    min-height: 100px;
+    top: 0px;
+    width: 100%;
+  }
+.btn-play-forward,
+.btn-play-reverse,
+.btn-play {
+  cursor: pointer;
+  position: fixed;
+  width: 7.5em;
+  height: 3em;
+  bottom: 1em;
+  right: 1em;
+  font-size: 2em;
+}
+
+.btn-play-reverse {
+    display: none;
+}
+
+#map { height: 180px; }
