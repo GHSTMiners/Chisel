@@ -12,7 +12,7 @@
     "devDependencies": {
         "@types/jquery": "^3.5.8",
         "@types/web3": "^1.2.2",
-        "axios": "^0.21",
+        "axios": "^1.6",
         "bootstrap": "^4.6.0",
         "browser-sync": "^2.27.7",
         "browser-sync-webpack-plugin": "^2.3.0",
